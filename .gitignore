@@ -1,0 +1,46 @@
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code session
+.claude/
+memory/
+
+# Secrets & accès — JAMAIS versionner
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+id_rsa*
+bitwarden-export*.json
+credentials.json
+
+# Dumps / backups locaux
+*.sql
+*.sql.gz
+backups/
+backup/
+*.bak
+
+# Fichiers temporaires WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+
+# Exports / archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Logs
+*.log
