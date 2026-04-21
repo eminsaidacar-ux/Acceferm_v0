@@ -23,7 +23,16 @@ const STEPS = [
   { id: 3, label: "Confirmation" },
 ] as const;
 
-const PAYMENTS = [
+type Payment = {
+  id: string;
+  label: string;
+  sub: string;
+  icon: typeof CreditCard;
+  recommended?: boolean;
+  pro?: boolean;
+};
+
+const PAYMENTS: readonly Payment[] = [
   { id: "cb", label: "Carte bancaire", sub: "Visa · Mastercard · Apple Pay", icon: CreditCard, recommended: true },
   { id: "30j", label: "Paiement 30j à terme", sub: "Compte Pro Gold validé", icon: FileText, pro: true },
   { id: "sepa", label: "Virement SEPA pro", sub: "Envoi confirmation sous 48h", icon: Building2 },

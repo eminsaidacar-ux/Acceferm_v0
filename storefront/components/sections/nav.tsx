@@ -13,14 +13,16 @@ const SECONDARY = [
   { label: "Espace Pro", href: "/pro" },
   { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
   { label: "Installateur IDF", href: "/installateur-motorisation-portail/paris-75" },
+  { label: "Manifeste", href: "/manifeste" },
+  { label: "Normes EN", href: "/normes" },
   { label: "À propos IEF & Co", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Lock body scroll when open
   useEffect(() => {
     if (open) {
       const prev = document.body.style.overflow;
@@ -31,12 +33,38 @@ export function Nav() {
     }
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border-soft bg-bg/80 backdrop-blur-xl">
+    <header
+      className={[
+        "sticky top-0 z-50 border-b transition-all duration-300",
+        scrolled
+          ? "border-border-soft bg-bg/85 backdrop-blur-xl shadow-[0_2px_24px_-18px_rgba(42,36,30,0.25)]"
+          : "border-transparent bg-bg/60 backdrop-blur-md",
+      ].join(" ")}
+    >
       <div className="mx-auto max-w-[1440px] px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between">
-          <a href="/" aria-label="AcceFerm Pro — retour accueil">
+        <div
+          className={[
+            "flex items-center justify-between transition-[height] duration-300",
+            scrolled ? "h-12" : "h-16",
+          ].join(" ")}
+        >
+          <a
+            href="/"
+            aria-label="AcceFerm Pro — retour accueil"
+            className="group flex items-center gap-3"
+          >
             <Logo />
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle md:inline">
+              · Pro & Industrie
+            </span>
           </a>
 
           <MegaMenu />

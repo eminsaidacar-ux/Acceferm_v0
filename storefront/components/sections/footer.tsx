@@ -5,64 +5,63 @@ const COLUMNS = [
   {
     title: "Catalogue",
     links: [
-      "Motorisation portail battant",
-      "Motorisation portail coulissant",
-      "Photocellules & barres palpeuses",
-      "Récepteurs & télécommandes",
-      "Claviers & sélecteurs IP65",
-      "Contrôle d'accès VIGIK",
-      "Interphonie GSM",
-      "Serrures & ventouses",
-      "Alimentation & batteries",
-      "Pièces détachées",
-      "Kits complets",
+      { label: "Motorisation portail battant", href: "/catalogue/motorisation-battant" },
+      { label: "Motorisation portail coulissant", href: "/catalogue/motorisation-coulissant" },
+      { label: "Photocellules & barres palpeuses", href: "/catalogue/photocellules" },
+      { label: "Récepteurs & télécommandes", href: "/catalogue/recepteurs-radio" },
+      { label: "Claviers & sélecteurs IP65", href: "/catalogue/claviers-selecteurs" },
+      { label: "Contrôle d'accès VIGIK", href: "/catalogue/controle-acces" },
+      { label: "Interphonie GSM", href: "/catalogue/interphonie" },
+      { label: "Serrures & ventouses", href: "/catalogue/serrures-electriques" },
+      { label: "Alimentation & batteries", href: "/catalogue/alimentation-batteries" },
+      { label: "Pièces détachées", href: "/catalogue/pieces-detachees" },
+      { label: "Kits complets", href: "/catalogue/kits-complets" },
     ],
   },
   {
     title: "Espace Pro",
     links: [
-      "Créer un compte",
-      "Grilles tarifaires",
-      "Commande rapide",
-      "Commande par CSV",
-      "Paiement 30j",
-      "Mes factures & devis",
-      "Mes chantiers",
-      "Parrainage installateur",
+      { label: "Créer un compte", href: "/compte-pro/nouveau" },
+      { label: "Grilles tarifaires", href: "/pro" },
+      { label: "Commande rapide", href: "/pro" },
+      { label: "Commande par CSV", href: "/pro" },
+      { label: "Paiement 30j", href: "/pro" },
+      { label: "Mes factures & devis", href: "/pro" },
+      { label: "Mes chantiers", href: "/pro" },
+      { label: "Parrainage installateur", href: "/pro" },
     ],
   },
   {
     title: "Services",
     links: [
-      "Devis gratuit < 24h",
-      "Conseiller technique",
-      "Vidéo-assistance Assistéo",
-      "SAV ticketing",
-      "Catalogue papier 2026",
-      "Formation e-learning",
+      { label: "Devis gratuit < 24h", href: "/contact" },
+      { label: "Conseiller technique", href: "/contact" },
+      { label: "Vidéo-assistance Assistéo", href: "/pose-idf" },
+      { label: "SAV ticketing", href: "/contact" },
+      { label: "Catalogue papier 2026", href: "/ressources" },
+      { label: "Formation e-learning", href: "/ressources" },
     ],
   },
   {
     title: "Ressources",
     links: [
-      "Guides d'installation",
-      "Diagnostic panne",
-      "Calculateur dimensionnement",
-      "Tableau compatibilités",
-      "Notices & schémas",
-      "Glossaire technique",
-      "Blog pro",
+      { label: "Guides d'installation", href: "/ressources" },
+      { label: "Diagnostic panne", href: "/ressources" },
+      { label: "Gabarits & templates", href: "/gabarits" },
+      { label: "Normes EN 12453 / 13241", href: "/normes" },
+      { label: "Glossaire technique", href: "/glossaire" },
+      { label: "Manifeste", href: "/manifeste" },
+      { label: "Blog pro", href: "/ressources" },
     ],
   },
   {
     title: "À propos",
     links: [
-      "IEF & Co",
-      "Nos engagements",
-      "Chantiers références",
-      "Recrutement",
-      "Presse",
-      "Nous contacter",
+      { label: "IEF & Co", href: "/a-propos" },
+      { label: "Nos engagements", href: "/manifeste" },
+      { label: "vs. incumbents", href: "/vs/accesso-ferm" },
+      { label: "Pose IDF", href: "/pose-idf" },
+      { label: "Nous contacter", href: "/contact" },
     ],
   },
 ] as const;
@@ -72,7 +71,7 @@ const LABELS = ["Avis Vérifiés 4,8/5", "RGAA 2.2 AA", "Stock France", "SIRET I
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-soft bg-bg-elev">
+    <footer className="relative overflow-hidden border-t border-border-soft bg-bg-elev">
       <div className="mx-auto max-w-[1440px] px-6 py-16 lg:px-8 lg:py-20">
         {/* Top: 4 phones */}
         <div className="grid gap-px overflow-hidden rounded-2xl bg-border-soft sm:grid-cols-2 lg:grid-cols-4">
@@ -81,6 +80,7 @@ export function Footer() {
               key={line.number}
               href={line.href}
               className="bg-bg p-5 transition hover:bg-bg-elev"
+              data-cursor="hover"
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
                 {line.label}
@@ -134,9 +134,12 @@ export function Footer() {
                 </div>
                 <ul className="space-y-2.5 text-[13px] text-fg-muted">
                   {col.links.map((link) => (
-                    <li key={link}>
-                      <a href="#" className="transition hover:text-fg">
-                        {link}
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="link-swipe transition hover:text-fg"
+                      >
+                        {link.label}
                       </a>
                     </li>
                   ))}
@@ -183,17 +186,29 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-border-soft pt-6 font-mono text-[11px] text-fg-subtle sm:flex-row sm:items-center">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span>© 2026 AcceFerm Pro · IEF & Co</span>
-            <a href="#" className="hover:text-fg">CGV</a>
-            <a href="#" className="hover:text-fg">Mentions légales</a>
-            <a href="#" className="hover:text-fg">Confidentialité</a>
-            <a href="#" className="hover:text-fg">Cookies</a>
+            <a href="/legal/cgv" className="hover:text-fg">CGV</a>
+            <a href="/legal/mentions-legales" className="hover:text-fg">Mentions légales</a>
+            <a href="/legal/confidentialite" className="hover:text-fg">Confidentialité</a>
+            <a href="/legal/cookies" className="hover:text-fg">Cookies</a>
           </div>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-ok" />
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-signal-ok halo" />
               Système opérationnel
             </span>
-            <span>v0.3 · build 2026.04.20</span>
+            <span>v0.4 · build 2026.04.21</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Giant wordmark — closes the site with an editorial full-bleed signature */}
+      <div
+        aria-hidden="true"
+        className="relative select-none overflow-hidden border-t border-border-soft"
+      >
+        <div className="mx-auto max-w-[1920px] px-2">
+          <div className="wordmark -mb-[0.06em] pt-6 text-fg/10 lg:pt-8">
+            AcceFerm<span className="font-serif-italic font-light text-accent/30">.</span>
           </div>
         </div>
       </div>
