@@ -1,15 +1,18 @@
-# CLAUDE.md — Projet AcceFerm
+# CLAUDE.md — Projet AcceFerm Pro & Industrie
 
 > Fichier de contexte permanent pour Claude Code. Lu automatiquement à chaque session.
-> Dernière mise à jour : 19 avril 2026.
+> **Version 2** — pivot pro/industrie. Remplace la v1 B2C (toujours accessible via commit `1b52dfe`).
+> Dernière mise à jour : 20 avril 2026.
 
 ---
 
 ## IDENTITÉ DU PROJET
 
-**AcceFerm** = boutique en ligne de matériel de contrôle d'accès, automatismes de portail et sécurité périmétrique.
+**AcceFerm Pro & Industrie** = plateforme e-commerce française spécialisée en **solutions de fermeture automatique pour professionnels et industries** : installateurs (métalliers, électriciens courant faible, serruriers, ascensoristes, artisans portail), maîtrise d'ouvrage technique (bailleurs sociaux, syndics grande copro, collectivités, industries, logisticiens).
 
-Division e-commerce de **IEF & CO** (SIRET existant, entreprise terrain en serrurerie/métallerie/maintenance multi-technique, 15+ ans d'expérience, Île-de-France).
+Division e-commerce de **IEF & CO** (SIRET existant, entreprise terrain serrurerie/métallerie/maintenance multi-technique, 15 ans d'expérience Île-de-France).
+
+**Ambition 24-36 mois** : devenir le n°1 digital FR sur le segment fermeture pro/industrie, en capturant la part de marché d'ACCESSO-FERM (incumbent depuis 1978, plateforme Oxatis obsolète).
 
 **Statut juridique actuel** : facturation et encaissement sous IEF & CO, ligne comptable séparée "revente matériel". Bascule vers SASU AcceFerm prévue une fois le CA stabilisé.
 
@@ -17,33 +20,60 @@ Division e-commerce de **IEF & CO** (SIRET existant, entreprise terrain en serru
 
 ---
 
+## CIBLES CLIENTS (PRIORITÉS)
+
+1. **Installateur pro récurrent** — 60 % du CA cible. Panier 200-800 € HT, fréquence 2-10 commandes/mois. Zone IDF puis régions. Attend : espace pro, re-commande 1-clic, paiement 30j, notices + schémas accessibles chantier, SAV technique joignable.
+2. **Maîtrise d'ouvrage technique** — 25 %. Bailleurs sociaux, syndics >50 lots, collectivités, responsables maintenance industriels. Attend : devis par typologie, fiches avec normes explicites (EN 12453, EN 13241-1, IP65, CE), contrats cadres, référent commercial dédié >10k€/an.
+3. **Particulier averti** — 15 %. Propriétaire qui cherche référence + compatibilité. Capter via SEO longue traîne, transformer cas complexes en leads pose IEF IDF (double-dip).
+
+---
+
 ## VISION STRATÉGIQUE
 
-1. **Revenu semi-passif** : buy & resell (pas de dropshipping, choix structurel non négociable).
-2. **Arme SEO pour IEF & CO** : chaque page AcceFerm référencée = porte d'entrée potentielle pour un lead installation IEF.
-3. **Liberté géographique à terme** : réduire la dépendance au terrain physique.
+1. **Capter la rente d'ACCESSO-FERM** par la modernité : responsive mobile-first, Schema.org complet, fiches enrichies (galerie + vidéo + avis + cross-sell), espace pro digne, hub éditorial, paiement pro 30j, vidéo-assistance.
+2. **Arme SEO + lead-gen IEF & CO** : chaque page indexée = porte d'entrée lead pose IDF. Double-dip systématique : vente accessoire + lead pose IEF.
+3. **Liberté géographique à terme** : réduire la dépendance au terrain physique via le canal digital.
 
-**Objectifs** :
-- Court terme (2 mois) : 10 000 € CA cumulés.
-- Moyen terme (6 mois) : AcceFerm rentable et auto-financé.
-- Long terme (12 mois+) : marque établie, intégration Assistéo (vidéo-assistance), lead-gen structuré IEF.
+**Objectifs chiffrés** :
+- **Court terme (90 j)** : 5-10 k€ HT cumulés, 20+ comptes pro actifs, 10 leads pose IEF via site. *À ré-arbitrer avec Emin.*
+- **Moyen terme (6 mois)** : AcceFerm Pro rentable et auto-financé, 500+ SKU, 50+ comptes pro actifs.
+- **Long terme (18-36 mois)** : n°1 digital FR fermeture pro/industrie, intégration complète Assistéo, migration headless si CA > 500 k€ annuel.
+
+---
+
+## CONCURRENT PRINCIPAL — ACCESSO-FERM
+
+- **URL** : https://www.accesso-ferm.fr
+- **Société** : ACCESSO-FERM SA, 26 rue du Travers des Champs Guillaume, 95240 Cormeilles-en-Parisis.
+- **Créé en** : 1978 (48 ans de légitimité métier).
+- **Catalogue** : 5 000+ références, distributeur multi-marques (Ditec/Entrematic, Elsamec, CAME, BFT, VIGIK, modèles internes ALIZE/UNIKO/FACIL).
+- **Forces** : profondeur catalogue, prix HT par défaut, notices PDF, 4 numéros téléphone dédiés (commercial/expédition/SAV/admin), SAV réel, ancienneté.
+- **Faiblesses attaquables** : plateforme Oxatis non responsive, encoding windows-1252, jQuery 2011 (CVE), zéro Schema.org, zéro blog SEO, fiches produit pauvres (1 photo, pas de vidéo, pas d'avis, pas de cross-sell), espace client pro absent, tunnel ASP legacy, copyright figé 2016.
+- **Audit complet** : voir échanges session 2026-04-20 + `plan-v0-pro-industrie.md` section 5 (12 attaques frontales).
 
 ---
 
 ## STACK TECHNIQUE
+
+**Décision V0** : WooCommerce sur IONOS (hybride progressif, migration headless différée à 18 mois si volume le justifie — voir `plan-v0-pro-industrie.md` section 3).
 
 | Composant | Valeur |
 |---|---|
 | Hébergement | IONOS Web Plus |
 | CMS | WordPress 6.9.4 |
 | E-commerce | WooCommerce 10.6.2 |
-| Paiement | WooCommerce Stripe Gateway 10.5.3 (compte Stripe IEF & CO) |
-| Thème | Astra 4.12.7 (parent, pas de thème enfant à ce jour — à créer) |
+| Paiement | Stripe Gateway 10.5.3 (compte IEF & CO) + Alma 3-4x + virement SEPA pro |
+| Thème | Astra 4.12.7 (parent) + **thème enfant AcceFerm** (obligatoire, à créer sprint 1) |
+| B2B | Plugin B2B for WooCommerce ou B2BKing (à installer sprint 1) |
+| Recherche | Meilisearch self-hosted sur IONOS (sprint 2) |
+| SEO | RankMath + JSON-LD Schema.org custom |
+| CMP RGPD | Axeptio (gratuit < 10k MTU) |
 | Plugins actifs | ultimate-addons-for-gutenberg (Spectra 3.0.0-beta), astra-sites, sureforms, woocommerce, woocommerce-gateway-stripe |
 | Version PHP serveur | 8.2.30 |
 | WP-CLI serveur | 2.12.0 installé dans ~/bin/wp |
 | CDN | Cloudflare |
-| SEO | Google Search Console (sitemap soumis) |
+| SEO monitoring | Google Search Console (sitemap soumis) |
+| Emailing | Brevo (<9k envois/mois gratuit) |
 
 ---
 
@@ -53,52 +83,72 @@ Division e-commerce de **IEF & CO** (SIRET existant, entreprise terrain en serru
 - **Port** : 22
 - **Utilisateur** : su244369
 - **Protocole** : SFTP + SSH
-- **Mot de passe** : stocké dans Bitwarden sous l'entrée "IONOS SSH AcceFerm" — NE JAMAIS écrire le mot de passe en clair dans un fichier, un commit, ou une session partagée.
+- **Mot de passe** : Bitwarden entrée "IONOS SSH AcceFerm" — **JAMAIS en clair** dans un fichier, un commit, ou une session partagée.
 - **Chemin WordPress** : /home/www/clickandbuilds/AcceFerm/
-- **Alias WP-CLI** : `wp` disponible une fois connecté (alias vers /usr/bin/php8.2 ~/bin/wp).
+- **Alias WP-CLI** : `wp` une fois connecté (alias /usr/bin/php8.2 ~/bin/wp).
 
 ---
 
 ## FOURNISSEURS — VAGUES DE LANCEMENT
 
-### Vague 1 (actif — priorité 1)
-- **AFCA / V2** (Lyon/Genas) — Fabricant-distributeur automatismes portails, armoires de commande, accessoires. Livraison J+1 France. Bons tarifs négociés.
-  - ⚠️ **CLAUSE CRITIQUE** : interdiction de publier les prix des motorisations en ligne. Les accessoires peuvent être vendus avec prix affiché. Les motorisations AFCA sont traitées uniquement en demande de devis (formulaire), jamais avec prix visible.
-  - ⚠️ **CLAUSE CRITIQUE** : les références produit AFCA ne doivent pas apparaître telles quelles sur le site public.
-- **Roger Technology** (via Doorgate Portugal) — Motorisations résidentielles. Pas de clause prix, délai ~1 semaine.
+### Vague 1 (J0 → J+30) — Accessoires & sécurité
+- **AFCA / V2** (Lyon/Genas) — Fabricant automatismes, armoires, accessoires. Livraison J+1 FR. Tarifs négociés.
+  - ⚠️ **CLAUSE CRITIQUE** : interdiction de publier les prix des motorisations en ligne. Accessoires = prix visibles OK. Motorisations = devis uniquement.
+  - ⚠️ **CLAUSE CRITIQUE** : références fournisseur AFCA jamais exposées publiquement (nomenclature AcceFerm à créer).
+- **Roger Technology** (via Doorgate Portugal) — Motorisations résidentielles. **Pas de clause prix** (visibles). Délai ~1 semaine.
 
-### Vague 2 (mois 2)
-- **Trenois-Decamps** — Levier commercial acquis. Catalogue large généraliste.
-- **Intégral Système** (via Batifer) — Contrôle d'accès, courant faible, vidéosurveillance, alarme. Pas de restriction prix.
+### Vague 2 (J+30 → J+60) — Contrôle d'accès & interphonie (cœur du pivot pro/industrie)
+- **Intégral Système** (via Batifer) — Contrôle d'accès, VIGIK, interphonie GSM 4G, visiophonie, serrures électriques, ventouses magnétiques. Pas de restriction prix.
+- **Trenois-Decamps** — Catalogue généraliste large, levier commercial acquis.
 
-### Vague 3 (mois 3+)
+### Vague 3 (J+60 → J+90) — Motorisations & kits
 - **Motor Line** (Portugal) — Fabricant, partenariat proposé, à acter.
-- **Came** — Compte ouvert mais tarifs standards, pas d'avantage compétitif, à utiliser uniquement sur niches spécifiques.
+- **Came** — Compte ouvert, tarifs standards, usage sur niches spécifiques.
 
 ### Écarté du lancement
-- Faac, Sommer : pas de compte ouvert.
-- Foussier : aucun avantage compétitif.
+- **Faac, Sommer** : pas de compte ouvert.
+- **Foussier** : aucun avantage compétitif.
 
 ---
 
 ## CATALOGUE — PRINCIPES DE SÉLECTION
 
-- **Marge brute cible minimale** : 90 % (120 % visée sur accessoires).
-- **Catégories prioritaires vague 1** : accessoires & sécurité (photocellules, émetteurs, récepteurs, feux clignotants, barres palpeuses, sélecteurs) + armoires de commande & électronique.
-- **Motorisations** : traitées en demande de devis uniquement (clause AFCA) ou avec prix visible si fournisseur Portugal.
-- **Photos produits** : génération Gemini, fond blanc studio, aucun texte, aucun visage humain.
-- **Références fournisseur** : jamais exposées publiquement (reformuler en nomenclature AcceFerm).
+- **Marge brute cible** : ≥90 % sur accessoires, ≥120 % sur consommables, 60-80 % sur motorisations Roger (tendu mais volume), ≥100 % sur kits complets.
+- **Volumétrie V0 (90 jours)** : 150-250 SKU, réparties sur les 3 vagues ci-dessus.
+- **Motorisations AFCA** : demande de devis exclusivement, calculette de pré-qualif ("type portail + dimensions + poids + usage + tension → 3 kits proposés, prix sur devis < 24h").
+- **Photos produits** : génération Gemini, fond blanc studio, aucun texte, **aucun visage humain**.
+- **Références fournisseur** : jamais exposées publiquement — nomenclature AcceFerm à chaque fiche.
+- **Fiches produit obligatoires** : 5 photos min + notice PDF téléchargeable + conseil expert rédigé + Schema.org Product + filtre compatibilité + cross-sell associé.
+
+### Catégories reportées V1 (mois 4+)
+- Fabrication sur mesure (nécessite atelier IEF + chaîne devis complexe + métré client).
+- Portes industrielles rapides (sourcing, volume unitaire, ROI incertain v0).
+- Portes d'ascenseur / ascensoriste (cycle vente long, installation réglementée).
+
+---
+
+## POLITIQUE PRIX & GRILLES TARIFAIRES
+
+- **Prix HT par défaut** (cible pro), bascule HT/TTC persistante côté utilisateur.
+- **3 grilles automatiques** selon statut compte pro :
+  - **Particulier** — TTC affiché
+  - **Pro Silver** — HT -5 % dès inscription avec validation SIRET
+  - **Pro Gold** — HT -10 à -15 % sur volume cumulé 12 mois glissants
+- **Paiement 30j à terme** : réservé aux Pro Gold pilotes, ouverture progressive après sprint 3 (risque crédit client + gestion encours = coût caché).
 
 ---
 
 ## CANAUX DE VENTE
 
-| Canal | Statut | Commentaire |
+| Canal | Statut V0 | Commentaire |
 |---|---|---|
-| Site acceferm.fr | En construction | Priorité 1 |
-| Leboncoin Pro | Compte créé | À activer vague 1 |
-| eBay Pro | Bloqué | En attente validation bancaire Faycal. ⚠️ eBay compte perso interdit (risque URSSAF + gel Stripe). |
-| Amazon FBM | Non actif | Phase 4 (mois 3-6) |
+| Site acceferm.fr | **Priorité absolue** | Cœur du projet pro/industrie |
+| Google Ads B2B | Sprint 2 | Budget test 500 € sur requêtes techniques |
+| Emailing installateurs IDF | Sprint 2 | Base CAPEB / réseau IEF / 200 cibles |
+| Google Business Profile | Sprint 1 | Validation + lien IEF & CO |
+| Newsletter segmentée | Sprint 2 | Brevo, pro vs particulier |
+| Leboncoin Pro | Reporté V1+ | Pertinent B2C, faible ROI pour B2B pro |
+| eBay Pro / Amazon | **Reporté V1+** | Non cohérent avec positionnement pro spécialisé |
 
 ---
 
@@ -106,32 +156,36 @@ Division e-commerce de **IEF & CO** (SIRET existant, entreprise terrain en serru
 
 - **Conformité religieuse** : pas de dropshipping, uniquement achat-revente avec stock ou commande fournisseur après vente.
 - **Pas de visage humain** dans les contenus marketing (ni fondateur ni conjointe).
-- **Trésorerie tendue** : toute dépense > 50 € à valider explicitement avant engagement.
-- **Règlement fournisseur groupé hebdomadaire** (vendredi) négocié avec AFCA.
-- **Mode accélération actif** : règle du 70 % — on livre un MVP fonctionnel, on perfectionne après les premières ventes.
+- **Trésorerie tendue** : toute dépense > 50 € validée explicitement avant engagement.
+- **Règlement fournisseur groupé** : hebdomadaire vendredi (négocié AFCA).
+- **Mode accélération actif** : règle du 70 % — MVP fonctionnel, perfection après premières ventes.
+- **Validation gate J+30, J+60, J+90** : critères go/no-go définis dans `plan-v0-pro-industrie.md` section 8. À chaque gate : diagnostic avant de continuer.
 
 ---
 
 ## RÈGLES DE SÉCURITÉ — EXÉCUTION TECHNIQUE
 
-Claude Code doit respecter ces règles en toutes circonstances.
+Inchangées de la v1. À respecter sans exception.
 
-1. **Backup avant modification** : avant toute modification de base de données ou de fichier critique (wp-config.php, .htaccess, thème actif), effectuer un export DB avec `wp db export` et sauvegarder une copie du fichier ciblé dans `~/backups/` sur le serveur.
-2. **Ne jamais toucher wp-config.php** sans confirmation explicite dans la session en cours.
+1. **Backup avant modification** : avant toute modif DB ou fichier critique (`wp-config.php`, `.htaccess`, thème actif), exporter DB avec `wp db export` et sauvegarder copie fichier ciblé dans `~/backups/` sur le serveur.
+2. **Ne jamais toucher `wp-config.php`** sans confirmation explicite dans la session en cours.
 3. **Ne jamais désactiver le plugin Stripe** sans confirmation explicite.
-4. **Ne jamais modifier les pages 7 (Boutique), 8 (Panier), 9 ou 789 (Validation de commande), 10 (Mon compte)** sans confirmation explicite.
-5. **Thème enfant Astra obligatoire** : toute modif de thème se fait dans `wp-content/themes/astra-child/`, jamais dans `wp-content/themes/astra/`.
-6. **Mode test avant mode live** : toute nouvelle fonctionnalité commerçante (paiement, expé, email) doit être testée avec un vrai scénario minimal avant mise en production.
+4. **Ne jamais modifier les pages 7 (Boutique), 8 (Panier), 9 ou 789 (Validation), 10 (Mon compte)** sans confirmation explicite.
+5. **Thème enfant Astra obligatoire** : toute modif de thème dans `wp-content/themes/astra-child/`, jamais dans `wp-content/themes/astra/`.
+6. **Mode test avant mode live** : toute nouvelle fonctionnalité commerçante (paiement, expé, email, B2B) testée en scénario minimal avant production.
 7. **Pas de modifications nocturnes non supervisées sur le site live**.
 8. **Jamais de divulgation du mot de passe SSH** en clair, même dans un fichier local.
+9. **Clause AFCA "pas de prix motorisation"** : QA obligatoire sur chaque nouvelle fiche motorisation avant publication (prix affiché = rupture de contrat fournisseur).
 
 ---
 
 ## CARTOGRAPHIE DES PAGES WORDPRESS
 
+État au 18 avril 2026. À mettre à jour à la fin de chaque sprint.
+
 | ID | Titre | Rôle |
 |---|---|---|
-| 69 | Home | Page d'accueil (définie dans `page_on_front`) |
+| 69 | Home | Page d'accueil (`page_on_front`) |
 | 678 | À propos | Page statique |
 | 708 | Contactez Nous | Formulaire SureForms ID 912 |
 | 888 | CGV | Légal |
@@ -142,27 +196,50 @@ Claude Code doit respecter ces règles en toutes circonstances.
 | 7 | Boutique | WooCommerce shop |
 | 8 | Panier | WooCommerce cart |
 | 9 | Validation de la commande | WooCommerce checkout |
-| 789 | Validation de commande | ⚠️ Doublon à analyser — une des deux est orpheline |
+| 789 | Validation de commande | ⚠️ Doublon — à analyser |
 | 10 | Mon compte | WooCommerce account |
+
+**Nouvelles pages à créer sprints 1-3** :
+- Espace Pro (dashboard compte pro, grilles HT, historique, factures)
+- Hub Ressources (guides, diagnostic, notices, calculateurs, glossaire)
+- 4 pages locales IDF (75 / 92 / 93 / 78) pour lead-gen IEF
+- Configurateur motorisation (5 questions → 3 kits recommandés)
+- 4 formulaires devis typés (motorisation / contrôle accès / fab sur mesure / SAV)
+
+---
+
+## KPIs PILOTAGE (à suivre dès J0)
+
+| KPI | Cible J+90 |
+|---|---|
+| Sessions site | 3 000 / mois |
+| Taux conversion B2B (compte pro) | 4 % |
+| Comptes pro validés | 20+ |
+| Leads pose IEF via site | 8 / semaine |
+| Panier moyen B2B | ≥ 250 € HT |
+| Core Web Vitals "Bon" | 80 % des pages |
+| Avis Vérifiés note moyenne | > 4,5/5 |
+| Position top 10 Google | 5 requêtes cibles |
+
+Détail + KPIs complets : `plan-v0-pro-industrie.md` section 9.
 
 ---
 
 ## ÉCOSYSTÈME CONNEXE (ne pas mélanger)
 
-- **IEF & CO** : entreprise terrain séparée, ERP Odoo existant (sous-utilisé, NE PAS mélanger avec AcceFerm), interventions terrain gérées via Kolus.
-- **Documents stratégiques IEF & CO** (hors scope AcceFerm) : 4 analyses concurrentielles/stratégiques datées du 16 avril 2026 (METAL2000, TOP10 concurrents IDF, opportunités marché, stratégie recommandée) — à consulter uniquement si demande explicite liée à IEF & CO.
-- **Assistéo** : service de vidéo-assistance technique à distance, à intégrer sur AcceFerm en phase ultérieure (hooks à prévoir dès maintenant sur fiches motorisation).
+- **IEF & CO** : entreprise terrain, ERP Odoo existant sous-utilisé (**NE PAS MÉLANGER** avec AcceFerm), interventions via Kolus. Capital confiance transférable (15 ans IDF, avis Google, chantiers référence).
+- **Assistéo** : vidéo-assistance technique à distance, hook V0 dès la fiche motorisation (bon session 20 min offerte dès 300 € achat motorisation).
+- **Documents stratégiques IEF & CO** : 4 analyses datées 16 avril 2026 (METAL2000, TOP10 concurrents IDF, opportunités marché, stratégie recommandée). Consulter uniquement sur demande explicite liée à IEF.
 
 ---
 
-## PRIORITÉS TECHNIQUES — PROCHAINES SESSIONS
+## LIVRABLES CLEFS EN REPO
 
-1. Création thème enfant Astra (obligatoire avant toute modif CSS/PHP).
-2. Audit complet Stripe + test paiement 1 € en conditions réelles.
-3. Installation Sendcloud + configuration Mondial Relay / Colissimo.
-4. Import catalogue CSV 30 SKU avec validation marge > 90 %.
-5. Mise en cache (LiteSpeed Cache) + compression images (ShortPixel).
-6. Email transactionnels (commande, expédition, livraison) + relance panier abandonné.
+- `CLAUDE.md` — ce fichier, contexte permanent (v2 pro/industrie).
+- `plan-v0-pro-industrie.md` — plan détaillé V0 en 12 sections (stack, catalogue, roadmap 30/60/90j, KPIs, risques).
+- `analyse-concurrence.md` — analyse 10 concurrents pure-players + marketplaces (angle B2C initial, toujours valide pour veille).
+- `plan-seo-30-articles.md` — plan éditorial 30 articles longue traîne.
+- `articles/` — 12 brouillons rédigés (photocellules, feux, récepteurs, VIGIK, etc.) à recycler mois 1-2.
 
 ---
 
@@ -173,3 +250,4 @@ Claude Code doit respecter ces règles en toutes circonstances.
 - Chaque proposition de modification inclut : fichiers ciblés, critère de succès mesurable, commande de test post-exécution.
 - Mode "70 % maintenant, 100 % plus tard" : refuser le sur-travail en phase de lancement.
 - Toujours proposer une action concrète avec délai à la fin d'une réponse.
+- **À chaque gate (J+30 / J+60 / J+90)** : diagnostic go/no-go avant de continuer. Si 3/5 KPIs non atteints → revue stratégie avant plus d'investissement.

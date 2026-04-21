@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces — warm cream, paper-like */
+  --color-bg: #f7f3e9;
+  --color-bg-elev: #efeada;
+  --color-bg-soft: #e3dcc5;
+  --color-bg-sunk: #d7ceb4;
+
+  /* Foreground — warm graphite */
+  --color-fg: #2a241e;
+  --color-fg-muted: #6b6358;
+  --color-fg-subtle: #958b7c;
+  --color-fg-faint: #c1b8a5;
+
+  /* Hairlines */
+  --color-border: #d3c9b0;
+  --color-border-soft: #e5dcc6;
+
+  /* SIGNATURE ACCENT — deep terracotta, single accent (no navy) */
+  --color-accent: #a83e1e;
+  --color-accent-hover: #842c12;
+  --color-accent-soft: #f5e0d0;
+  --color-accent-fg: #fdfaf3;
+
+  /* Aliases warm → accent (rétrocompat) */
+  --color-warm: #a83e1e;
+  --color-warm-hover: #842c12;
+  --color-warm-soft: #f5e0d0;
+  --color-warm-fg: #fdfaf3;
+
+  /* Semantic signals — earthier */
+  --color-signal-ok: #5a7d1f;
+  --color-signal-warn: #d4923b;
+  --color-signal-err: #b8442e;
+
+  /* Typography */
+  --font-sans: "Inter", "system-ui", sans-serif;
+  --font-display: "Inter Tight", "Inter", "system-ui", sans-serif;
+  --font-mono: "JetBrains Mono", "ui-monospace", monospace;
+
+  /* Motion curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Subtle paper texture */
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.hairline {
+  background-image: linear-gradient(
+    to right,
+    var(--color-border) 50%,
+    transparent 50%
+  );
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+}
+
+/* ─────── ANIMATIONS — award-winning kit ─────── */
+
+/* Scroll-driven reveal */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Stagger on children */
+  .reveal-stagger > * {
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 35%;
+  }
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation: marquee 60s linear infinite;
+}
+.marquee-pause:hover .marquee {
+  animation-play-state: paused;
+}
+
+/* Card hover lift */
+.card {
+  transition:
+    transform 0.4s var(--ease-out-expo),
+    border-color 0.3s,
+    background-color 0.3s,
+    box-shadow 0.4s;
+}
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+  box-shadow: 0 16px 40px -20px rgba(168, 62, 30, 0.25);
+}
+
+/* Tilt card — 3D perspective */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition: transform 0.35s var(--ease-out-expo);
+  will-change: transform;
+}
+
+/* Magnetic CTA */
+.magnetic {
+  transition: transform 0.4s var(--ease-spring);
+  will-change: transform;
+}
+
+/* Button — friendly soft shadow */
+.btn-soft {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 4px 12px -4px rgba(168, 62, 30, 0.35),
+    0 2px 4px -1px rgba(42, 36, 30, 0.12);
+}
+
+/* Animated underline on hover */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s var(--ease-out-expo);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* Mask reveal text — for hero */
+.mask-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.mask-reveal > span {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: mask-up 0.9s var(--ease-out-expo) forwards;
+}
+@keyframes mask-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Pulse halo for live indicators */
+@keyframes halo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 62, 30, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(168, 62, 30, 0);
+  }
+}
+.halo {
+  animation: halo 2s ease-out infinite;
+}
+
+/* Gradient shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-elev) 25%,
+    var(--color-bg-soft) 50%,
+    var(--color-bg-elev) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+/* Reduced motion override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
