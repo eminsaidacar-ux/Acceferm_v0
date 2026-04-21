@@ -57,28 +57,41 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto max-w-[1440px] px-6 pt-14 pb-16 lg:px-8 lg:pt-20 lg:pb-24">
+      {/* Carousel / blueprint marks at top, right-aligned IEF style */}
+      <div className="relative mx-auto max-w-[1440px] px-6 pt-6 lg:px-8 lg:pt-8">
+        <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-fg-muted">
+          <span className="inline-flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent halo" />
+            06 / 07 · Live
+          </span>
+          <span className="hidden tabular md:inline">
+            ACCEFERM · REV.04 · ECH 1:100
+          </span>
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-16 lg:px-8 lg:pt-10 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Left column — editorial */}
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-warm/30 bg-warm-soft py-1 pl-1 pr-4 font-mono text-[11px] uppercase tracking-[0.18em] text-warm">
-              <span className="rounded-full bg-warm px-2 py-0.5 text-[10px] text-warm-fg">
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft py-1 pl-1 pr-4 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
+              <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] text-accent-fg">
                 Nouveau
               </span>
               Digital Gate Twin · inédit
             </div>
 
-            <h1 className="mt-7 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.028em] text-fg sm:text-[76px] lg:text-[96px]">
+            <h1 className="mt-7 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.028em] text-fg sm:text-[76px] lg:text-[104px]">
               <TextReveal stagger={0.09}>
                 <span>Cliquez sur votre</span>
                 <span>
                   portail.{" "}
-                  <span className="font-serif-italic font-medium text-accent">
+                  <span className="italic font-medium text-peach">
                     On livre
                   </span>
                 </span>
                 <span>
-                  <span className="font-serif-italic font-medium text-accent">
+                  <span className="italic font-medium text-peach">
                     les pièces.
                   </span>
                 </span>
@@ -180,18 +193,40 @@ export function Hero() {
 
           {/* Right column — Digital Gate Twin */}
           <div className="lg:col-span-6">
-            <GateTwin />
+            <div className="blueprint-frame relative rounded-lg border border-border-soft/60 bg-bg/40 p-3 lg:p-4">
+              {/* Blueprint overlay: revision, scale, norm */}
+              <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 lg:p-6">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-fg-subtle">
+                    BUREAU D'ÉTUDE · ACCEFERM — ATELIER — POSE
+                  </span>
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent">
+                    EN 12453 · EXC2
+                  </span>
+                </div>
+                <div className="flex items-end justify-between">
+                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-fg-subtle">
+                    IEF & CO · DIV. ACCEFERM
+                  </span>
+                  <span className="font-mono text-[9px] tabular uppercase tracking-[0.25em] text-fg-subtle">
+                    REV.04 · ECH 1:100
+                  </span>
+                </div>
+              </div>
+              <GateTwin />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Kinetic marquee — technical vocabulary */}
-      <div className="relative mt-2 border-t border-border-soft bg-bg-elev/50 py-6 lg:py-8">
+      {/* Kinetic marquee — technical vocabulary, peach italic IEF signature */}
+      <div className="relative mt-2 border-y border-border-soft bg-bg-elev/60 py-6 lg:py-8">
         <Marquee speed="slow" fade>
           {TECH_KEYWORDS.map((kw) => (
             <span
               key={kw}
-              className="kinetic-word font-serif-italic text-[40px] font-medium leading-none text-fg-muted lg:text-[64px]"
+              className="kinetic-word text-[40px] font-medium leading-none text-fg-muted lg:text-[64px]"
+              style={{ fontStyle: "italic", fontFamily: "var(--font-display)" }}
             >
               {kw}
               <span className="mx-6 text-accent">·</span>

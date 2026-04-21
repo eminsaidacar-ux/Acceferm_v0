@@ -6,10 +6,14 @@ export const sans = Inter({
   variable: "--font-sans",
 });
 
+/**
+ * Inter Tight — utilisé comme fallback derrière Clash Display (chargé via Fontshare @import).
+ * Variable renommée pour ne pas écraser --font-display contrôlé par Tailwind @theme.
+ */
 export const display = Inter_Tight({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-tight",
 });
 
 export const serif = Fraunces({

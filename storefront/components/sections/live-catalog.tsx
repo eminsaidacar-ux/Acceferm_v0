@@ -22,7 +22,7 @@ export function LiveCatalog() {
             <h2 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[60px]">
               Ce que les installateurs
               <br />
-              <span className="text-accent">commandent en boucle.</span>
+              <span className="italic font-medium text-peach">commandent en boucle.</span>
             </h2>
           </div>
           <a

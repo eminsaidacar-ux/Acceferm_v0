@@ -29,7 +29,7 @@ export function ServicesGrid() {
           <h2 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[60px]">
             Six services pour vous faire
             <br />
-            <span className="text-accent">gagner une heure par jour.</span>
+            <span className="italic font-medium text-peach">gagner une heure par jour.</span>
           </h2>
         </div>
 

@@ -43,7 +43,7 @@ export function Expertise() {
             <h2 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[64px]">
               Quinze ans de chantiers.
               <br />
-              <span className="text-accent">Zéro photo bling-bling.</span>
+              <span className="italic font-medium text-peach">Zéro photo bling-bling.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
               AcceFerm Pro est opéré par les équipes terrain d'IEF & Co — serrurerie, métallerie,

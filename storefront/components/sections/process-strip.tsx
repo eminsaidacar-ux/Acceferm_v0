@@ -57,10 +57,10 @@ export function ProcessStrip() {
               </div>
               <h2 className="mt-5 font-display text-[44px] font-semibold leading-[0.95] tracking-[-0.02em] text-fg lg:text-[72px]">
                 Du clic au{" "}
-                <span className="font-serif-italic text-accent">chantier</span>
+                <span className="italic font-medium text-peach">chantier</span>
                 <br />
                 en cinq{" "}
-                <span className="font-serif-italic text-accent">mouvements.</span>
+                <span className="italic font-medium text-peach">mouvements.</span>
               </h2>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-fg-muted">
                 Pas de tunnel sept étapes. Pas de formulaire PDF à imprimer. Chaque étape est

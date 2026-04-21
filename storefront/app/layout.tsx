@@ -118,6 +118,13 @@ export default function RootLayout({
       className={`${sans.variable} ${display.variable} ${serif.variable} ${mono.variable}`}
     >
       <head>
+        {/* Clash Display — ITF signature font via Fontshare (alignement famille IEF & Co) */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+        />
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD */}
         <script
           type="application/ld+json"

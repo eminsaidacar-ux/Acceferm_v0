@@ -21,9 +21,7 @@ export function FinalCta() {
             <h2 className="reveal mt-8 font-display text-[56px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg sm:text-[88px] lg:text-[128px]">
               Ouvrez votre
               <br />
-              <span className="font-serif-italic font-medium text-accent">
-                compte&nbsp;pro
-              </span>
+              <span className="italic font-medium text-peach">compte&nbsp;pro</span>
               <br />
               en deux minutes.
             </h2>

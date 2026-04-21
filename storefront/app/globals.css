@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces — warm cream, paper-like */
-  --color-bg: #f7f3e9;
-  --color-bg-elev: #efeada;
-  --color-bg-soft: #e3dcc5;
+  /* Surfaces — warm cream, paper-like (aligné IEF & Co maquette) */
+  --color-bg: #faf7f2;
+  --color-bg-elev: #f2ede2;
+  --color-bg-soft: #e7e0cd;
   --color-bg-sunk: #d7ceb4;
-  --color-bg-ink: #1a1612;
+  --color-bg-ink: #141210;
 
   /* Foreground — warm graphite */
-  --color-fg: #2a241e;
+  --color-fg: #1a1814;
   --color-fg-muted: #6b6358;
   --color-fg-subtle: #958b7c;
   --color-fg-faint: #c1b8a5;
@@ -18,17 +18,22 @@
   --color-border: #d3c9b0;
   --color-border-soft: #e5dcc6;
 
-  /* SIGNATURE ACCENT — deep terracotta, single accent (no navy) */
-  --color-accent: #a83e1e;
-  --color-accent-hover: #842c12;
-  --color-accent-soft: #f5e0d0;
+  /* SIGNATURE ACCENT — red vif IEF family (#e11021) */
+  --color-accent: #e11021;
+  --color-accent-hover: #b50c1a;
+  --color-accent-soft: #fde6e8;
   --color-accent-fg: #fdfaf3;
-  --color-accent-ink: #3a1508;
+  --color-accent-ink: #3a0508;
+
+  /* SECONDARY — peach italic emphasis IEF family (#c4855c) */
+  --color-peach: #c4855c;
+  --color-peach-soft: #f3e4d5;
+  --color-peach-ink: #5e3a1e;
 
   /* Aliases warm → accent (rétrocompat) */
-  --color-warm: #a83e1e;
-  --color-warm-hover: #842c12;
-  --color-warm-soft: #f5e0d0;
+  --color-warm: #e11021;
+  --color-warm-hover: #b50c1a;
+  --color-warm-soft: #fde6e8;
   --color-warm-fg: #fdfaf3;
 
   /* Semantic signals — earthier */
@@ -36,9 +41,10 @@
   --color-signal-warn: #d4923b;
   --color-signal-err: #b8442e;
 
-  /* Typography */
+  /* Typography — Clash Display hero (Fontshare ITF), Fraunces italique, Inter body */
   --font-sans: "Inter", "system-ui", sans-serif;
-  --font-display: "Inter Tight", "Inter", "system-ui", sans-serif;
+  --font-display: "Clash Display", "Inter Tight", "Inter", "system-ui", sans-serif;
+  --font-tight: "Inter Tight", "Inter", "system-ui", sans-serif;
   --font-serif: "Fraunces", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", serif;
   --font-mono: "JetBrains Mono", "ui-monospace", monospace;
 
@@ -436,9 +442,70 @@ body {
   font-style: italic;
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
   font-weight: 300;
-  color: var(--color-accent);
+  color: var(--color-peach);
   letter-spacing: -0.04em;
   line-height: 0.85;
+}
+
+/* ─────────── PEACH EMPHASIS (IEF signature) ─────────── */
+
+.text-peach {
+  color: var(--color-peach);
+}
+.bg-peach {
+  background-color: var(--color-peach);
+}
+
+/* Display italic peach, Clash Display-compatible */
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-peach);
+  letter-spacing: -0.02em;
+}
+
+/* ─────────── BLUEPRINT MARKERS ─────────── */
+
+.blueprint-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+  font-feature-settings: "tnum";
+}
+.blueprint-tag::before,
+.blueprint-tag::after {
+  content: "—";
+  margin: 0 0.5em;
+  color: var(--color-border);
+}
+
+/* Blueprint cross-corner marker for framed elements */
+.blueprint-frame {
+  position: relative;
+}
+.blueprint-frame::before,
+.blueprint-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--color-border);
+  pointer-events: none;
+}
+.blueprint-frame::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.blueprint-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
 }
 
 /* ─────────── MEGA WORDMARK ─────────── */

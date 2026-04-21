@@ -39,7 +39,7 @@ export function Manifesto() {
             <h2 className="font-display text-[56px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[96px]">
               <SplitText text="On n'attend pas" stagger={0.025} />
               <br />
-              <span className="font-serif-italic text-accent">
+              <span className="italic font-medium text-peach">
                 <SplitText text="d'avoir raison." stagger={0.025} delay={0.18} />
               </span>
             </h2>

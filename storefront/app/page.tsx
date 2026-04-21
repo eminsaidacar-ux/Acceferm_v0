@@ -1,4 +1,5 @@
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
+import { BrandStrip } from "@/components/sections/brand-strip";
 import { CategoryGrid } from "@/components/sections/category-grid";
 import { CommandCenter } from "@/components/sections/command-center";
 import { CompatibilityFinder } from "@/components/sections/compatibility-finder";
@@ -28,6 +29,7 @@ export default function HomePage() {
         <Hero />
         <IndexStrip />
         <TrustStrip />
+        <BrandStrip />
         <div id="live">
           <CommandCenter />
         </div>
