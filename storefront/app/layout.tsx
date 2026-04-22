@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { CartProvider } from "@/components/cart/cart-context";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { PriceModeProvider } from "@/components/price-mode-context";
+import { StickyBottomBar } from "@/components/site/sticky-bottom-bar";
 import { CustomCursor } from "@/components/ui/custom-cursor";
 import { display, mono, sans, serif } from "./fonts";
 import "./globals.css";
@@ -141,6 +142,7 @@ export default function RootLayout({
         <PriceModeProvider>
           <CartProvider>
             {children}
+            <StickyBottomBar />
             <CookieConsent />
           </CartProvider>
         </PriceModeProvider>

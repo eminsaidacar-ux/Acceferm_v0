@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, ChevronRight, ClipboardList } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 import { GabaritsFiltersGrid, type Template } from "@/components/gabarits/filters-grid";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
@@ -12,14 +12,7 @@ export const metadata: Metadata = {
 };
 
 const TEMPLATES: Template[] = [
-  {
-    icon: "fileText",
-    title: "Devis motorisation portail",
-    desc: "Template Word + Excel. Pied-de-page IEF & Co éditable, calcul automatique HT/TTC, clauses légales EN 12453 incluses. Sortie PDF en 2 clics.",
-    format: "DOCX + XLSX",
-    size: "87 Ko",
-    tag: "Commercial",
-  },
+  // 🟢 Gratuits immédiats
   {
     icon: "fileCheck2",
     title: "PV de mise en service",
@@ -27,6 +20,7 @@ const TEMPLATES: Template[] = [
     format: "PDF éditable",
     size: "62 Ko",
     tag: "Conformité",
+    tier: "free",
   },
   {
     icon: "wrench",
@@ -35,22 +29,7 @@ const TEMPLATES: Template[] = [
     format: "PDF A4",
     size: "48 Ko",
     tag: "Maintenance",
-  },
-  {
-    icon: "clipboardList",
-    title: "Registre maintenance copro",
-    desc: "Livret broché pour syndic, traçabilité des interventions sur 5 ans, colonnes dates/intervenant/actions/pièces. À compléter à chaque passage.",
-    format: "PDF + INDD",
-    size: "1.2 Mo",
-    tag: "Copropriété",
-  },
-  {
-    icon: "receipt",
-    title: "Bon de commande fournisseur",
-    desc: "Template Excel avec calcul automatique remises volume, colonnes références AcceFerm, nomenclature chantier. Export CSV direct vers notre Commande rapide.",
-    format: "XLSX",
-    size: "34 Ko",
-    tag: "Achat",
+    tier: "free",
   },
   {
     icon: "notebookPen",
@@ -59,26 +38,90 @@ const TEMPLATES: Template[] = [
     format: "PDF éditable",
     size: "71 Ko",
     tag: "Avant-vente",
+    tier: "free",
+  },
+
+  // 🟡 Compte pro requis
+  {
+    icon: "fileText",
+    title: "Devis motorisation portail",
+    desc: "Template Word + Excel. Pied-de-page IEF & Co éditable, calcul automatique HT/TTC, clauses légales EN 12453 incluses. Sortie PDF en 2 clics. Version éditable logo AcceFerm Pro.",
+    format: "DOCX + XLSX",
+    size: "87 Ko",
+    tag: "Commercial",
+    tier: "pro",
+  },
+  {
+    icon: "receipt",
+    title: "Bon de commande fournisseur",
+    desc: "Template Excel avec calcul automatique remises volume compte pro, colonnes références AcceFerm, nomenclature chantier. Export CSV direct vers notre Commande rapide.",
+    format: "XLSX",
+    size: "34 Ko",
+    tag: "Achat",
+    tier: "pro",
   },
   {
     icon: "fileSpreadsheet",
     title: "Tableau amortissement motorisation",
-    desc: "Pour convaincre un syndic : coût pose + maintenance sur 10 ans vs. remplacement anticipé. Formules intégrées, graphes inclus.",
+    desc: "Pour convaincre un syndic : coût pose + maintenance sur 10 ans vs. remplacement anticipé. Formules intégrées, graphes inclus. Utilise les grilles tarifaires pro.",
     format: "XLSX",
     size: "56 Ko",
     tag: "Argumentaire",
+    tier: "pro",
   },
   {
     icon: "clipboardList",
-    title: "Audit conformité EN 12453",
-    desc: "Grille d'audit 48 points couvrant les 4 classes d'usage. Génération automatique du rapport PDF avec verdict conforme/non-conforme + plan d'action.",
-    format: "XLSM",
-    size: "128 Ko",
+    title: "Registre maintenance copro",
+    desc: "Livret broché pour syndic, traçabilité des interventions sur 5 ans, colonnes dates/intervenant/actions/pièces. À compléter à chaque passage. Template éditable.",
+    format: "PDF + INDD",
+    size: "1.2 Mo",
+    tag: "Copropriété",
+    tier: "pro",
+  },
+
+  // 🔴 Sur mesure · bureau d'études
+  {
+    icon: "clipboardList",
+    title: "Audit conformité EN 12453 (complet)",
+    desc: "Rédaction par notre bureau d'études : audit sur site, rapport 48 points, plan d'action chiffré, recommandations opérationnelles. Livré sous 8-15 jours.",
+    format: "PDF + visite",
+    size: "Sur site",
     tag: "Conformité",
+    tier: "studio",
+    priceHT: 390,
+  },
+  {
+    icon: "fileText",
+    title: "Cahier des charges industriel",
+    desc: "CDC technique adapté logistique ou ERP (centre commercial, hôpital, tri postal…). Classe 3-4 EN 12453, intégration avec votre CMMS existant.",
+    format: "DOCX + DWG",
+    size: "Sur mesure",
+    tag: "Avant-vente",
+    tier: "studio",
+    priceHT: 450,
+  },
+  {
+    icon: "fileSpreadsheet",
+    title: "Bordereau prix copropriété sur 3 ans",
+    desc: "Contrat cadre chiffré multi-cages, conditions économiques optimisées, clauses révision. Pour bailleurs sociaux ou gros syndics >100 lots.",
+    format: "XLSX + contrat",
+    size: "Sur mesure",
+    tag: "Copropriété",
+    tier: "studio",
+    priceHT: 250,
   },
 ];
 
-const CATEGORIES = ["Tout", "Commercial", "Conformité", "Maintenance", "Copropriété", "Achat", "Avant-vente", "Argumentaire"];
+const CATEGORIES = [
+  "Tout",
+  "Commercial",
+  "Conformité",
+  "Maintenance",
+  "Copropriété",
+  "Achat",
+  "Avant-vente",
+  "Argumentaire",
+];
 
 export default function GabaritsPage() {
   return (
@@ -101,7 +144,7 @@ export default function GabaritsPage() {
             <div className="grid items-end gap-10 lg:grid-cols-12">
               <div className="lg:col-span-7">
                 <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-fg-muted">
-                  Téléchargement libre · 8 gabarits pro
+                  {TEMPLATES.length} gabarits pro · 3 niveaux d'accès
                 </p>
                 <h1 className="mt-6 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[88px]">
                   Les gabarits qu'un
@@ -109,26 +152,43 @@ export default function GabaritsPage() {
                   <span className="italic font-medium text-peach">pro utilise vraiment.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
-                  Rédigés par les équipes IEF & Co, testés sur 3 000+ chantiers. Libres
-                  d'utilisation et de modification. Un lien vers AcceFerm Pro en pied de page,
-                  c'est le seul retour qu'on demande.
+                  Rédigés par les équipes IEF & Co, testés sur 3 000+ chantiers.{" "}
+                  <strong className="text-fg">3 gabarits gratuits</strong> en téléchargement
+                  immédiat, <strong className="text-fg">4 réservés aux comptes pro</strong>{" "}
+                  (gratuits à vie, validation SIRET 2h),{" "}
+                  <strong className="text-fg">3 sur-mesure</strong> par notre bureau d'études.
                 </p>
               </div>
 
               <div className="lg:col-span-5">
-                <div className="rounded-2xl border border-accent/30 bg-accent-soft p-6">
-                  <ClipboardList className="h-5 w-5 text-accent" />
-                  <p className="mt-3 text-[14px] leading-relaxed text-fg">
-                    <strong className="font-medium">Pack complet en 1 clic :</strong>{" "}
-                    les 8 gabarits zippés, MAJ trimestrielle, 2,8 Mo.
-                  </p>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-[13px] font-medium text-accent-fg transition hover:bg-accent-hover"
-                  >
-                    Télécharger le pack
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </a>
+                <div className="space-y-3 rounded-3xl border border-border-soft bg-bg-elev p-5">
+                  <div className="flex items-start gap-3">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-signal-ok/15 text-signal-ok">
+                      ●
+                    </span>
+                    <div className="text-[13px] leading-relaxed text-fg">
+                      <strong>3 gratuits immédiats</strong> · PV mise en service, fiche SAV,
+                      cahier des charges moto.
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
+                      ▲
+                    </span>
+                    <div className="text-[13px] leading-relaxed text-fg">
+                      <strong>4 compte pro</strong> · devis, bon cde, amortissement, registre
+                      copro. Compte gratuit, validation SIRET 2h.
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-peach-soft text-peach-ink">
+                      ■
+                    </span>
+                    <div className="text-[13px] leading-relaxed text-fg">
+                      <strong>3 sur-mesure</strong> · audit conformité, CDC industriel,
+                      bordereau copro. Bureau d'études, dès 250 € HT.
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

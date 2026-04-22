@@ -13,11 +13,13 @@ import { LiveCatalog } from "@/components/sections/live-catalog";
 import { Manifesto } from "@/components/sections/manifesto";
 import { MegaWordmark } from "@/components/sections/mega-wordmark";
 import { Nav } from "@/components/sections/nav";
+import { PainPoints } from "@/components/sections/pain-points";
 import { ProcessStrip } from "@/components/sections/process-strip";
 import { ProTiers } from "@/components/sections/pro-tiers";
 import { Promotions } from "@/components/sections/promotions";
 import { QuickOrder } from "@/components/sections/quick-order";
 import { ServicesGrid } from "@/components/sections/services-grid";
+import { Testimonials } from "@/components/sections/testimonials";
 import { TrustStrip } from "@/components/sections/trust-strip";
 
 export default function HomePage() {
@@ -36,6 +38,7 @@ export default function HomePage() {
         <div id="categories">
           <CategoryGrid />
         </div>
+        <PainPoints />
         <Promotions />
         <QuickOrder />
         <div id="best">
@@ -46,6 +49,7 @@ export default function HomePage() {
         <div id="services">
           <ServicesGrid />
         </div>
+        <Testimonials />
         <div id="metier">
           <Expertise />
         </div>
