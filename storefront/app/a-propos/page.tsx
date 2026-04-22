@@ -50,7 +50,7 @@ export default function AProposPage() {
             <h1 className="mt-5 font-display text-[52px] font-semibold leading-[0.94] tracking-[-0.025em] text-fg lg:text-[96px]">
               IEF & Co · quinze ans
               <br />
-              <span className="text-accent">de chantiers IDF.</span>
+              <span className="italic font-medium text-peach">de chantiers IDF.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-[17px] leading-relaxed text-fg-muted">
               AcceFerm Pro n'est pas un pure-player parachuté. C'est la division e-commerce d'IEF

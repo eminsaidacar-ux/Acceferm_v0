@@ -237,7 +237,7 @@ export function ProSignup() {
                   <input id="cgv-pro" type="checkbox" defaultChecked className="mt-1 accent-accent" />
                   <span>
                     J'accepte les{" "}
-                    <a href="#" className="underline">
+                    <a href="/legal/cgv" className="underline">
                       CGV pro AcceFerm
                     </a>{" "}
                     et la politique de confidentialité. Je confirme agir au nom de la société

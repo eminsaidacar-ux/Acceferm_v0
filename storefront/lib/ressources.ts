@@ -309,6 +309,102 @@ export const resources: Resource[] = [
     ],
   },
   {
+    slug: "dimensionner-motorisation-portail-industriel",
+    title: "Dimensionner une motorisation de portail industriel : la méthode en 6 étapes",
+    lede:
+      "Poids + vent + fréquence + classe EN 12453 + tension disponible + marge de sécurité. La méthode d'un bureau d'études, appliquée.",
+    category: "guide",
+    readMinutes: 14,
+    updatedAt: "19 avr. 2026",
+    author: "Bureau d'études IEF",
+    image: "industrial",
+    sections: [
+      {
+        heading: "Étape 1 — Mesurer le poids vantail réel",
+        body:
+          "Le poids fabricant est souvent théorique (vantail nu, sans peinture, sans décor). Pesez en conditions réelles avec un dynamomètre tractant — ou calculez : surface × densité matériau × épaisseur. Acier plein 7,85 g/cm³, aluminium 2,7, bois dur 0,8. Ajoutez la quincaillerie (serrure, boulonnerie) et la peinture (env. 3-5 kg/m²). Multipliez par 1,15 pour tenir compte de la condensation et du gel.",
+      },
+      {
+        heading: "Étape 2 — Calculer la prise au vent",
+        body:
+          "Un portail industriel plein de 6 m × 2 m subit 300-500 N/m² de pression par vent de 100 km/h selon les règles NV65. Soit 3 600 à 6 000 N répartis sur le portail. La motorisation doit compenser ces efforts sur toute la longueur du vantail. Formule simplifiée : couple requis = force × longueur levier × coefficient friction (1,2). Vantail ajouré divise la charge par 2 à 3.",
+      },
+      {
+        heading: "Étape 3 — Fréquence et classification EN 12453",
+        body:
+          "Logistique/industrie = classe 3 ou 4, soit 200 à 1 000 cycles/j. Un moteur résidentiel classe 1 (20-40 cycles/j) surchauffe sous 200 cycles. Règle bureau d'études IEF : diviser par 4 le cycle nominal fabricant pour la durée de vie réelle en continu. Un moteur annoncé 50 000 cycles tient 12 500 en usage industriel agressif.",
+      },
+      {
+        heading: "Étape 4 — Choisir 230 V AC ou 24 V DC",
+        body:
+          "230 V AC : couple élevé constant, convient aux portails très lourds >800 kg. Inconvénient : pas de batterie secours native, arrêts brutaux. 24 V DC : rampes d'accélération/décélération configurables, moins de casse mécanique, batterie secours native 4-12h. Pour logistique en 24/7, le 24 V avec contrôleur d'obstacle opto-isolé est la norme 2026.",
+      },
+      {
+        heading: "Étape 5 — Dimensionner l'armoire et les protections",
+        body:
+          "Intensité nominale × 1,5 = calibre du disjoncteur amont. Parafoudre Type 2 obligatoire en zone rurale/industrielle. Alimentation séparée pour les accessoires (photocellules, feux) sur circuit 24 V opto-isolé — évite qu'une cellule en défaut ne fasse tomber l'armoire entière. Armoire en coffret IP55 minimum avec ventilation si usage >300 cycles/j.",
+      },
+      {
+        heading: "Étape 6 — Valider la marge de sécurité",
+        body:
+          "Règle de bureau d'études : la motorisation choisie doit fournir au moins 30 % de couple en plus que le couple calculé au pire cas. Sinon, dérive en 2-3 ans (charnières qui fatiguent, peinture qui s'alourdit). Documentez le calcul dans le cahier des charges, archivage 10 ans. Les moteurs AFCA V2 FORTECO 24 V et Roger Technology BR21/4000 sont nos références testées en logistique.",
+      },
+    ],
+  },
+  {
+    slug: "guide-complet-vigik-centrale-acces",
+    title: "VIGIK de A à Z : installer, maintenir, renouveler une centrale d'accès immeuble",
+    lede:
+      "Norme La Poste, clés résidents, clés prestataires, mise à jour 84h, RGPD. Le guide complet pour syndics et installateurs.",
+    category: "conformite",
+    readMinutes: 16,
+    updatedAt: "15 avr. 2026",
+    author: "Bureau d'études IEF",
+    image: "industrial",
+    sections: [
+      {
+        heading: "VIGIK, qu'est-ce que c'est exactement ?",
+        body:
+          "VIGIK est un système d'accès sans contact développé par La Poste dans les années 1990 pour permettre aux facteurs d'entrer dans les halls d'immeubles collectifs. Depuis, il s'est étendu à tous les services de livraison et d'urgence : pompiers, EDF, éboueurs, Bouygues Telecom, Orange, ENEDIS. Aujourd'hui, c'est le standard de fait en immeuble collectif français — obligatoire en pratique en construction neuve collective.",
+      },
+      {
+        heading: "Les deux types de clés : résidents et prestataires",
+        body:
+          "Clés résidents (badges personnels) : fournies par le bailleur ou le syndic, attribuées nominativement, révocables individuellement. Clés prestataires VIGIK : portées par les agents (La Poste, pompiers, etc.), renouvellement automatique de leur autorisation toutes les 84h via une base centrale. Le syndic ou bailleur choisit quelles catégories de prestataires il autorise — service par service, horaire par horaire.",
+      },
+      {
+        heading: "Anatomie d'une installation VIGIK en 2026",
+        body:
+          "1 centrale par immeuble ou par cage (selon topologie), 1 lecteur par porte extérieure + porte de cave + local vélos + ascenseurs étages supérieurs. Centrales Intégral CS600 (1 à 16 portes, standard IDF), Urmet VIGIK Pro, Comelit Access. Alimentation 12-24 V DC redondée par batterie 4h minimum. Câblage bus BUS ou Ethernet selon centrale. Prévoir 180-380 € HT par porte en matériel + 1-2h de pose par porte.",
+      },
+      {
+        heading: "Mise à jour des clés prestataires : obligatoire",
+        body:
+          "Les clés VIGIK prestataires sont cryptées et régénérées toutes les 84h par La Poste. La centrale doit donc être connectée à Internet (4G ou Ethernet) ou mise à jour physiquement par un technicien chaque semaine. Sans cette mise à jour : les facteurs ne peuvent plus entrer au bout de 84h. En panne réseau >5 jours : l'immeuble devient inaccessible aux services publics. Budget annuel : abonnement 4G 60-120 €/an.",
+      },
+      {
+        heading: "Renouvellement des badges résidents : la procédure",
+        body:
+          "Inventaire annuel en AG : liste des badges actifs, liste des résidents partis (à révoquer), liste des nouveaux résidents (à émettre). Révocation sur centrale en 30 secondes, émission de nouveau badge en 2 min, tarif syndic 8-15 € HT le badge. Conserver un registre papier ou numérique — en cas de perte de badge non révoqué, responsabilité du syndic engagée.",
+      },
+      {
+        heading: "RGPD : ce que peu de syndics savent",
+        body:
+          "Enregistrer les passages de badges (horodatage + identifiant badge) constitue un traitement de données personnelles au sens du RGPD. Obligations : (1) registre des traitements tenu par le syndic, (2) affichage informant les résidents dans le hall, (3) durée de conservation limitée à 6 mois par défaut (ou 13 mois avec consentement explicite), (4) droit d'accès et d'effacement des résidents dans un délai de 30 jours. Une AG votant la surveillance caméra + badges sans mention RGPD peut être attaquée.",
+      },
+      {
+        heading: "Les 4 pannes VIGIK les plus fréquentes",
+        body:
+          "1) Carte centrale morte après foudre (20 % des pannes) — parafoudre Type 2 obligatoire. 2) Lecteur de porte encrassé (18 %) — nettoyage trimestriel recommandé, tissu microfibre sec. 3) Câble BUS dénudé par un rongeur ou une intempérie (15 %) — passage en gaine ICTA IP67 et point de dérivation étanche. 4) Mise à jour 4G bloquée (12 %) — vérifier antenne, forfait SIM actif, et autorisations SIM. IEF & Co propose un contrat de maintenance annuel 380 € HT tout inclus.",
+      },
+      {
+        heading: "Notre recommandation matériel 2026",
+        body:
+          "Centrale 1-4 portes : Intégral CS600 classique, 480-620 € HT + lecteurs 95-130 € HT. Centrale >5 portes : CS600 maître + satellites BUS. Pour rénovation de parc bailleur (>50 cages) : Urmet VIGIK Pro avec supervision centralisée multi-sites. Nos fiches produit listent les compatibilités lecteurs testées sur chantiers IDF.",
+      },
+    ],
+  },
+  {
     slug: "entretien-annuel-portail-automatique",
     title: "Entretien annuel d'un portail automatique : la check-list du pro",
     lede: "22 points à vérifier, fréquence recommandée, pièces d'usure à stocker en permanence.",

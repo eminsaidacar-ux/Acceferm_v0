@@ -23,7 +23,16 @@ const STEPS = [
   { id: 3, label: "Confirmation" },
 ] as const;
 
-const PAYMENTS = [
+type Payment = {
+  id: string;
+  label: string;
+  sub: string;
+  icon: typeof CreditCard;
+  recommended?: boolean;
+  pro?: boolean;
+};
+
+const PAYMENTS: readonly Payment[] = [
   { id: "cb", label: "Carte bancaire", sub: "Visa · Mastercard · Apple Pay", icon: CreditCard, recommended: true },
   { id: "30j", label: "Paiement 30j à terme", sub: "Compte Pro Gold validé", icon: FileText, pro: true },
   { id: "sepa", label: "Virement SEPA pro", sub: "Envoi confirmation sous 48h", icon: Building2 },
@@ -252,7 +261,7 @@ export function CheckoutFlow() {
                   <input id="cgv" type="checkbox" defaultChecked className="mt-1 accent-accent" />
                   <span>
                     J'accepte les{" "}
-                    <a href="#" className="underline">
+                    <a href="/legal/cgv" className="underline">
                       conditions générales de vente
                     </a>{" "}
                     et confirme que les informations sont exactes.

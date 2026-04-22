@@ -1,15 +1,36 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { useMemo, useState } from "react";
 import { usePriceMode } from "@/components/price-mode-context";
 import { topProducts } from "@/lib/data";
 import { img, imagery } from "@/lib/images";
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 
-const FILTERS = ["Tous", "Photocellules", "Récepteurs", "Claviers", "Feux", "Contrôle accès", "Pièces"] as const;
+type FilterId = "all" | "photocellules" | "recepteurs" | "claviers" | "feux" | "controle" | "pieces";
+
+const FILTERS: Array<{ id: FilterId; label: string; match?: (cat: string) => boolean }> = [
+  { id: "all", label: "Tous" },
+  { id: "photocellules", label: "Photocellules", match: (c) => /photocell/i.test(c) },
+  { id: "recepteurs", label: "Récepteurs", match: (c) => /récepteur/i.test(c) || /télécomm/i.test(c) },
+  { id: "claviers", label: "Claviers", match: (c) => /clavier/i.test(c) },
+  { id: "feux", label: "Feux", match: (c) => /feu/i.test(c) },
+  { id: "controle", label: "Contrôle accès", match: (c) => /vigik/i.test(c) || /serrure/i.test(c) },
+  { id: "pieces", label: "Pièces", match: (c) => /alimentation/i.test(c) || /batterie/i.test(c) },
+];
 
 export function LiveCatalog() {
   const { mode } = usePriceMode();
+  const [active, setActive] = useState<FilterId>("all");
+
+  const products = useMemo(() => {
+    if (active === "all") return topProducts;
+    const f = FILTERS.find((x) => x.id === active);
+    if (!f?.match) return topProducts;
+    const match = f.match;
+    const filtered = topProducts.filter((p) => match(p.category));
+    return filtered.length > 0 ? filtered : topProducts;
+  }, [active]);
 
   return (
     <section className="border-t border-border-soft py-20 lg:py-28">
@@ -22,11 +43,11 @@ export function LiveCatalog() {
             <h2 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[60px]">
               Ce que les installateurs
               <br />
-              <span className="text-accent">commandent en boucle.</span>
+              <span className="italic font-medium text-peach">commandent en boucle.</span>
             </h2>
           </div>
           <a
-            href="/produit/v2-sensiva-photocellules-paire"
+            href="/catalogue/photocellules"
             className="inline-flex items-center gap-1.5 text-[14px] font-medium text-fg transition hover:text-accent"
           >
             Voir le top 100 →
@@ -34,23 +55,28 @@ export function LiveCatalog() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-1.5 text-[13px]">
-          {FILTERS.map((f, i) => (
-            <button
-              type="button"
-              key={f}
-              className={
-                i === 0
-                  ? "rounded-full bg-accent px-4 py-1.5 font-medium text-accent-fg"
-                  : "rounded-full border border-border px-4 py-1.5 text-fg-muted transition hover:border-fg hover:text-fg"
-              }
-            >
-              {f}
-            </button>
-          ))}
+          {FILTERS.map((f) => {
+            const on = active === f.id;
+            return (
+              <button
+                type="button"
+                key={f.id}
+                onClick={() => setActive(f.id)}
+                className={cn(
+                  "rounded-full px-4 py-1.5 transition",
+                  on
+                    ? "bg-accent font-medium text-accent-fg"
+                    : "border border-border text-fg-muted hover:border-fg hover:text-fg",
+                )}
+              >
+                {f.label}
+              </button>
+            );
+          })}
         </div>
 
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl bg-border-soft sm:grid-cols-2 lg:grid-cols-4">
-          {topProducts.map((p) => (
+          {products.map((p) => (
             <a
               key={p.id}
               href={`/produit/${p.slug}`}

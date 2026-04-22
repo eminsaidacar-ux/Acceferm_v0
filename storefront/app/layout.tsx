@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { CartProvider } from "@/components/cart/cart-context";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { PriceModeProvider } from "@/components/price-mode-context";
-import { display, mono, sans } from "./fonts";
+import { CustomCursor } from "@/components/ui/custom-cursor";
+import { display, mono, sans, serif } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -112,8 +113,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+    <html
+      lang="fr"
+      className={`${sans.variable} ${display.variable} ${serif.variable} ${mono.variable}`}
+    >
       <head>
+        {/* Clash Display — ITF signature font via Fontshare (alignement famille IEF & Co) */}
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+        />
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD */}
         <script
           type="application/ld+json"
@@ -126,6 +137,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <CustomCursor />
         <PriceModeProvider>
           <CartProvider>
             {children}

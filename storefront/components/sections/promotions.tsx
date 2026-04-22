@@ -19,13 +19,13 @@ export function Promotions() {
               Promotions fournisseur · semaine 16
             </p>
             <h2 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[60px]">
-              Jusqu'à <span className="text-warm">−55 %</span> sur les
+              Jusqu'à <span className="italic font-medium text-peach">−55 %</span> sur les
               <br />
               références pros du moment.
             </h2>
           </div>
           <a
-            href="#"
+            href="/catalogue/photocellules"
             className="inline-flex items-center gap-1.5 text-[14px] font-medium text-fg transition hover:text-accent"
           >
             Voir toutes les promos →

@@ -21,6 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/vs/accesso-ferm",
     "/recherche",
     "/compte-pro/nouveau",
+    "/manifeste",
+    "/normes",
+    "/gabarits",
+    "/glossaire",
+    "/marques",
   ].map((path) => ({
     url: `${BASE}${path}`,
     lastModified: now,

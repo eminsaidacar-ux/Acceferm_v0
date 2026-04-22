@@ -1,4 +1,13 @@
-const TIERS = [
+type Tier = {
+  name: string;
+  price: string;
+  sub: string;
+  features: readonly string[];
+  cta: string | null;
+  featured?: boolean;
+};
+
+const TIERS: readonly Tier[] = [
   {
     name: "Particulier",
     price: "TTC",
