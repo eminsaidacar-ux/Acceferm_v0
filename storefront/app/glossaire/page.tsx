@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ChevronRight, Search } from "lucide-react";
+import { ChevronRight } from "lucide-react";
+import { GlossaireSearchAndList } from "@/components/glossaire/search-and-list";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
@@ -96,7 +97,7 @@ export default function GlossairePage() {
             <h1 className="mt-6 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[88px]">
               Le vocabulaire
               <br />
-              <span className="font-serif-italic text-accent">du métier.</span>
+              <span className="italic font-medium text-peach">du métier.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-fg-muted">
               Un glossaire écrit pour un installateur qui reprend un chantier hérité, un syndic
@@ -104,78 +105,11 @@ export default function GlossairePage() {
               définitions fabricant.
             </p>
 
-            {/* Search (non functional in mockup) */}
-            <div className="mt-10 flex items-center gap-3 rounded-2xl border border-border bg-bg-elev px-4 py-3">
-              <Search className="h-5 w-5 text-fg-muted" />
-              <input
-                type="search"
-                placeholder="Chercher un terme — ex : VIGIK, 2easy, IP65…"
-                className="min-w-0 flex-1 bg-transparent text-[15px] text-fg placeholder:text-fg-subtle focus:outline-none"
-              />
-            </div>
-
-            {/* Alphabet */}
-            <div className="mt-8 flex flex-wrap gap-1.5 text-[12px]">
-              {letters.map((l) => (
-                <a
-                  key={l}
-                  href={`#letter-${l}`}
-                  className="grid h-8 w-8 place-items-center rounded-full border border-border bg-bg font-mono text-fg-muted transition hover:border-accent hover:bg-accent hover:text-accent-fg"
-                  data-cursor="hover"
-                >
-                  {l}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Glossary by letter */}
-        <section className="py-14 lg:py-20">
-          <div className="mx-auto max-w-5xl px-6 lg:px-8">
-            {letters.map((l) => (
-              <div
-                key={l}
-                id={`letter-${l}`}
-                className="mb-16 scroll-mt-24 border-t border-border pt-8"
-              >
-                <div className="flex items-baseline gap-5">
-                  <span className="chapter-num text-[72px] leading-none lg:text-[120px]">
-                    {l}
-                  </span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-fg-subtle">
-                    {grouped[l].length} termes
-                  </span>
-                </div>
-
-                <dl className="mt-10 grid gap-px bg-border-soft sm:grid-cols-2">
-                  {grouped[l].map((t) => (
-                    <div
-                      key={t.term}
-                      className="flex flex-col gap-3 bg-bg p-6 transition hover:bg-bg-elev"
-                    >
-                      <dt className="font-display text-[18px] font-semibold leading-tight text-fg">
-                        {t.term}
-                      </dt>
-                      <dd className="text-[14px] leading-relaxed text-fg-muted">{t.def}</dd>
-                      {t.related && t.related.length > 0 && (
-                        <div className="mt-1 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-fg-subtle">
-                          <span>Voir aussi ·</span>
-                          {t.related.map((r) => (
-                            <span
-                              key={r}
-                              className="rounded-full border border-border-soft bg-bg px-2 py-0.5"
-                            >
-                              {r}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            ))}
+            <GlossaireSearchAndList
+              terms={GLOSSARY}
+              letters={letters}
+              grouped={grouped}
+            />
           </div>
         </section>
 

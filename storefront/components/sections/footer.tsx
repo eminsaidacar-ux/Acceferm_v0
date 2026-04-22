@@ -1,4 +1,5 @@
 import { Logo } from "@/components/ui/logo";
+import { NewsletterForm } from "@/components/site/newsletter-form";
 import { phoneLines } from "@/lib/data";
 
 const COLUMNS = [
@@ -88,24 +89,12 @@ export function Footer() {
               <div>95410 Groslay · Île-de-France</div>
               <div className="pt-2">SIRET 888 693 981 · TVA intra FR XX XXX XXX XXX</div>
             </div>
-            <form className="mt-8 flex flex-col gap-2">
+            <div className="mt-8 flex flex-col gap-2">
               <label className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
                 Newsletter pro · 1/mois, sans spam
               </label>
-              <div className="flex items-center gap-2 rounded-full border border-border bg-bg px-1 py-1">
-                <input
-                  type="email"
-                  placeholder="vous@entreprise.fr"
-                  className="min-w-0 flex-1 bg-transparent px-3 py-1.5 text-[13px] text-fg placeholder:text-fg-subtle focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="shrink-0 rounded-full bg-accent px-3.5 py-1.5 text-[12px] font-medium text-accent-fg transition hover:bg-accent-hover"
-                >
-                  S'inscrire
-                </button>
-              </div>
-            </form>
+              <NewsletterForm variant="pill" source="footer" />
+            </div>
           </div>
 
           {/* Link columns */}

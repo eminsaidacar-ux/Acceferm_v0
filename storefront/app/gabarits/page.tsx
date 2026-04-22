@@ -1,15 +1,6 @@
 import type { Metadata } from "next";
-import {
-  ArrowUpRight,
-  ChevronRight,
-  ClipboardList,
-  FileCheck2,
-  FileSpreadsheet,
-  FileText,
-  NotebookPen,
-  Receipt,
-  Wrench,
-} from "lucide-react";
+import { ArrowUpRight, ChevronRight, ClipboardList } from "lucide-react";
+import { GabaritsFiltersGrid, type Template } from "@/components/gabarits/filters-grid";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
@@ -20,9 +11,9 @@ export const metadata: Metadata = {
     "Les gabarits qu'un installateur pro utilise chaque semaine : devis motorisation, PV mise en service, fiche SAV, check-list entretien, registre maintenance copro.",
 };
 
-const TEMPLATES = [
+const TEMPLATES: Template[] = [
   {
-    icon: FileText,
+    icon: "fileText",
     title: "Devis motorisation portail",
     desc: "Template Word + Excel. Pied-de-page IEF & Co éditable, calcul automatique HT/TTC, clauses légales EN 12453 incluses. Sortie PDF en 2 clics.",
     format: "DOCX + XLSX",
@@ -30,7 +21,7 @@ const TEMPLATES = [
     tag: "Commercial",
   },
   {
-    icon: FileCheck2,
+    icon: "fileCheck2",
     title: "PV de mise en service",
     desc: "Conforme directive Machines 2006/42/CE. Fait office de déclaration CE d'ensemble. Signé par le poseur + maître d'ouvrage. Archivage 10 ans obligatoire.",
     format: "PDF éditable",
@@ -38,7 +29,7 @@ const TEMPLATES = [
     tag: "Conformité",
   },
   {
-    icon: Wrench,
+    icon: "wrench",
     title: "Fiche SAV intervention",
     desc: "Check-list 22 points IEF, zones libres pour relevés (intensité, tension, cycles), champ pièces remplacées, signature client, tampon intervenant.",
     format: "PDF A4",
@@ -46,7 +37,7 @@ const TEMPLATES = [
     tag: "Maintenance",
   },
   {
-    icon: ClipboardList,
+    icon: "clipboardList",
     title: "Registre maintenance copro",
     desc: "Livret broché pour syndic, traçabilité des interventions sur 5 ans, colonnes dates/intervenant/actions/pièces. À compléter à chaque passage.",
     format: "PDF + INDD",
@@ -54,7 +45,7 @@ const TEMPLATES = [
     tag: "Copropriété",
   },
   {
-    icon: Receipt,
+    icon: "receipt",
     title: "Bon de commande fournisseur",
     desc: "Template Excel avec calcul automatique remises volume, colonnes références AcceFerm, nomenclature chantier. Export CSV direct vers notre Commande rapide.",
     format: "XLSX",
@@ -62,7 +53,7 @@ const TEMPLATES = [
     tag: "Achat",
   },
   {
-    icon: NotebookPen,
+    icon: "notebookPen",
     title: "Cahier des charges motorisation",
     desc: "Briefing type à remplir avec le client en 15 minutes : poids vantaux, usage, fréquence, tension disponible, contraintes accès, budget cible.",
     format: "PDF éditable",
@@ -70,7 +61,7 @@ const TEMPLATES = [
     tag: "Avant-vente",
   },
   {
-    icon: FileSpreadsheet,
+    icon: "fileSpreadsheet",
     title: "Tableau amortissement motorisation",
     desc: "Pour convaincre un syndic : coût pose + maintenance sur 10 ans vs. remplacement anticipé. Formules intégrées, graphes inclus.",
     format: "XLSX",
@@ -78,7 +69,7 @@ const TEMPLATES = [
     tag: "Argumentaire",
   },
   {
-    icon: ClipboardList,
+    icon: "clipboardList",
     title: "Audit conformité EN 12453",
     desc: "Grille d'audit 48 points couvrant les 4 classes d'usage. Génération automatique du rapport PDF avec verdict conforme/non-conforme + plan d'action.",
     format: "XLSM",
@@ -87,7 +78,7 @@ const TEMPLATES = [
   },
 ];
 
-const CATEGORIES = ["Tout", "Commercial", "Conformité", "Maintenance", "Copropriété", "Achat"];
+const CATEGORIES = ["Tout", "Commercial", "Conformité", "Maintenance", "Copropriété", "Achat", "Avant-vente", "Argumentaire"];
 
 export default function GabaritsPage() {
   return (
@@ -115,7 +106,7 @@ export default function GabaritsPage() {
                 <h1 className="mt-6 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[88px]">
                   Les gabarits qu'un
                   <br />
-                  <span className="font-serif-italic text-accent">pro utilise vraiment.</span>
+                  <span className="italic font-medium text-peach">pro utilise vraiment.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
                   Rédigés par les équipes IEF & Co, testés sur 3 000+ chantiers. Libres
@@ -142,66 +133,7 @@ export default function GabaritsPage() {
               </div>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center gap-2 text-[13px]">
-              {CATEGORIES.map((c, i) => (
-                <button
-                  type="button"
-                  key={c}
-                  className={
-                    i === 0
-                      ? "rounded-full bg-accent px-4 py-1.5 font-medium text-accent-fg"
-                      : "rounded-full border border-border px-4 py-1.5 text-fg-muted transition hover:border-fg hover:text-fg"
-                  }
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Template grid */}
-        <section className="py-14 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {TEMPLATES.map((t) => {
-                const Icon = t.icon;
-                return (
-                  <article
-                    key={t.title}
-                    className="card group flex flex-col gap-5 rounded-2xl border border-border-soft bg-bg p-7"
-                  >
-                    <div className="flex items-start justify-between">
-                      <span className="grid h-12 w-12 place-items-center rounded-2xl border border-border bg-bg-elev text-fg">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="rounded-full bg-bg-elev px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted">
-                        {t.tag}
-                      </span>
-                    </div>
-                    <div>
-                      <h2 className="font-display text-[22px] font-semibold leading-tight text-fg">
-                        {t.title}
-                      </h2>
-                      <p className="mt-2 text-[13px] leading-relaxed text-fg-muted">{t.desc}</p>
-                    </div>
-                    <div className="mt-auto flex items-center justify-between border-t border-border-soft pt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-                      <span>
-                        {t.format} · {t.size}
-                      </span>
-                      <a
-                        href="#"
-                        className="inline-flex items-center gap-1.5 font-medium text-accent transition group-hover:translate-x-0.5"
-                        data-cursor="hover"
-                      >
-                        Télécharger
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+            <GabaritsFiltersGrid templates={TEMPLATES} categories={CATEGORIES} />
           </div>
         </section>
 

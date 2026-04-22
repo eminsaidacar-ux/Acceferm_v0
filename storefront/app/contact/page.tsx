@@ -3,22 +3,13 @@ import { Building2, ChevronRight, Clock, Mail, MapPin, Phone } from "lucide-reac
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
+import { ContactForm } from "@/components/site/contact-form";
 import { phoneLines } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact — AcceFerm Pro",
   description: "Devis sous 24h, SAV technique joignable au 01 84 XX XX 17, atelier 95240 Cormeilles-en-Parisis.",
 };
-
-const SUBJECTS = [
-  "Devis motorisation",
-  "Devis accessoires / commande groupée",
-  "Question SAV · panne",
-  "Création de compte pro / grilles tarifaires",
-  "Partenariat fabricant / distribution",
-  "Demande presse",
-  "Autre",
-];
 
 export default function ContactPage() {
   return (
@@ -56,56 +47,7 @@ export default function ContactPage() {
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
               {/* Form */}
               <div className="lg:col-span-7">
-                <form className="space-y-5 rounded-2xl border border-border bg-bg p-6 lg:p-8">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Field label="Prénom" placeholder="Lucas" />
-                    <Field label="Nom" placeholder="Martin" />
-                    <Field label="Email" type="email" placeholder="contact@votre-societe.fr" />
-                    <Field label="Téléphone" placeholder="+33 6 12 34 56 78" />
-                    <Field className="sm:col-span-2" label="Société" placeholder="IEF & Co" />
-                  </div>
-
-                  <label className="flex flex-col gap-1.5">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-                      Sujet
-                    </span>
-                    <select className="rounded-xl border border-border-soft bg-bg px-3.5 py-2.5 text-[14px] text-fg focus:border-accent focus:outline-none">
-                      <option value="">Sélectionnez…</option>
-                      {SUBJECTS.map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                  </label>
-
-                  <label className="flex flex-col gap-1.5">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-                      Votre message
-                    </span>
-                    <textarea
-                      rows={6}
-                      placeholder="Décrivez votre besoin : chantier, marque moteur existante, symptôme panne, dimensions portail…"
-                      className="rounded-xl border border-border-soft bg-bg px-3.5 py-3 text-[14px] text-fg placeholder:text-fg-subtle transition focus:border-accent focus:outline-none"
-                    />
-                  </label>
-
-                  <label
-                    htmlFor="cgu-contact"
-                    className="flex cursor-pointer items-start gap-3 text-[12px] text-fg-muted"
-                  >
-                    <input id="cgu-contact" type="checkbox" defaultChecked className="mt-1 accent-accent" />
-                    <span>
-                      J'accepte le traitement de mes données pour la réponse à ma demande
-                      (politique de confidentialité).
-                    </span>
-                  </label>
-
-                  <button
-                    type="submit"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-[14px] font-medium text-accent-fg transition hover:bg-accent-hover"
-                  >
-                    Envoyer le message
-                  </button>
-                </form>
+                <ContactForm />
               </div>
 
               {/* Contact info */}
@@ -188,30 +130,5 @@ export default function ContactPage() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function Field({
-  label,
-  type = "text",
-  placeholder,
-  className,
-}: {
-  label: string;
-  type?: string;
-  placeholder?: string;
-  className?: string;
-}) {
-  return (
-    <label className={["flex flex-col gap-1.5", className].filter(Boolean).join(" ")}>
-      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-        {label}
-      </span>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="rounded-xl border border-border-soft bg-bg px-3.5 py-2.5 text-[14px] text-fg placeholder:text-fg-subtle transition focus:border-accent focus:outline-none"
-      />
-    </label>
   );
 }
