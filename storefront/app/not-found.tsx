@@ -16,7 +16,7 @@ export default function NotFound() {
           <h1 className="mt-6 font-display text-[80px] font-semibold leading-[0.92] tracking-[-0.03em] text-fg lg:text-[140px]">
             Ça ne s'ouvre
             <br />
-            <span className="text-accent">pas non plus.</span>
+            <span className="italic font-medium text-peach">pas non plus.</span>
           </h1>
           <p className="mt-8 text-[16px] leading-relaxed text-fg-muted">
             La page que vous cherchez a peut-être été déplacée, ou elle n'existe tout simplement

@@ -12,9 +12,12 @@ const SECONDARY = [
   { label: "Configurateur motorisation", href: "/configurer" },
   { label: "Espace Pro", href: "/pro" },
   { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
+  { label: "Marques distribuées", href: "/marques" },
   { label: "Installateur IDF", href: "/installateur-motorisation-portail/paris-75" },
   { label: "Manifeste", href: "/manifeste" },
   { label: "Normes EN", href: "/normes" },
+  { label: "Gabarits pro", href: "/gabarits" },
+  { label: "Glossaire technique", href: "/glossaire" },
   { label: "À propos IEF & Co", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ] as const;

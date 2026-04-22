@@ -1,14 +1,72 @@
-import { promotions, topProducts, type Product } from "./data";
-import { categories, type Category } from "./data";
+import { catalogTree } from "./catalog-tree";
+import { categories, promotions, topProducts, type Category, type Product } from "./data";
+import type { ImageKey } from "./images";
 
-/** Retourne la catégorie par slug ou null. */
+/**
+ * Récupère une catégorie par slug. Priorité aux 12 catégories éditorialisées
+ * de `data.ts`. Fallback sur le catalog-tree (140+ sous-familles) pour que
+ * toutes les routes `/catalogue/[slug]` soient routées.
+ */
 export function getCategory(slug: string): Category | null {
-  return categories.find((c) => c.slug === slug) ?? null;
+  // 1. Catégories éditorialisées
+  const fromData = categories.find((c) => c.slug === slug);
+  if (fromData) return fromData;
+
+  // 2. Catalog tree — recherche famille, catégorie ou sous-catégorie
+  for (const family of catalogTree) {
+    if (family.slug === slug) {
+      const total = family.categories.reduce((sum, c) => sum + c.subs.length * 3, 0);
+      return {
+        slug: family.slug,
+        name: family.name,
+        glyph: family.icon,
+        count: `${Math.max(total, 20)} réf`,
+        priceFrom: "dès 12 €",
+        image: pickFallbackImage(family.slug),
+      };
+    }
+    for (const category of family.categories) {
+      if (category.slug === slug) {
+        const total = category.subs.reduce((sum, s) => sum + s.productCount, 0);
+        return {
+          slug: category.slug,
+          name: category.name,
+          glyph: family.icon,
+          count: `${Math.max(total, 6)} réf`,
+          priceFrom: pickPriceFrom(category),
+          image: pickFallbackImage(family.slug),
+        };
+      }
+      for (const sub of category.subs) {
+        if (sub.slug === slug) {
+          return {
+            slug: sub.slug,
+            name: sub.name,
+            glyph: family.icon,
+            count: `${Math.max(sub.productCount, 4)} réf`,
+            priceFrom: sub.priceFromHT ? `dès ${sub.priceFromHT} €` : "dès 12 €",
+            image: pickFallbackImage(family.slug),
+          };
+        }
+      }
+    }
+  }
+
+  return null;
 }
 
-/** Retourne tous les slugs (pour generateStaticParams). */
+/** Tous les slugs pour generateStaticParams (12 cats + familles + sous-cats catalog-tree). */
 export function getAllCategorySlugs(): string[] {
-  return categories.map((c) => c.slug);
+  const seen = new Set<string>();
+  for (const c of categories) seen.add(c.slug);
+  for (const family of catalogTree) {
+    seen.add(family.slug);
+    for (const category of family.categories) {
+      seen.add(category.slug);
+      for (const sub of category.subs) seen.add(sub.slug);
+    }
+  }
+  return [...seen];
 }
 
 /**
@@ -17,10 +75,13 @@ export function getAllCategorySlugs(): string[] {
  */
 export function getCategoryProducts(slug: string): Product[] {
   const base = [...topProducts, ...promotions];
-  const seed = categories.findIndex((c) => c.slug === slug);
-  if (seed < 0) return [];
+  // Find seed from editorial categories first
+  let seed = categories.findIndex((c) => c.slug === slug);
+  if (seed < 0) {
+    // Fallback : hash-based seed stable sur le slug pour avoir une grille cohérente
+    seed = slug.split("").reduce((acc, ch) => acc + ch.charCodeAt(0), 0) % base.length;
+  }
 
-  // On crée une série plausible en variant les prix et en décalant les noms
   return base.map((p, i) => {
     const shift = (seed + i) % base.length;
     const src = base[shift];
@@ -31,6 +92,44 @@ export function getCategoryProducts(slug: string): Product[] {
       priceHT: Math.round(src.priceHT * (0.9 + ((i + seed) % 5) * 0.08)),
     };
   });
+}
+
+function pickPriceFrom(category: { subs: { priceFromHT?: number }[] }): string {
+  const mins = category.subs
+    .map((s) => s.priceFromHT)
+    .filter((x): x is number => typeof x === "number");
+  if (mins.length === 0) return "dès 12 €";
+  return `dès ${Math.min(...mins)} €`;
+}
+
+/** Fallback vers un visuel thématique cohérent selon la famille. */
+function pickFallbackImage(familySlug: string): ImageKey {
+  const map: Record<string, ImageKey> = {
+    "portails-motorises": "gate",
+    "motorisations": "factory",
+    "motorisation-battant": "factory",
+    "motorisation-coulissant": "workshopAlt",
+    "controle-acces": "industrial",
+    "securite": "photocell",
+    "photocellules": "photocell",
+    "recepteurs-radio": "receiver",
+    "telecommandes": "remote",
+    "interphonie": "remote",
+    "claviers-selecteurs": "keypad",
+    "feux-signalisations": "light",
+    "serrures-electriques": "lock",
+    "alimentation-batteries": "battery",
+    "pieces-detachees": "engineering",
+    "kits-complets": "gate",
+    "portes-industrielles": "industrial",
+    "portes-sectionnelles": "warehouse",
+    "portes-rapides": "warehouse",
+    "rideaux-metalliques": "warehouse",
+    "bornes-escamotables": "industrial",
+    "barrieres-levantes": "industrial",
+    "portiques": "industrial",
+  };
+  return map[familySlug] ?? "engineering";
 }
 
 export type FilterSection = {

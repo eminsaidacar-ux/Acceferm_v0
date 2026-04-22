@@ -168,7 +168,7 @@ export default function ManifestePage() {
             </p>
             <blockquote className="mt-8 font-serif-italic text-[40px] font-medium leading-[1.1] tracking-[-0.015em] text-fg lg:text-[72px]">
               « Si tout cela paraît{" "}
-              <span className="text-accent">évident</span>, tant mieux.
+              <span className="italic font-medium text-peach">évident</span>, tant mieux.
               C'est que le métier a bougé. »
             </blockquote>
             <div className="mt-10 font-mono text-[11px] uppercase tracking-[0.3em] text-fg-muted">

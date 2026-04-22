@@ -45,7 +45,7 @@ export default function ContactPage() {
               <h1 className="mt-4 font-display text-[48px] font-semibold leading-[0.96] tracking-[-0.025em] text-fg lg:text-[88px]">
                 Un humain répond.
                 <br />
-                <span className="text-accent">Pas un bot.</span>
+                <span className="italic font-medium text-peach">Pas un bot.</span>
               </h1>
               <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
                 Téléphone pour l'urgence, email pour la réflexion, visite d'atelier sur rendez-vous.

@@ -110,7 +110,7 @@ export default function PoseIdfPage() {
             <h1 className="mt-4 max-w-3xl font-display text-[48px] font-semibold leading-[0.96] tracking-[-0.025em] text-fg lg:text-[88px]">
               Des techniciens qui
               <br />
-              <span className="text-accent">posent, pas qui récitent.</span>
+              <span className="italic font-medium text-peach">posent, pas qui récitent.</span>
             </h1>
             <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
               IEF & Co, 15 ans de terrain Île-de-France. On pose le matériel qu'on vend. On
@@ -217,7 +217,7 @@ export default function PoseIdfPage() {
                 <h2 className="mt-5 font-display text-[40px] font-semibold leading-[1] tracking-[-0.02em] text-fg lg:text-[56px]">
                   Vidéo-assistance
                   <br />
-                  <span className="text-accent">offerte</span> sur les moto
+                  <span className="italic font-medium text-peach">offerte</span> sur les moto
                   <br />
                   ≥ 300 € HT.
                 </h2>

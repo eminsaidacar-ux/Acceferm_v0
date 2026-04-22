@@ -25,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/normes",
     "/gabarits",
     "/glossaire",
+    "/marques",
   ].map((path) => ({
     url: `${BASE}${path}`,
     lastModified: now,

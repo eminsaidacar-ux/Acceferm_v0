@@ -25,7 +25,7 @@ export function Promotions() {
             </h2>
           </div>
           <a
-            href="#"
+            href="/catalogue/photocellules"
             className="inline-flex items-center gap-1.5 text-[14px] font-medium text-fg transition hover:text-accent"
           >
             Voir toutes les promos →

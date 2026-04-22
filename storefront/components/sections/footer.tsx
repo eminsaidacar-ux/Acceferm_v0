@@ -29,6 +29,7 @@ const COLUMNS = [
     title: "Entreprise",
     links: [
       { label: "IEF & Co · histoire", href: "/a-propos" },
+      { label: "Marques distribuées", href: "/marques" },
       { label: "vs. incumbents", href: "/vs/accesso-ferm" },
       { label: "Nous contacter", href: "/contact" },
       { label: "Créer un compte pro", href: "/compte-pro/nouveau" },

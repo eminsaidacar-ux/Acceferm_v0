@@ -22,7 +22,7 @@ export function ProductCrossSell({ products }: { products: Product[] }) {
               Les pros ajoutent aussi
             </h2>
           </div>
-          <a href="#" className="hidden text-[13px] text-fg-muted transition hover:text-fg md:inline-block">
+          <a href="/catalogue/photocellules" className="hidden text-[13px] text-fg-muted transition hover:text-fg md:inline-block">
             Voir la catégorie complète →
           </a>
         </div>

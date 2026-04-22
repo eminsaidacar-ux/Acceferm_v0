@@ -261,7 +261,7 @@ export function CheckoutFlow() {
                   <input id="cgv" type="checkbox" defaultChecked className="mt-1 accent-accent" />
                   <span>
                     J'accepte les{" "}
-                    <a href="#" className="underline">
+                    <a href="/legal/cgv" className="underline">
                       conditions générales de vente
                     </a>{" "}
                     et confirme que les informations sont exactes.

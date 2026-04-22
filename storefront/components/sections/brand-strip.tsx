@@ -31,11 +31,14 @@ export function BrandStrip() {
       <div className="mx-auto max-w-[1440px] px-6 lg:px-8">
         <div className="mb-6 flex items-baseline justify-between">
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-fg-subtle">
-            — Marques distribuées · 12+ fabricants européens
+            — Marques distribuées · 15 fabricants européens
           </div>
-          <div className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg-subtle md:block">
-            REF · CAT · 01-12
-          </div>
+          <a
+            href="/marques"
+            className="hidden font-mono text-[10px] uppercase tracking-[0.3em] text-fg-muted transition hover:text-fg md:block"
+          >
+            Voir toutes les marques →
+          </a>
         </div>
       </div>
 

@@ -18,6 +18,15 @@ const ICONS = {
   catalogue: BookOpen,
 } as const;
 
+const HREFS: Record<string, string> = {
+  devis: "/configurer",
+  conseiller: "/contact",
+  compte: "/compte-pro/nouveau",
+  sav: "/contact",
+  assisteo: "/pose-idf#assisteo",
+  catalogue: "/ressources",
+};
+
 export function ServicesGrid() {
   return (
     <section className="border-t border-border-soft bg-bg-elev py-20 lg:py-28">
@@ -39,7 +48,7 @@ export function ServicesGrid() {
             return (
               <a
                 key={svc.kind}
-                href="#"
+                href={HREFS[svc.kind] ?? "/contact"}
                 className="group flex flex-col gap-5 bg-bg p-7 transition hover:bg-bg-elev"
               >
                 <div className="flex items-start justify-between">
