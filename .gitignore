@@ -15,9 +15,11 @@ desktop.ini
 !.claude/agents/**
 memory/
 
-# Secrets & accès — JAMAIS versionner
+# Secrets & accès — JAMAIS versionner (sauf .env.example qui est un template)
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.pem
 *.key
 *.ppk

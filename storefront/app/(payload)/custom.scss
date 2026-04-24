@@ -1,0 +1,13 @@
+/* Custom admin styles Payload — adaptés à la palette AcceFerm.
+ * Les overrides ici sont minimes au sprint 1 — on polit plus tard.
+ */
+html[data-theme="light"] {
+  --theme-elevation-0: #faf7f2;
+  --theme-success-500: #5a7d1f;
+  --theme-error-500: #b8442e;
+  --theme-warning-500: #d4923b;
+}
+
+html[data-theme="dark"] {
+  --theme-elevation-0: #141210;
+}
