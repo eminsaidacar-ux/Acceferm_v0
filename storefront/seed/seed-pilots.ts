@@ -504,8 +504,7 @@ async function main() {
         requiresProAccount: p.requiresProAccount ?? false,
         badge: p.badge ?? "none",
         active: true,
-        // @ts-expect-error — Payload accepte string pour relationship
-        category: categoryId,
+        category: categoryId as unknown as number,
         technicalSpecs: p.specs,
         compatibleBrands: p.compatibleBrands?.map((brand) => ({ brand })),
         norms: p.norms?.map((code) => ({ code })),
