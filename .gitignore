@@ -9,8 +9,10 @@ desktop.ini
 .vscode/
 .idea/
 
-# Claude Code session
-.claude/
+# Claude Code session — tout ignoré SAUF les chartes agents (méthodologie team)
+.claude/*
+!.claude/agents/
+!.claude/agents/**
 memory/
 
 # Secrets & accès — JAMAIS versionner

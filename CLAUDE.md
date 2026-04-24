@@ -1,8 +1,116 @@
 # CLAUDE.md — Projet AcceFerm Pro & Industrie
 
 > Fichier de contexte permanent pour Claude Code. Lu automatiquement à chaque session.
-> **Version 2** — pivot pro/industrie. Remplace la v1 B2C (toujours accessible via commit `1b52dfe`).
-> Dernière mise à jour : 20 avril 2026.
+> **Version 3** — recadrage méthodologique + orchestration super-agents. Remplace la v2 (4 commits : `601f6c6` → `5ce795c`).
+> Dernière mise à jour : 25 avril 2026.
+
+---
+
+## 🚨 RÈGLE N°2 — NO FEATURE BEFORE MONEY-PATH (NON-NÉGOCIABLE)
+
+Tant que le flux suivant ne fonctionne pas bout-en-bout, **aucune nouvelle page, section, animation, ou refacto cosmétique** n'est acceptable :
+
+```
+Visiteur → Catalogue → Fiche produit → Panier → Checkout →
+Paiement Stripe réel → Confirmation →
+Commande persistée en DB → Notification email → Facture PDF →
+Remontée Odoo
+```
+
+**État actuel : 0 % du money-path implémenté.** La maquette est riche (373 pages, 22 sections home, design award-worthy) mais **aucune commande ne peut être encaissée**. BUSINESS_AGENT bloque toute PR qui dévie.
+
+Exception unique : ordre explicite d'Emin documenté dans le PR body.
+
+---
+
+## 🤖 MODE ORCHESTRATEUR — 8 SUPER-AGENTS
+
+Claude n'exécute plus en solo. Face à une demande, Claude délègue via le tool `Agent` au super-agent concerné. Chartes complètes dans `.claude/agents/` :
+
+| Agent | Rôle | Fichier |
+|---|---|---|
+| ARCHITECT | Cohérence technique Next.js 15 | `.claude/agents/architect.md` |
+| SECURITY | Auth, secrets, masquage prix AFCA | `.claude/agents/security.md` |
+| INTEGRATION | Stripe, Brevo, Odoo, CMS | `.claude/agents/integration.md` |
+| SEO | Schema.org, sitemap, Core Web Vitals | `.claude/agents/seo.md` |
+| UX | Parcours achat, mobile-first, WCAG AA | `.claude/agents/ux.md` |
+| DEVOPS | Vercel, CI/CD, monitoring | `.claude/agents/devops.md` |
+| **BUSINESS** | **Garant Règle n°2 — veto money-path** | `.claude/agents/business.md` |
+| COMPLIANCE | AFCA + RGPD + CGV + DGFiP | `.claude/agents/compliance.md` |
+
+Chaque super-agent peut créer des sous-agents pour tâches granulaires.
+
+---
+
+## 🎯 PÉRIMÈTRE DE DÉCISION
+
+### Autonomie totale (Claude + agents décident seuls)
+
+- Architecture technique, patterns Next.js 15
+- Choix librairies **non-payantes** (open source, licence permissive)
+- Sécurité applicative (auth, validation, chiffrement)
+- Performance (SSG, ISR, edge, cache)
+- Refactos et dette technique (si pas bloquant money-path)
+- Tests, CI/CD, déploiement Vercel preview
+- Conventions code, linting, formatting
+- Structure DB (Payload/Prisma/schéma Postgres)
+- SEO technique (Schema, sitemap, meta)
+- Priorisation intra-sprint
+
+### ⚠️ Validation Emin OBLIGATOIRE
+
+- Fonctionnel métier (quoi vendre, comment, à qui)
+- Dépenses récurrentes nouvelles > 10 €/mois
+- Intégrations tierces payantes (Stripe fees, Brevo, CMS payant)
+- Suppression de fonctionnalités existantes
+- Changement stack majeur (abandon Next.js, etc.)
+- Communication publique, copy commercial
+- Prix, marges, promotions
+- Données clients pros (RGPD, conservation, partage)
+- Relations fournisseurs (AFCA / V2 / Roger / Intégral)
+- **Merge dans `main`** + déploiement prod
+
+---
+
+## ⚖️ CONTRAINTES MÉTIER CRITIQUES (vérifiées par COMPLIANCE_AGENT)
+
+1. **Clause AFCA** : aucun prix motorisation affiché public. Prix visibles uniquement dans l'espace pro authentifié. **NON-NÉGOCIABLE.**
+2. **`lib/suppliers.ts`** : INTERNE. Jamais exposé sur une route publique.
+3. **RGPD** : données clients pros hébergées UE uniquement (Vercel EU, Supabase `eu-west-3`).
+4. **E-invoicing DGFiP septembre 2026** : AcceFerm **ne gère PAS** la facture fiscale finale. La commande remonte en Odoo (ERP maître), qui émet la facture conforme via PDP. Champ `odoo_external_id` prévu sur toutes entités synchronisables dès les migrations V0.
+5. **Plan de continuité fournisseurs** : anticiper dès mise en prod (contrats directs, alternatives). Escalader à Emin toute alerte commerciale.
+
+---
+
+## 🌐 ÉCOSYSTÈME IEF & CO
+
+AcceFerm = branche digitale d'IEF & CO, pas société distincte.
+
+| Brique | Rôle | État |
+|---|---|---|
+| **Odoo** | ERP maître : facturation + compta + DGFiP | En place chez IEF |
+| **AcceFerm** (ce repo) | E-commerce B2B + lead-gen pose | V0 maquette |
+| **IEF CORE** (repo `ief-p1-alpha`) | GMAO boostée IA | V0 monorepo |
+| **Assistéo** | Vidéo-assistance technique | Brique future |
+
+**Données à synchroniser avec Odoo à terme** :
+- Commandes AcceFerm → devis/factures Odoo
+- Clients pros → contacts Odoo CRM
+- Leads pose IDF → opportunités CRM pipeline Chantiers
+- Produits → catalogue Odoo (source unique à terme)
+
+---
+
+## 📞 COMMUNICATION AVEC EMIN
+
+Emin dirige IEF & CO. Il **n'est pas dev**. Son temps est rare. Il est accompagné ponctuellement (1-2 semaines) par **Mehdi** (ami dev) sur revues architecture/sécurité.
+
+Format attendu des rapports :
+- Synthèse courte : **fait / bloqué / décision requise**.
+- Détails techniques uniquement si demandé.
+- Propositions avec **trade-offs chiffrés** pour décisions métier (coût récurrent, temps dev, maintenance).
+- Pas de jargon inutile.
+- Captures d'écran / screenshots de l'UI quand pertinent (visuel > texte pour valider UX).
 
 ---
 
