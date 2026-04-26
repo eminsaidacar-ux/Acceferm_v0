@@ -10,7 +10,7 @@ import { resources } from "@/lib/ressources";
 import { cn, formatPrice } from "@/lib/utils";
 
 const FACETS = [
-  { id: "brand", label: "Marque", options: ["V2", "Came", "FAAC", "Nice", "BFT", "Roger"] },
+  { id: "brand", label: "Marque", options: ["V2", "Roger Technology", "Motor Line", "Doorgate", "Intégral Système"] },
   { id: "voltage", label: "Tension", options: ["12 V", "24 V", "230 V"] },
   { id: "stock", label: "Stock", options: ["En stock", "48h", "Sur commande"] },
 ];

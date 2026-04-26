@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const TIMELINE = [
-  { year: "2011", title: "Création IEF & Co", body: "Serrurerie, métallerie, maintenance multi-technique à Cormeilles-en-Parisis (95)." },
+  { year: "2011", title: "Création IEF & Co", body: "Serrurerie, métallerie, maintenance multi-technique à Groslay (95)." },
   { year: "2016", title: "Contrat bailleurs sociaux IDF", body: "Début des contrats cadres avec trois grands bailleurs du 92/93." },
   { year: "2020", title: "Atelier dédié automatismes", body: "Ouverture d'une cellule spécialisée motorisation portail." },
   { year: "2024", title: "Distribution AFCA / V2 officielle", body: "Signature du contrat distributeur France avec V2 Group." },
@@ -55,7 +55,7 @@ export default function AProposPage() {
             <p className="mt-8 max-w-2xl text-[17px] leading-relaxed text-fg-muted">
               AcceFerm Pro n'est pas un pure-player parachuté. C'est la division e-commerce d'IEF
               & Co, entreprise terrain de serrurerie, métallerie et maintenance multi-technique
-              fondée en 2011 à Cormeilles-en-Parisis. On pose, on dépanne, on maintient. Puis on
+              fondée en 2011 en Île-de-France. On pose, on dépanne, on maintient. Puis on
               vend le matériel qu'on a validé sur 3 000+ chantiers.
             </p>
           </div>

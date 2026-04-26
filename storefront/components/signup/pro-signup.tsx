@@ -129,7 +129,7 @@ export function ProSignup() {
                     </div>
                     {siretState === "valid" && (
                       <div className="mt-2 rounded-lg bg-signal-ok/10 px-3 py-2 font-mono text-[11px] text-signal-ok">
-                        ✓ INSEE · IEF & CO · 95240 Cormeilles-en-Parisis · NAF 43.21A
+                        ✓ INSEE · IEF & CO · 95410 Groslay · NAF 43.21A
                       </div>
                     )}
                   </label>

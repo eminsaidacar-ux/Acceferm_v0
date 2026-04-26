@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { CartProvider } from "@/components/cart/cart-context";
 import { CookieConsent } from "@/components/site/cookie-consent";
+import { PreviewBanner } from "@/components/site/preview-banner";
 import { PriceModeProvider } from "@/components/price-mode-context";
 import { display, sans } from "./fonts";
 import "./globals.css";
+
+const PREVIEW_MODE = process.env.NEXT_PUBLIC_PREVIEW_MODE === "true";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://acceferm.fr"),
@@ -38,7 +41,20 @@ export const metadata: Metadata = {
     description:
       "Plateforme d'approvisionnement pour installateurs de fermetures automatiques.",
   },
-  robots: { index: true, follow: true },
+  // En mode preview collaborateurs : noindex,nofollow strict pour éviter
+  // l'indexation accidentelle Google. Switch via NEXT_PUBLIC_PREVIEW_MODE.
+  robots: PREVIEW_MODE
+    ? {
+        index: false,
+        follow: false,
+        nocache: true,
+        googleBot: {
+          index: false,
+          follow: false,
+          noimageindex: true,
+        },
+      }
+    : { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
@@ -61,17 +77,18 @@ const organizationSchema = {
     name: "IEF & Co",
   },
   sameAs: [],
+  // TODO: numéros SAV/sales définitifs avant prod — placeholders pour preview
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+33-1-34-05-87-03",
+      telephone: "+33-1-XX-XX-XX-XX",
       contactType: "technical support",
       areaServed: "FR",
       availableLanguage: ["French"],
     },
     {
       "@type": "ContactPoint",
-      telephone: "+33-1-84-00-00-18",
+      telephone: "+33-1-XX-XX-XX-XX",
       contactType: "sales",
       areaServed: "FR",
       availableLanguage: ["French"],
@@ -84,14 +101,26 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   name: "AcceFerm Pro",
   image: "https://acceferm.fr/og-image.png",
+  url: "https://acceferm.fr",
+  telephone: "+33-1-XX-XX-XX-XX", // TODO: numéro SAV définitif avant prod
   address: {
     "@type": "PostalAddress",
     streetAddress: "8 Rue René Dubos",
     addressLocality: "Groslay",
     postalCode: "95410",
+    addressRegion: "Île-de-France",
     addressCountry: "FR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 49.0067,
+    longitude: 2.3598,
+  },
   priceRange: "€€",
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Île-de-France" },
+    { "@type": "AdministrativeArea", name: "France" },
+  ],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -129,6 +158,7 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Aller au contenu principal
         </a>
+        <PreviewBanner />
         <PriceModeProvider>
           <CartProvider>
             {children}

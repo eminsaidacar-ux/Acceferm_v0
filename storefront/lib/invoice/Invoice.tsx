@@ -305,7 +305,7 @@ export function Invoice(props: Props) {
           </Text>
           <Text style={{ marginTop: 2 }}>
             Paiement : CB Stripe · virement SEPA pro · Alma 3-4x · 30j à terme pour comptes pro
-            Gold validés. SAV technique : 01 84 XX XX 17.
+            Gold validés. SAV technique : 01 XX XX XX XX.
           </Text>
           {props.hash ? (
             <Text style={styles.hashLine}>

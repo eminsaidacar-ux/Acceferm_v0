@@ -24,7 +24,7 @@ export function Expertise() {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-fg/80 via-fg/30 to-transparent p-6">
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-bg/80">
-                  Atelier IEF & Co · Cormeilles-en-Parisis
+                  Atelier IEF & Co · Groslay
                 </p>
                 <p className="mt-2 font-display text-[26px] font-semibold leading-tight text-bg">
                   Expédition J+1

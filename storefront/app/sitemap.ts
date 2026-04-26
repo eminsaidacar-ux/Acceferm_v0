@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/pose-idf",
     "/contact",
     "/a-propos",
-    "/vs/accesso-ferm",
+    "/comparatif-centrales-achat",
     "/manifeste",
     "/normes",
     "/gabarits",

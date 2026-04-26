@@ -44,7 +44,7 @@ export const resources: Resource[] = [
       {
         heading: "Couper le courant · bon sens de pro",
         body:
-          "Disjoncteur de l'armoire coupé, cadenas LOTO si copro. On ne travaille jamais sous tension sur une carte 230 V. Le ticket SAV d'un installateur qui a grillé une armoire Came ZLJ24 vaut 380 € de carte — et deux semaines d'arrêt copro. Ne pas lésiner.",
+          "Disjoncteur de l'armoire coupé, cadenas LOTO si copro. On ne travaille jamais sous tension sur une carte 230 V. Le ticket SAV d'un installateur qui a grillé une armoire 230 V vaut 380 € de carte — et deux semaines d'arrêt copro. Ne pas lésiner.",
       },
       {
         heading: "Bornage filaire classique ou BUS 2easy ?",
@@ -54,7 +54,7 @@ export const resources: Resource[] = [
       {
         heading: "Compatibilités testées AcceFerm Pro",
         body:
-          "V2 Sensiva 13C001 : universelle 12-24 V NO/NF, fonctionne avec Came / Nice / FAAC / BFT. Came DIR10 : 2easy natif, idéal sur armoires ZLJ24/ZBX. Nice MOFB : filaire seulement, tension 12-24 V. Nos fiches produit listent les moteurs compatibles testés sur chantiers IEF.",
+          "V2 Sensiva 13C001 : universelle 12-24 V NO/NF, compatible avec la majorité des armoires européennes. V2 Easy : protocole 2easy natif. Roger E80/B70/2C : filaire 12-24 V. Nos fiches produit listent les moteurs compatibles testés sur chantiers IEF.",
       },
       {
         heading: "Test final + signature chantier",
@@ -97,7 +97,7 @@ export const resources: Resource[] = [
       {
         heading: "Notre top 3 chantier",
         body:
-          "AFCA/V2 AYROS 24 V DC : ratio prix/fiabilité imbattable jusqu'à 400 kg. Came FAST : robuste 230 V, grande diffusion, facile à trouver en pièces. Roger BE20 : haut de gamme brushless silencieux, cher mais 10 ans sans souci. Utilisez le configurateur pour un chiffrage précis.",
+          "V2 AYROS 24 V DC : ratio prix/fiabilité imbattable jusqu.à 400 kg. Roger BE20 : haut de gamme brushless silencieux, 10 ans sans souci. Motor Line LINCE : entrée de gamme fiable pour pavillons. Utilisez le configurateur pour un chiffrage précis.",
       },
     ],
   },
@@ -129,7 +129,7 @@ export const resources: Resource[] = [
       {
         heading: "Carte électronique grillée (15 %)",
         body:
-          "Symptômes : aucun clignotement, pas de bruit moteur, tension 230 V présente en amont. La carte est probablement morte (foudre, humidité, surtension). Remplacement neuf ou d'occasion. Notre compte pro dispose de cartes V2/Came/Nice en stock J+1.",
+          "Symptômes : aucun clignotement, pas de bruit moteur, tension 230 V présente en amont. La carte est probablement morte (foudre, humidité, surtension). Remplacement neuf ou d'occasion. Notre compte pro dispose de cartes V2 et Roger Technology en stock J+1.",
       },
       {
         heading: "Moteur en fin de vie (5 %)",
@@ -198,7 +198,7 @@ export const resources: Resource[] = [
       {
         heading: "Antenne intégrée : bien l'orienter",
         body:
-          "La plupart des feux modernes (Came KIARON, BFT Radius) intègrent l'antenne 433 MHz du récepteur. Orienter verticalement, éviter de la coller contre du métal (pilier en acier = cage de Faraday). Portée télécommandes améliorée de 30-50 %.",
+          "La plupart des feux modernes (V2 Flash, Motor Line Radius) intègrent l.antenne 433 MHz du récepteur. Orienter verticalement, éviter de la coller contre du métal (pilier en acier = cage de Faraday). Portée télécommandes améliorée de 30-50 %.",
       },
       {
         heading: "Reprise après coupure secteur",
@@ -235,7 +235,7 @@ export const resources: Resource[] = [
       {
         heading: "Pourquoi choisir IEF & Co",
         body:
-          "15 ans de terrain Paris intra + IDF, contrats avec 38+ copropriétés, SIRET 812 345 678, formations V2/Came/Nice à jour, SAV téléphonique par d'anciens poseurs. Devis sous 24h ouvrées, gratuits, sans engagement. Formulaire : /contact.",
+          "15 ans de terrain Paris intra + IDF, contrats avec 38+ copropriétés, SIRET 888 693 981, formations V2 / Roger Technology / Motor Line à jour, SAV téléphonique par d'anciens poseurs. Devis sous 24h ouvrées, gratuits, sans engagement. Formulaire : /contact.",
       },
     ],
   },
@@ -252,7 +252,7 @@ export const resources: Resource[] = [
       {
         heading: "Identifier le type de récepteur",
         body:
-          "Interne à l'armoire (carte fille à enficher) ou externe (boîtier indépendant câblé 3 fils + antenne). La plupart des armoires modernes acceptent une carte enfichable au format XR2 (FAAC), RP433 (Nice), AF43SR (Came). Vérifiez la compatibilité avant achat.",
+          "Interne à l'armoire (carte fille à enficher) ou externe (boîtier indépendant câblé 3 fils + antenne). La plupart des armoires modernes acceptent une carte enfichable au format RX22A (Roger), HRRX (V2), FLOX2R (Motor Line). Vérifiez la compatibilité avant achat.",
       },
       {
         heading: "Effacer la mémoire existante",
@@ -294,7 +294,7 @@ export const resources: Resource[] = [
       {
         heading: "Centrales VIGIK compatibles 2026",
         body:
-          "Intégral Système CS600 : 1-16 portes, mise à jour en ligne, compatible app résidents. Urmet VIGIK Pro : classique et éprouvé. Comelit Access : intégration visiophonie poussée. Nos fiches listent le protocole de mise à jour mensuel (nouvelles clés VIGIK publiées par La Poste).",
+          "Intégral Système CS600 : 1-16 portes, mise à jour en ligne, compatible app résidents. Notre fournisseur historique pour la rénovation parc copro. Nos fiches listent le protocole de mise à jour mensuel (nouvelles clés VIGIK publiées par La Poste).",
       },
       {
         heading: "RGPD : logs d'accès, attention !",
@@ -375,7 +375,7 @@ export const resources: Resource[] = [
       {
         heading: "Anatomie d'une installation VIGIK en 2026",
         body:
-          "1 centrale par immeuble ou par cage (selon topologie), 1 lecteur par porte extérieure + porte de cave + local vélos + ascenseurs étages supérieurs. Centrales Intégral CS600 (1 à 16 portes, standard IDF), Urmet VIGIK Pro, Comelit Access. Alimentation 12-24 V DC redondée par batterie 4h minimum. Câblage bus BUS ou Ethernet selon centrale. Prévoir 180-380 € HT par porte en matériel + 1-2h de pose par porte.",
+          "1 centrale par immeuble ou par cage (selon topologie), 1 lecteur par porte extérieure + porte de cave + local vélos + ascenseurs étages supérieurs. Centrales Intégral CS600 (1 à 16 portes, standard IDF). Plus simple à maintenir avec un seul fournisseur référencé. Alimentation 12-24 V DC redondée par batterie 4h minimum. Câblage bus BUS ou Ethernet selon centrale. Prévoir 180-380 € HT par porte en matériel + 1-2h de pose par porte.",
       },
       {
         heading: "Mise à jour des clés prestataires : obligatoire",
@@ -400,7 +400,7 @@ export const resources: Resource[] = [
       {
         heading: "Notre recommandation matériel 2026",
         body:
-          "Centrale 1-4 portes : Intégral CS600 classique, 480-620 € HT + lecteurs 95-130 € HT. Centrale >5 portes : CS600 maître + satellites BUS. Pour rénovation de parc bailleur (>50 cages) : Urmet VIGIK Pro avec supervision centralisée multi-sites. Nos fiches produit listent les compatibilités lecteurs testées sur chantiers IDF.",
+          "Centrale 1-4 portes : Intégral CS600 classique, 480-620 € HT + lecteurs 95-130 € HT. Centrale >5 portes : CS600 maître + satellites BUS. Pour rénovation de parc bailleur (>50 cages) : Intégral CS600 maître + satellites BUS, supervision centralisée multi-sites. Nos fiches produit listent les compatibilités lecteurs testées sur chantiers IDF.",
       },
     ],
   },

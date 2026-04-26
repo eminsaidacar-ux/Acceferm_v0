@@ -1,131 +1,70 @@
 import type { Metadata } from "next";
-import { ArrowUpRight, ChevronRight, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowRight, ChevronRight, MapPin, ShieldCheck } from "lucide-react";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
 
 export const metadata: Metadata = {
-  title: "Marques distribuées — Fermetures automatiques pro",
+  title: "Marques distribuées",
   description:
-    "Les 15 marques européennes que nous distribuons : V2/AFCA, Roger Technology, Nice, Came, FAAC, BFT, Intégral Système, Motor Line… Compatibilité testée sur 3 000+ chantiers IEF.",
+    "5 fabricants européens distribués par AcceFerm Pro avec contrat fournisseur confirmé : V2 (groupe AFCA), Roger Technology, Motor Line, Doorgate, Intégral Système. Compatibilité testée par IEF & Co.",
+  alternates: { canonical: "https://acceferm.fr/marques" },
 };
 
 type Brand = {
   name: string;
-  shape: string;
   origin: string;
   specialty: string;
   compat: string[];
   noPublicPrice?: boolean;
 };
 
+/**
+ * 5 marques avec contrat fournisseur confirmé (avril 2026).
+ * Toute autre marque mentionnée auparavant a été retirée — voir CLAUDE.md.
+ */
 const BRANDS: Brand[] = [
   {
-    name: "V2 · AFCA",
-    shape: "●",
+    name: "V2 (groupe AFCA)",
     origin: "Italie",
-    specialty: "Motorisations portails battants & coulissants. Référence distributeur France.",
-    compat: ["Armoires CITY1+", "AYROS", "FORTECO", "STARK"],
+    specialty:
+      "Motorisations portails battants et coulissants. Photocellules, télécommandes, feux. Distribution exclusive France via AFCA.",
+    compat: ["CITY1+", "AYROS", "FORTECO", "STARK", "SENSIVA"],
     noPublicPrice: true,
   },
   {
     name: "Roger Technology",
-    shape: "▲",
     origin: "Italie",
-    specialty: "Brushless silencieux, haute durée de vie. Idéal copropriétés.",
-    compat: ["BE20", "KR210", "H30", "SMARTY", "BR21/4000"],
+    specialty:
+      "Motorisations brushless silencieuses haute durée de vie, claviers IP65, récepteurs radio rolling-code. Idéal copropriétés et usage intensif.",
+    compat: ["BE20", "KR210", "H30", "SMARTY", "RX22A", "BR21/4000"],
     noPublicPrice: true,
   },
   {
-    name: "Nice",
-    shape: "■",
-    origin: "Italie",
-    specialty: "Catalogue généraliste, rolling-code premium, interphonie résidentielle.",
-    compat: ["ROBO 500/1000", "NAKED", "HINT 2", "FLOX2R"],
-  },
-  {
-    name: "Came",
-    shape: "◆",
-    origin: "Italie",
-    specialty: "Robuste 230V, grande diffusion IDF, pièces toujours en stock.",
-    compat: ["KRYNO", "BX-243", "BK 1800", "ATI 3000", "DIR10"],
-  },
-  {
-    name: "FAAC",
-    shape: "＋",
-    origin: "Italie",
-    specialty: "Motorisations enterrées haut de gamme, armoires pro.",
-    compat: ["C720", "S700H", "844 ER", "415 L", "XR2"],
-  },
-  {
-    name: "BFT",
-    shape: "●",
-    origin: "Italie",
-    specialty: "Opto-isolation native, bornes escamotables, barrières levantes.",
-    compat: ["ICARO", "ARES", "PHOBOS", "DEIMOS", "Radius", "Mitto 2"],
-  },
-  {
-    name: "Beninca",
-    shape: "▲",
-    origin: "Italie",
-    specialty: "Entrée de gamme fiable, bon rapport prix-qualité pour résidentiel.",
-    compat: ["Bob 50", "Bull 624", "JIM", "VN"],
-  },
-  {
     name: "Motor Line",
-    shape: "■",
     origin: "Portugal",
-    specialty: "Fabricant direct, prix agressifs sur volume, gamme 24V.",
-    compat: ["TREO", "MONTY", "LINCE", "SPY"],
+    specialty:
+      "Fabricant portugais — motorisations résidentielles, kits coulissants, accessoires radio. Très bon rapport qualité-prix sur les pavillons.",
+    compat: ["LINCE", "JAGUAR", "MERCURY", "FLOX2R"],
+  },
+  {
+    name: "Doorgate",
+    origin: "Portugal",
+    specialty:
+      "Importateur officiel France de Roger Technology et Motor Line. Logistique IDF, délais d'environ une semaine, support technique francophone.",
+    compat: ["DG-RES-300", "DG-IND-1000", "DG-COUL-600"],
   },
   {
     name: "Intégral Système",
-    shape: "◆",
     origin: "France",
-    specialty: "Contrôle d'accès VIGIK, interphonie GSM 4G, centrales multi-portes.",
-    compat: ["CS600 1-16 portes", "Interphone GSM", "Badges RFID"],
-  },
-  {
-    name: "Urmet",
-    shape: "＋",
-    origin: "Italie",
-    specialty: "VIGIK professionnel, visiophonie résidentielle et tertiaire.",
-    compat: ["VIGIK Pro", "Visiophone 4.3\"", "Centrale multi-sites"],
-  },
-  {
-    name: "Comelit",
-    shape: "●",
-    origin: "Italie",
-    specialty: "Intégration visio + contrôle d'accès poussée, app résidents.",
-    compat: ["Access", "Visiophonie Ultra", "Badges multi-techno"],
-  },
-  {
-    name: "Cisa",
-    shape: "▲",
-    origin: "Italie",
-    specialty: "Serrures électriques encastrées, ventouses magnétiques 300 kg.",
-    compat: ["Electroserrure 12V", "Ventouse 300 kg", "Gâche"],
-  },
-  {
-    name: "Cardin",
-    shape: "■",
-    origin: "Italie",
-    specialty: "Télécommandes rolling-code, récepteurs externes robustes.",
-    compat: ["S435", "S486", "TRQ", "Récepteurs 433 MHz"],
-  },
-  {
-    name: "Ditec Entrematic",
-    shape: "◆",
-    origin: "Italie",
-    specialty: "Portes automatiques, portes industrielles rapides.",
-    compat: ["Cross", "Dor", "Valor", "Traffic"],
-  },
-  {
-    name: "Hörmann",
-    shape: "＋",
-    origin: "Allemagne",
-    specialty: "Portes sectionnelles industrielles et résidentielles.",
-    compat: ["LPU 42", "SPU 40", "Motorisation ProMatic"],
+    specialty:
+      "Centrales VIGIK, claviers, badges, interphonie GSM 4G, ventouses magnétiques, serrures électriques. Cœur du pivot pro/industrie d'AcceFerm.",
+    compat: [
+      "CS600 1-16 portes",
+      "Interphone GSM 4G",
+      "Badges RFID",
+      "Ventouse 300 kg",
+    ],
   },
 ];
 
@@ -134,133 +73,117 @@ export default function MarquesPage() {
     <>
       <AnnouncementBar />
       <Nav />
-      <main>
-        <nav aria-label="Fil d'Ariane" className="border-b border-border-soft bg-bg-elev">
-          <div className="mx-auto flex max-w-7xl items-center gap-1 px-6 py-3 text-[12px] lg:px-8">
-            <a href="/" className="text-fg-muted transition hover:text-fg">Accueil</a>
-            <ChevronRight className="h-3 w-3 text-fg-faint" />
+      <main id="main">
+        <nav
+          aria-label="Fil d'Ariane"
+          className="border-b border-border-soft bg-bg-elev"
+        >
+          <div className="mx-auto flex max-w-7xl items-center gap-1 px-6 py-3 text-sm lg:px-8">
+            <a href="/" className="text-fg-muted transition hover:text-fg">
+              Accueil
+            </a>
+            <ChevronRight className="h-3 w-3 text-fg-muted" aria-hidden="true" />
             <span className="font-medium text-fg">Marques distribuées</span>
           </div>
         </nav>
 
-        <section className="border-b border-border-soft py-14 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-fg-muted">
-              {BRANDS.length} fabricants européens · compatibilité testée terrain
+        <section className="border-b border-border-soft py-16 lg:py-24">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <p className="text-sm font-medium uppercase tracking-wide text-accent">
+              {BRANDS.length} fabricants partenaires confirmés
             </p>
-            <h1 className="mt-6 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[96px]">
-              Les marques qu'on pose
-              <br />
-              <span className="italic font-medium text-peach">et qu'on dépanne.</span>
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-fg sm:text-5xl">
+              Les marques qu'on pose et qu'on dépanne.
             </h1>
-            <p className="mt-8 max-w-2xl text-[16px] leading-[1.65] text-fg-muted">
-              On ne liste pas ce qu'on a dans un catalogue : on liste ce qu'on a validé sur
-              chantier. Nos équipes IEF & Co ont posé au moins un exemplaire de chaque référence
-              ci-dessous en Île-de-France. Les compatibilités indiquées sont vérifiées, pas
-              théoriques.
+            <p className="prose-narrow mt-6 text-lg leading-relaxed text-fg-muted">
+              On ne liste pas ce qu'on a dans un catalogue : on liste ce qu'on a
+              validé sur chantier. Nos équipes IEF &amp; Co ont posé au moins un
+              exemplaire de chaque référence ci-dessous en Île-de-France. Les
+              compatibilités indiquées sont vérifiées, pas théoriques.
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a
-                href="/#configurateur"
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-[13px] font-medium text-accent-fg hover:bg-accent-hover"
-              >
-                Trouver un accessoire compatible
-              </a>
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="/configurer"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-[13px] text-fg hover:border-fg"
+                className="inline-flex min-h-12 items-center gap-2 rounded-md bg-accent px-6 text-base font-medium text-accent-fg btn-soft"
               >
-                Configurateur motorisation
+                Configurateur compatibilité
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="/catalogue/photocellules"
+                className="inline-flex min-h-12 items-center gap-2 rounded-md border border-border-soft bg-bg px-6 text-base font-medium text-fg transition hover:border-fg"
+              >
+                Voir le catalogue
               </a>
             </div>
           </div>
         </section>
 
-        {/* Brand cards */}
-        <section className="py-14 lg:py-20">
+        <section className="py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-px overflow-hidden rounded-3xl bg-border-soft sm:grid-cols-2 lg:grid-cols-3">
-              {BRANDS.map((b, i) => (
-                <article
-                  key={b.name}
-                  className="group flex flex-col gap-5 bg-bg p-7 transition hover:bg-bg-elev"
-                >
-                  <header className="flex items-start justify-between">
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-[28px] leading-none text-accent">{b.shape}</span>
-                        <h2 className="font-display text-[24px] font-semibold tracking-tight text-fg">
-                          {b.name}
-                        </h2>
-                      </div>
-                      <div className="mt-2 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
-                        <MapPin className="h-3 w-3" />
+            <ul className="grid gap-6 lg:grid-cols-2">
+              {BRANDS.map((b) => (
+                <li key={b.name}>
+                  <article className="flex h-full flex-col gap-5 rounded-md border border-border-soft bg-bg p-6">
+                    <header>
+                      <h2 className="font-display text-2xl font-semibold text-fg">
+                        {b.name}
+                      </h2>
+                      <p className="mt-2 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                        <MapPin className="h-3 w-3" aria-hidden="true" />
                         {b.origin}
-                      </div>
-                    </div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-subtle tabular">
-                      — {String(i + 1).padStart(2, "0")} / {String(BRANDS.length).padStart(2, "0")}
-                    </span>
-                  </header>
-
-                  <p className="text-[14px] leading-relaxed text-fg-muted">{b.specialty}</p>
-
-                  <div>
-                    <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-fg-subtle">
-                      Compatibilités testées
-                    </div>
-                    <ul className="flex flex-wrap gap-1.5">
-                      {b.compat.map((c) => (
-                        <li
-                          key={c}
-                          className="rounded-full border border-border-soft bg-bg-elev px-2.5 py-0.5 font-mono text-[11px] text-fg"
-                        >
-                          {c}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {b.noPublicPrice && (
-                    <div className="mt-auto flex items-start gap-2 rounded-xl border border-signal-warn/20 bg-signal-warn/5 p-3">
-                      <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-signal-warn" />
-                      <p className="font-mono text-[11px] leading-relaxed text-fg">
-                        Motorisations <strong>sur devis uniquement</strong> — clause contractuelle
-                        fabricant. Accessoires et pièces détachées à prix publics.
                       </p>
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+                    </header>
 
-        {/* CTA band */}
-        <section className="border-t border-border-soft bg-bg-elev py-16 lg:py-20">
-          <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-            <h2 className="font-display text-[36px] font-semibold leading-[1] tracking-[-0.02em] text-fg lg:text-[56px]">
-              Une marque manquante ?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-fg-muted">
-              On ouvre régulièrement de nouveaux comptes fabricant. Si vous avez un parc à
-              maintenir avec une marque non listée, écrivez-nous : on évalue en 48h.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                    <p className="prose-narrow text-base leading-relaxed text-fg-muted">
+                      {b.specialty}
+                    </p>
+
+                    <div>
+                      <p className="mb-2 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                        Compatibilités testées
+                      </p>
+                      <ul className="flex flex-wrap gap-2">
+                        {b.compat.map((c) => (
+                          <li
+                            key={c}
+                            className="rounded border border-border-soft bg-bg-elev px-2.5 py-1 text-xs font-medium text-fg"
+                          >
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {b.noPublicPrice && (
+                      <div className="mt-auto flex items-start gap-2 rounded-md border border-signal-warn/30 bg-signal-warn/5 p-3 text-sm">
+                        <ShieldCheck
+                          className="mt-0.5 h-4 w-4 shrink-0 text-signal-warn"
+                          aria-hidden="true"
+                        />
+                        <p className="text-fg">
+                          Motorisations <strong>sur devis uniquement</strong> —
+                          clause contractuelle fabricant. Accessoires à prix
+                          publics.
+                        </p>
+                      </div>
+                    )}
+                  </article>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10 rounded-md border border-border-soft bg-bg-elev p-5 text-sm text-fg-muted">
+              Catalogue en cours d'enrichissement — nouveaux partenariats
+              fabricants à venir. Si votre parc utilise une marque non listée,
               <a
                 href="/contact"
-                className="inline-flex items-center gap-1.5 rounded-full bg-accent px-6 py-3 text-[14px] font-medium text-accent-fg hover:bg-accent-hover"
+                className="ml-1 font-medium text-accent link-underline"
               >
-                Proposer une marque
-                <ArrowUpRight className="h-4 w-4" />
+                écrivez-nous
               </a>
-              <a
-                href="/a-propos"
-                className="inline-flex items-center gap-1.5 rounded-full border border-border px-6 py-3 text-[14px] text-fg hover:border-fg"
-              >
-                Notre approche IEF & Co
-              </a>
+              , on évalue les compatibilités sous 48 h.
             </div>
           </div>
         </section>

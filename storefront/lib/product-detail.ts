@@ -38,9 +38,10 @@ function enrich(p: Product): ProductDetail {
     },
     compatibility: [
       { brand: "V2", models: ["CITY1+", "FORTECO", "AYROS", "STARK"] },
-      { brand: "Came", models: ["KRYNO", "BX-243", "BK 1800"] },
-      { brand: "Nice", models: ["ROBO 500", "ROBO 1000", "NAKED"] },
-      { brand: "FAAC", models: ["C720", "S700H", "844 ER"] },
+      { brand: "Roger Technology", models: ["BE20", "KR210", "H30", "SMARTY"] },
+      { brand: "Motor Line", models: ["LINCE", "JAGUAR", "MERCURY"] },
+      { brand: "Doorgate", models: ["DG-RES-300", "DG-IND-1000"] },
+      { brand: "Intégral Système", models: ["CS600", "GSM-4G-2R"] },
     ],
     gallery,
     rating: { average: 4.8, count: 73 },

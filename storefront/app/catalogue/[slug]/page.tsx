@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
@@ -66,12 +67,14 @@ export default async function CategoryPage({
         {/* Category hero with image */}
         <section className="relative overflow-hidden border-b border-border-soft">
           <div className="absolute inset-0">
-            {/* biome-ignore lint/performance/noImgElement: hotlinked Unsplash */}
-            <img
+            <Image
               src={img(imagery[category.image], 1800, 600)}
               alt=""
-              loading="eager"
-              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              unoptimized
             />
             <div className="absolute inset-0 bg-gradient-to-r from-bg via-bg/90 to-bg/60" />
           </div>

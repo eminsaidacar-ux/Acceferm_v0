@@ -71,10 +71,9 @@ export function Hero() {
               </span>
             </li>
             <li className="flex items-center gap-2">
+              {/* TODO: numéro SAV définitif avant prod */}
               <Phone className="h-4 w-4 shrink-0 text-fg" aria-hidden="true" />
-              <span>
-                SAV humain — <strong className="font-medium text-fg">01 34 05 87 03</strong>
-              </span>
+              <span>SAV humain — <strong className="font-medium text-fg">01 XX XX XX XX</strong></span>
             </li>
             <li className="flex items-center gap-2">
               <Star

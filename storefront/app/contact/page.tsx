@@ -8,7 +8,7 @@ import { phoneLines } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact — AcceFerm Pro",
-  description: "Devis sous 24h, SAV technique joignable au 01 84 XX XX 17, atelier 95240 Cormeilles-en-Parisis.",
+  description: "Devis sous 24h, SAV technique joignable au 01 XX XX XX XX, atelier 95410 Groslay.",
 };
 
 export default function ContactPage() {
@@ -110,9 +110,9 @@ export default function ContactPage() {
                     Atelier
                   </div>
                   <p className="mt-3 text-[14px] text-fg">
-                    26 rue du Travers des Champs Guillaume
+                    8 Rue René Dubos
                     <br />
-                    95240 Cormeilles-en-Parisis
+                    95410 Groslay
                   </p>
                   <p className="mt-2 flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-fg-subtle">
                     <Clock className="h-3 w-3" />

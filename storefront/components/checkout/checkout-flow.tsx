@@ -133,7 +133,7 @@ export function CheckoutFlow() {
                   <Field label="Nom" />
                   <Field className="sm:col-span-2" label="Adresse" placeholder="N°, rue…" />
                   <Field label="Code postal" placeholder="95240" />
-                  <Field label="Ville" placeholder="Cormeilles-en-Parisis" />
+                  <Field label="Ville" placeholder="Groslay" />
                   <Field label="Téléphone chantier" placeholder="+33 6 12 34 56 78" />
                   <Field label="Email" placeholder="contact@exemple.fr" />
                   {customer === "pro" && (
@@ -399,8 +399,9 @@ export function CheckoutFlow() {
             </div>
             <p className="leading-relaxed">
               Expédition depuis notre atelier IEF & Co à <strong className="text-fg">95240
-              Cormeilles-en-Parisis</strong>. Pour toute question pendant la préparation : SAV
-              technique au <span className="font-mono text-fg">01 84 XX XX 17</span>.
+              Groslay</strong>. Pour toute question pendant la préparation : SAV
+              {/* TODO: numéro SAV définitif avant prod */}
+              technique au <span className="font-mono text-fg">01 XX XX XX XX</span>.
             </p>
           </div>
         </div>

@@ -1,6 +1,9 @@
 /**
  * Mini catalogue indexé par code fournisseur (nomenclature AcceFerm).
  * Utilisé par le module "Commande éclair" sur la home pour le lookup instantané.
+ *
+ * Marques présentes : V2, Roger Technology, Motor Line, Doorgate, Intégral
+ * Système — uniquement les 5 fournisseurs avec contrat confirmé (avril 2026).
  */
 
 export type CatalogSku = {
@@ -29,53 +32,69 @@ export const catalogByCode: Record<string, CatalogSku> = {
     stock: "ok",
     stockNote: "68 en stock",
   },
-  "FAAC-XR2": {
-    code: "FAAC-XR2",
-    brand: "FAAC",
-    name: "Récepteur radio 433 MHz bi-canal XR2",
-    priceHT: 76,
-    stock: "ok",
-    stockNote: "87 en stock",
-  },
-  "CAME-KIARON": {
-    code: "CAME-KIARON",
-    brand: "Came",
-    name: "Kiaron feu clignotant LED 230V",
+  "V2-FLASH": {
+    code: "V2-FLASH",
+    brand: "V2",
+    name: "Flash feu clignotant LED 230 V",
     priceHT: 32,
     stock: "ok",
     stockNote: "58 en stock",
   },
-  "ROGER-KB3": {
-    code: "ROGER-KB3",
-    brand: "Roger Technology",
-    name: "Clavier à codes IP65 filaire 2 relais",
-    priceHT: 89,
-    stock: "low",
-    stockNote: "4 restants · 48h",
-  },
-  "NICE-TOONA5": {
-    code: "NICE-TOONA5",
-    brand: "Nice",
-    name: "Barre palpeuse filaire 2 m EN 12453",
-    priceHT: 112,
-    stock: "backorder",
-    stockNote: "Commande sous 5j",
-  },
-  "BFT-MITTO2": {
-    code: "BFT-MITTO2",
-    brand: "BFT",
-    name: "Mitto 2 télécommande rolling-code 2 canaux",
+  "V2-HANDY": {
+    code: "V2-HANDY",
+    brand: "V2",
+    name: "Handy télécommande rolling-code 4 canaux",
     priceHT: 24,
     stock: "ok",
     stockNote: "210 en stock",
   },
+  "ROGER-RX22A": {
+    code: "ROGER-RX22A",
+    brand: "Roger Technology",
+    name: "RX22A récepteur radio 433 MHz bi-canal",
+    priceHT: 76,
+    stock: "ok",
+    stockNote: "87 en stock",
+  },
+  "ROGER-H85": {
+    code: "ROGER-H85",
+    brand: "Roger Technology",
+    name: "H85/TDR clavier à codes IP65 filaire 2 relais",
+    priceHT: 89,
+    stock: "low",
+    stockNote: "4 restants · 48 h",
+  },
+  "MOTORLINE-FLOX2R": {
+    code: "MOTORLINE-FLOX2R",
+    brand: "Motor Line",
+    name: "FLOX2R kit récepteur + 2 télécommandes",
+    priceHT: 84,
+    stock: "ok",
+    stockNote: "33 en stock",
+  },
+  "INTEGRAL-CS600": {
+    code: "INTEGRAL-CS600",
+    brand: "Intégral Système",
+    name: "CS600 centrale VIGIK 1 porte + résidents",
+    priceHT: 289,
+    stock: "low",
+    stockNote: "12 restants",
+  },
+  "INTEGRAL-SE12": {
+    code: "INTEGRAL-SE12",
+    brand: "Intégral Système",
+    name: "Serrure électrique encastrée 12 V",
+    priceHT: 118,
+    stock: "low",
+    stockNote: "18 restants",
+  },
 };
 
 export const sampleOrderInput = `V2-SE3 x2
-FAAC-XR2
-CAME-KIARON x3
-ROGER-KB3
-BFT-MITTO2 x5`;
+ROGER-RX22A
+V2-FLASH x3
+ROGER-H85
+V2-HANDY x5`;
 
 /**
  * Parse une saisie multi-lignes "CODE [xQTY]" en items avec quantités.

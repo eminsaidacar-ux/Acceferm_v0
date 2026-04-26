@@ -9,8 +9,8 @@ export function AnnouncementBar() {
           </span>
         </div>
         <div className="hidden items-center gap-6 md:flex">
-          <a href="tel:+33184000017" className="transition hover:text-fg">
-            SAV · 01 84 XX XX 17
+          <a href="#numero-a-confirmer" className="transition hover:text-fg">
+            SAV · 01 XX XX XX XX
           </a>
         </div>
       </div>

@@ -124,11 +124,11 @@ export default function PoseIdfPage() {
                 Demander un devis pose
               </a>
               <a
-                href="tel:+33184000019"
+                href="#numero-a-confirmer"
                 className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-[14px] text-fg hover:border-fg"
               >
                 <Phone className="h-4 w-4" />
-                01 84 XX XX 19
+                01 XX XX XX XX
               </a>
             </div>
           </div>

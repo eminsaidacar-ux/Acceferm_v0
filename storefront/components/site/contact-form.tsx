@@ -121,10 +121,10 @@ export function ContactForm() {
             Envoyer un autre message
           </button>
           <a
-            href="tel:+33184000017"
+            href="#numero-a-confirmer"
             className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-[13px] font-medium text-accent-fg hover:bg-accent-hover"
           >
-            Ou appeler le 01 84 XX XX 17
+            Ou appeler le 01 XX XX XX XX
             <ArrowRight className="h-3.5 w-3.5" />
           </a>
         </div>

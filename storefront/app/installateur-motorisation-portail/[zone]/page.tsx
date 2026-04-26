@@ -103,11 +103,11 @@ export default async function LocalZonePage({
                 Devis pose sous 24h
               </a>
               <a
-                href="tel:+33184000019"
+                href="#numero-a-confirmer"
                 className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-[14px] text-fg transition hover:border-fg"
               >
                 <Phone className="h-4 w-4" />
-                01 84 XX XX 19
+                01 XX XX XX XX
               </a>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default async function LocalZonePage({
                 </h2>
                 <p className="mt-5 max-w-md text-[15px] leading-relaxed text-fg-muted">
                   Liste non exhaustive. Si votre commune n'apparaît pas, on intervient quand même
-                  — appelez simplement le 01 84 XX XX 19 pour un devis.
+                  — appelez simplement le 01 XX XX XX XX pour un devis.
                 </p>
               </div>
               <div className="lg:col-span-7">

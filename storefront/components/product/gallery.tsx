@@ -1,10 +1,14 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Maximize2 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { img, imagery, type ImageKey } from "@/lib/images";
 
+/**
+ * Galerie produit — refonte 2026-04.
+ * Migration <img> → next/image, suppression motion (cosmétique).
+ */
 export function ProductGallery({
   items,
   alt,
@@ -17,7 +21,7 @@ export function ProductGallery({
 
   return (
     <div className="flex gap-3">
-      {/* Thumbnails column */}
+      {/* Thumbnails */}
       <div className="hidden w-16 shrink-0 flex-col gap-2 sm:flex">
         {items.map((k, i) => (
           <button
@@ -25,42 +29,46 @@ export function ProductGallery({
             key={`${k}-${i}`}
             onClick={() => setActive(i)}
             aria-label={`Vue ${i + 1}`}
-            className={[
-              "relative overflow-hidden rounded-lg border transition",
-              active === i ? "border-accent" : "border-border hover:border-fg",
-            ].join(" ")}
+            aria-pressed={active === i}
+            className={`relative aspect-square overflow-hidden rounded-md border transition ${
+              active === i
+                ? "border-accent"
+                : "border-border-soft hover:border-fg"
+            }`}
           >
-            {/* biome-ignore lint/performance/noImgElement: hotlinked Unsplash */}
-            <img
+            <Image
               src={img(imagery[k], 160, 160)}
               alt=""
+              width={160}
+              height={160}
+              className="h-full w-full object-cover"
               loading="lazy"
-              className="aspect-square w-full object-cover"
+              unoptimized
             />
           </button>
         ))}
       </div>
 
-      {/* Main image */}
-      <div className="relative flex-1 overflow-hidden rounded-2xl border border-border-soft bg-bg-soft">
-        <motion.img
+      {/* Main */}
+      <div className="relative aspect-square flex-1 overflow-hidden rounded-md border border-border-soft bg-bg-elev">
+        <Image
           key={current}
-          initial={{ opacity: 0, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
           src={img(imagery[current], 1200, 1200)}
           alt={alt}
-          loading="eager"
-          className="aspect-square w-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          priority
+          unoptimized
         />
         <button
           type="button"
-          aria-label="Agrandir"
-          className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-bg/90 text-fg shadow-sm backdrop-blur transition hover:bg-bg"
+          aria-label="Agrandir l'image"
+          className="absolute right-4 top-4 grid size-12 place-items-center rounded-full bg-bg/90 text-fg shadow-sm backdrop-blur transition hover:bg-bg"
         >
-          <Maximize2 className="h-4 w-4" />
+          <Maximize2 className="h-4 w-4" aria-hidden="true" />
         </button>
-        <div className="absolute bottom-4 left-4 rounded-full bg-bg/95 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-fg backdrop-blur">
+        <div className="absolute bottom-4 left-4 rounded bg-bg/95 px-2 py-1 text-xs font-medium tabular text-fg backdrop-blur">
           {active + 1} / {items.length}
         </div>
       </div>

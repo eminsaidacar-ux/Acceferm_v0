@@ -94,7 +94,7 @@ function Description({ product }: { product: ProductDetail }) {
       <p>
         Fabriqué en {product.origin}, livré en emballage d'origine avec notice multilingue. Compatible
         avec les armoires de commande listées dans l'onglet « Compatibilité ». Pour toute question
-        de câblage ou de programmation, nos techniciens IEF & Co sont joignables au 01 84 XX XX 17
+        de câblage ou de programmation, nos techniciens IEF & Co sont joignables au 01 XX XX XX XX
         du lundi au vendredi 8h-19h.
       </p>
       <p>
@@ -147,7 +147,7 @@ function Compat({ product }: { product: ProductDetail }) {
         Compatibilités testées par nos poseurs
       </h2>
       <p className="mt-2 text-[14px] text-fg-muted">
-        Liste non exhaustive. En cas de doute, contactez le SAV au 01 84 XX XX 17.
+        Liste non exhaustive. En cas de doute, contactez le SAV au 01 XX XX XX XX.
       </p>
       <div className="mt-6 space-y-3">
         {product.compatibility.map((row) => (

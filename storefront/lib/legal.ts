@@ -18,12 +18,12 @@ export const legalDocs: LegalDoc[] = [
       {
         title: "1. Identité du vendeur",
         body:
-          "AcceFerm Pro est opérée par IEF & Co, société immatriculée au RCS de Pontoise, SIRET 812 345 678 00012, TVA intra FR 12 812345678, siège social 26 rue du Travers des Champs Guillaume, 95240 Cormeilles-en-Parisis. Directeur de la publication : Emin Saidacar. Contact : contact@acceferm.fr · 01 84 XX XX 18.",
+          "AcceFerm Pro est opérée par IEF & Co, société immatriculée au RCS de Pontoise, SIRET 888 693 981, TVA intra FR 12 812345678, siège social 8 Rue René Dubos, 95410 Groslay. Directeur de la publication : Emin Saidacar. Contact : contact@acceferm.fr · 01 XX XX XX XX.",
       },
       {
         title: "2. Produits et stock",
         body:
-          "Les produits proposés sont neufs, d'origine fabricant, stockés à l'atelier de Cormeilles-en-Parisis. Le stock affiché est mis à jour toutes les 5 minutes. Certaines références de motorisation sont vendues uniquement sur devis, conformément aux clauses de nos partenaires fabricants.",
+          "Les produits proposés sont neufs, d'origine fabricant, stockés à l'atelier de Groslay. Le stock affiché est mis à jour toutes les 5 minutes. Certaines références de motorisation sont vendues uniquement sur devis, conformément aux clauses de nos partenaires fabricants.",
       },
       {
         title: "3. Prix & taxes",
@@ -58,7 +58,7 @@ export const legalDocs: LegalDoc[] = [
       {
         title: "9. SAV & médiation",
         body:
-          "SAV technique joignable au 01 84 XX XX 17 du lundi au vendredi 8h-19h. En cas de litige non résolu amiablement : Médiateur du e-commerce, 60 rue La Boétie 75008 Paris (www.mediateurfevad.fr).",
+          "SAV technique joignable au 01 XX XX XX XX du lundi au vendredi 8h-19h. En cas de litige non résolu amiablement : Médiateur du e-commerce, 60 rue La Boétie 75008 Paris (www.mediateurfevad.fr).",
       },
       {
         title: "10. Loi applicable",
@@ -76,7 +76,7 @@ export const legalDocs: LegalDoc[] = [
       {
         title: "Éditeur",
         body:
-          "AcceFerm Pro — marque exploitée par IEF & Co SARL, capital 50 000 €, RCS Pontoise 812 345 678, siège 26 rue du Travers des Champs Guillaume, 95240 Cormeilles-en-Parisis. Directeur de la publication : Emin Saidacar.",
+          "AcceFerm Pro — marque exploitée par IEF & Co SARL, capital 50 000 €, RCS Pontoise 812 345 678, siège 8 Rue René Dubos, 95410 Groslay. Directeur de la publication : Emin Saidacar.",
       },
       {
         title: "Hébergement",
@@ -172,7 +172,7 @@ export const legalDocs: LegalDoc[] = [
       {
         title: "À qui adresser ce formulaire",
         body:
-          "AcceFerm Pro — Service rétractation, 26 rue du Travers des Champs Guillaume, 95240 Cormeilles-en-Parisis. Email : retractation@acceferm.fr. Téléphone : 01 84 XX XX 17.",
+          "AcceFerm Pro — Service rétractation, 8 Rue René Dubos, 95410 Groslay. Email : retractation@acceferm.fr. Téléphone : 01 XX XX XX XX.",
       },
       {
         title: "Délai",
@@ -221,7 +221,7 @@ export const legalDocs: LegalDoc[] = [
       {
         title: "Comment activer la garantie",
         body:
-          "1. Appelez le SAV au 01 84 XX XX 17 ou ouvrez un ticket depuis votre Espace Pro. 2. Nous vous envoyons un numéro de retour prépayé. 3. Produit reçu + diagnostiqué sous 48h. 4. Remplacement ou remboursement sous 7 jours ouvrés.",
+          "1. Appelez le SAV au 01 XX XX XX XX ou ouvrez un ticket depuis votre Espace Pro. 2. Nous vous envoyons un numéro de retour prépayé. 3. Produit reçu + diagnostiqué sous 48h. 4. Remplacement ou remboursement sous 7 jours ouvrés.",
       },
     ],
   },

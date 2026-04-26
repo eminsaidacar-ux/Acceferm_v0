@@ -196,10 +196,10 @@ export default async function ResourceArticle({
                     Besoin immédiat ?
                   </div>
                   <a
-                    href="tel:+33184000017"
+                    href="#numero-a-confirmer"
                     className="mt-2 inline-flex items-center gap-1.5 text-[13px] font-medium text-fg hover:text-accent"
                   >
-                    SAV · 01 84 XX XX 17
+                    SAV · 01 XX XX XX XX
                   </a>
                 </div>
               </div>

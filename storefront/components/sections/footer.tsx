@@ -39,14 +39,14 @@ const COLUMNS = [
       { label: "Normes EN 12453", href: "/normes" },
       { label: "Glossaire", href: "/glossaire" },
       { label: "Gabarits pro", href: "/gabarits" },
-      { label: "Manifeste", href: "/manifeste" },
     ],
   },
   {
     title: "Entreprise",
     links: [
       { label: "IEF & Co", href: "/a-propos" },
-      { label: "vs Accesso-Ferm", href: "/vs/accesso-ferm" },
+      { label: "Manifeste", href: "/manifeste" },
+      { label: "Comparatif", href: "/comparatif-centrales-achat" },
       { label: "Contact", href: "/contact" },
       { label: "Mentions légales", href: "/legal/mentions-legales" },
       { label: "CGV", href: "/legal/cgv" },

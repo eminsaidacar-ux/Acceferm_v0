@@ -61,14 +61,14 @@ const PRODUCTS: SeedProduct[] = [
     reference: "AF-PHC-V2-SENSIVA",
     categorySlug: "photocellules",
     shortDescription:
-      "Paire d'émetteur + récepteur IR universelle 12-24 V AC/DC, NO/NF, portée 20 m. Compatible Came, Nice, FAAC, BFT.",
+      "Paire d'émetteur + récepteur IR universelle 12-24 V AC/DC, NO/NF, portée 20 m. Compatible avec la majorité des armoires italiennes et portugaises.",
     priceHT: 48,
     stock: 142,
     stockLabel: "142 en stock",
     isMotorisation: false,
     badge: "top",
     norms: ["EN 12453", "IP54"],
-    compatibleBrands: ["Came", "Nice", "FAAC", "BFT", "V2"],
+    compatibleBrands: ["V2", "Roger Technology", "Motor Line", "Doorgate", "Intégral Système"],
     specs: [
       { label: "Tension", value: "12-24 V AC/DC" },
       { label: "Portée", value: "20 m" },
@@ -97,9 +97,9 @@ const PRODUCTS: SeedProduct[] = [
   },
   {
     slug: "faac-xr2-recepteur-433-mhz",
-    name: "FAAC XR2 récepteur radio 433 MHz bi-canal",
-    brand: "FAAC",
-    reference: "AF-RCP-FAAC-XR2",
+    name: "Roger RX22A récepteur radio 433 MHz bi-canal",
+    brand: "Roger Technology",
+    reference: "AF-RCP-ROGER-RX22A",
     categorySlug: "recepteurs-radio",
     shortDescription:
       "Récepteur radio rolling-code 433,92 MHz, 2 canaux, 256 télécommandes mémorisables.",
@@ -108,7 +108,7 @@ const PRODUCTS: SeedProduct[] = [
     stockLabel: "87 en stock",
     isMotorisation: false,
     norms: ["CE", "RED 2014/53/UE"],
-    compatibleBrands: ["FAAC"],
+    compatibleBrands: ["Roger Technology"],
     specs: [
       { label: "Fréquence", value: "433,92 MHz" },
       { label: "Canaux", value: "2" },
@@ -117,8 +117,8 @@ const PRODUCTS: SeedProduct[] = [
   },
   {
     slug: "came-kiaron-feu-clignotant-led",
-    name: "Came Kiaron feu clignotant LED 230 V",
-    brand: "Came",
+    name: "V2 Flash feu clignotant LED 230 V",
+    brand: "V2",
     reference: "AF-FEU-CAME-KIARON",
     categorySlug: "feux-signalisations",
     shortDescription:
@@ -138,9 +138,9 @@ const PRODUCTS: SeedProduct[] = [
   },
   {
     slug: "bft-alimentation-24v-5a",
-    name: "BFT alimentation 24 V DC 5 A armoire",
-    brand: "BFT",
-    reference: "AF-ALIM-BFT-24-5A",
+    name: "V2 alimentation 24 V DC 5 A armoire",
+    brand: "V2",
+    reference: "AF-ALIM-V2-24-5A",
     categorySlug: "alimentation-batteries",
     shortDescription:
       "Alimentation stabilisée 24 V DC 5 A pour armoire motorisation, parafoudre intégré.",
@@ -157,8 +157,8 @@ const PRODUCTS: SeedProduct[] = [
   },
   {
     slug: "cisa-serrure-electrique-12v",
-    name: "Cisa serrure électrique encastrée 12 V",
-    brand: "Cisa",
+    name: "Intégral serrure électrique encastrée 12 V",
+    brand: "Intégral Système",
     reference: "AF-SER-CISA-12V",
     categorySlug: "serrures-electriques",
     shortDescription:
@@ -177,9 +177,9 @@ const PRODUCTS: SeedProduct[] = [
   },
   {
     slug: "bft-mitto-2-telecommande",
-    name: "BFT Mitto 2 télécommande rolling-code",
-    brand: "BFT",
-    reference: "AF-TLC-BFT-MITTO2",
+    name: "V2 Handy télécommande rolling-code",
+    brand: "V2",
+    reference: "AF-TLC-V2-HANDY",
     categorySlug: "recepteurs-radio",
     shortDescription:
       "Télécommande 2 canaux rolling-code 433 MHz, pile lithium CR2032 incluse.",
@@ -189,7 +189,7 @@ const PRODUCTS: SeedProduct[] = [
     isMotorisation: false,
     badge: "top",
     norms: ["CE", "RED 2014/53/UE"],
-    compatibleBrands: ["BFT"],
+    compatibleBrands: ["V2"],
     specs: [
       { label: "Fréquence", value: "433,92 MHz" },
       { label: "Canaux", value: "2" },
@@ -219,8 +219,8 @@ const PRODUCTS: SeedProduct[] = [
   // ═══ 4 promotions ═══
   {
     slug: "came-dir10-paire-photocellules",
-    name: "Came DIR10 paire photocellules 10 m",
-    brand: "Came",
+    name: "V2 Easy paire photocellules 10 m",
+    brand: "V2",
     reference: "AF-PHC-CAME-DIR10",
     categorySlug: "photocellules",
     shortDescription:
@@ -241,7 +241,7 @@ const PRODUCTS: SeedProduct[] = [
   {
     slug: "bft-radius-feu-230v",
     name: "BFT Radius feu clignotant 230 V + antenne",
-    brand: "BFT",
+    brand: "V2",
     reference: "AF-FEU-BFT-RADIUS",
     categorySlug: "feux-signalisations",
     shortDescription:
@@ -275,7 +275,7 @@ const PRODUCTS: SeedProduct[] = [
   {
     slug: "came-kit-batterie-secours-bx",
     name: "Came kit batterie secours BX armoire",
-    brand: "Came",
+    brand: "V2",
     reference: "AF-BAT-CAME-BX",
     categorySlug: "alimentation-batteries",
     shortDescription:
@@ -331,7 +331,7 @@ const PRODUCTS: SeedProduct[] = [
   {
     slug: "came-bx-243-coulissant",
     name: "Came BX-243 motorisation coulissant 600 kg",
-    brand: "Came",
+    brand: "V2",
     reference: "AF-MOT-CAME-BX243",
     categorySlug: "motorisation-coulissant",
     shortDescription:

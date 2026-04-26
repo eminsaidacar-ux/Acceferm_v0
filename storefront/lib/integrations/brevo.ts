@@ -168,7 +168,7 @@ function renderOrderEmailHtml(args: SendOrderConfirmationArgs): string {
           <div style="margin-top:48px;padding-top:24px;border-top:1px solid #e5dcc6;font-size:12px;color:#958b7c;line-height:1.6;">
             <strong style="color:#1a1814;">AcceFerm Pro</strong> — division e-commerce d'IEF & Co<br />
             8 Rue René Dubos, 95410 Groslay · SIRET 888 693 981<br />
-            SAV technique : <a href="tel:+33184000017" style="color:#e11021;">01 84 XX XX 17</a> · L-V 8h-19h
+            SAV technique : <a href="#numero-a-confirmer" style="color:#e11021;">01 XX XX XX XX</a> · L-V 8h-19h
           </div>
 
         </td></tr>
@@ -203,7 +203,7 @@ function renderOrderEmailText(args: SendOrderConfirmationArgs): string {
     "",
     `Voir ma commande : ${args.siteUrl}/pro`,
     "",
-    "AcceFerm Pro — IEF & Co · 01 84 XX XX 17",
+    "AcceFerm Pro — IEF & Co · 01 XX XX XX XX",
   ];
   return lines.filter(Boolean).join("\n");
 }

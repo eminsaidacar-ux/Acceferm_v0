@@ -61,10 +61,10 @@ export default async function CheckoutSuccessPage({ searchParams }: Props) {
                   Besoin d'aide ?
                 </div>
                 <a
-                  href="tel:+33184000017"
+                  href="#numero-a-confirmer"
                   className="mt-1 block font-mono text-[14px] font-semibold text-fg"
                 >
-                  01 84 XX XX 17
+                  01 XX XX XX XX
                 </a>
               </div>
             </div>

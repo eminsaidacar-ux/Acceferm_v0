@@ -3,9 +3,6 @@ import { withPayload } from "@payloadcms/next/withPayload";
 
 /**
  * Next.js 15 + Payload CMS 3.
- *
- * PPR, React Compiler et View Transitions sont canary-only — on les active
- * quand on bascule sur next@canary (ou sur un release stable qui les graduera).
  */
 const config: NextConfig = {
   reactStrictMode: true,
@@ -17,6 +14,21 @@ const config: NextConfig = {
   },
   experimental: {
     reactCompiler: false,
+  },
+  // Redirections 301 — anciennes URLs dépréciées
+  async redirects() {
+    return [
+      {
+        source: "/vs/accesso-ferm",
+        destination: "/comparatif-centrales-achat",
+        permanent: true,
+      },
+      {
+        source: "/vs/:path*",
+        destination: "/comparatif-centrales-achat",
+        permanent: true,
+      },
+    ];
   },
 };
 

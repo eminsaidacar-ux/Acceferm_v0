@@ -12,7 +12,7 @@ import { formatPrice } from "@/lib/utils";
 const SHIPPING_OPTIONS = [
   { id: "standard", label: "Livraison standard", time: "48h France", priceHT: 9.9 },
   { id: "express", label: "Livraison 24h IDF", time: "Demain avant 12h", priceHT: 14.9 },
-  { id: "pickup", label: "Retrait comptoir Cormeilles (95)", time: "Dès demain 10h", priceHT: 0 },
+  { id: "pickup", label: "Retrait comptoir Groslay (95)", time: "Dès demain 10h", priceHT: 0 },
 ];
 
 export function CartView() {
