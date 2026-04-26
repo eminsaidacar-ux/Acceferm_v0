@@ -1,63 +1,29 @@
-import { AnnouncementBar } from "@/components/sections/announcement-bar";
-import { BrandStrip } from "@/components/sections/brand-strip";
 import { CategoryGrid } from "@/components/sections/category-grid";
-import { CommandCenter } from "@/components/sections/command-center";
-import { CompatibilityFinder } from "@/components/sections/compatibility-finder";
-import { Comparison } from "@/components/sections/comparison";
-import { Expertise } from "@/components/sections/expertise";
-import { FinalCta } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
-import { IndexStrip } from "@/components/sections/index-strip";
 import { LiveCatalog } from "@/components/sections/live-catalog";
-import { Manifesto } from "@/components/sections/manifesto";
-import { MegaWordmark } from "@/components/sections/mega-wordmark";
 import { Nav } from "@/components/sections/nav";
-import { PainPoints } from "@/components/sections/pain-points";
-import { ProcessStrip } from "@/components/sections/process-strip";
-import { ProTiers } from "@/components/sections/pro-tiers";
-import { Promotions } from "@/components/sections/promotions";
-import { QuickOrder } from "@/components/sections/quick-order";
-import { ServicesGrid } from "@/components/sections/services-grid";
-import { Testimonials } from "@/components/sections/testimonials";
-import { TrustStrip } from "@/components/sections/trust-strip";
+import { TrustBlock } from "@/components/sections/trust-block";
 
+/**
+ * Home AcceFerm Pro — refonte épurée 2026-04.
+ *
+ * 5 sections maximum (brief Emin) :
+ * 1. Hero (titre + 2 CTA + bandeau confiance 4 items)
+ * 2. Catalogue 12 univers
+ * 3. Best-sellers 8 produits filtrables
+ * 4. Bloc confiance 3 colonnes
+ * 5. Footer
+ */
 export default function HomePage() {
   return (
     <>
-      <AnnouncementBar />
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
-        <IndexStrip />
-        <TrustStrip />
-        <BrandStrip />
-        <div id="live">
-          <CommandCenter />
-        </div>
-        <div id="categories">
-          <CategoryGrid />
-        </div>
-        <PainPoints />
-        <Promotions />
-        <QuickOrder />
-        <div id="best">
-          <LiveCatalog />
-        </div>
-        <CompatibilityFinder />
-        <ProcessStrip />
-        <div id="services">
-          <ServicesGrid />
-        </div>
-        <Testimonials />
-        <div id="metier">
-          <Expertise />
-        </div>
-        <Manifesto />
-        <ProTiers />
-        <Comparison />
-        <MegaWordmark />
-        <FinalCta />
+        <CategoryGrid />
+        <LiveCatalog />
+        <TrustBlock />
       </main>
       <Footer />
     </>

@@ -1,30 +1,39 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { ChevronRight, Menu, Search, ShoppingBag, X } from "lucide-react";
+import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { MegaMenu } from "@/components/sections/mega-menu";
+import { useCart } from "@/components/cart/cart-context";
 import { Logo } from "@/components/ui/logo";
 import { PriceToggle } from "@/components/ui/price-toggle";
 import { catalogTree } from "@/lib/catalog-tree";
 
 const SECONDARY = [
-  { label: "Configurateur motorisation", href: "/configurer" },
+  { label: "Configurer une motorisation", href: "/configurer" },
   { label: "Espace Pro", href: "/pro" },
   { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
-  { label: "Marques distribuées", href: "/marques" },
-  { label: "Installateur IDF", href: "/installateur-motorisation-portail/paris-75" },
-  { label: "Manifeste", href: "/manifeste" },
-  { label: "Normes EN", href: "/normes" },
-  { label: "Gabarits pro", href: "/gabarits" },
-  { label: "Glossaire technique", href: "/glossaire" },
-  { label: "À propos IEF & Co", href: "/a-propos" },
+  { label: "À propos · IEF & Co", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
-] as const;
+];
 
+const PRIMARY = [
+  { label: "Catalogue", href: "/catalogue/photocellules" },
+  { label: "Configurateur", href: "/configurer" },
+  { label: "Ressources", href: "/ressources" },
+  { label: "Espace Pro", href: "/pro" },
+];
+
+/**
+ * Nav sobre — refonte 2026-04.
+ *
+ * - Touch targets ≥ 48 × 48 px partout (audit UX a11y)
+ * - Cart badge dynamique depuis CartContext (avant : "3" hardcoded)
+ * - Pas de mega-menu surdimensionné en V0 — liens primaires simples
+ * - Drawer mobile : focus trap natif via inert
+ */
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { itemCount } = useCart();
 
   useEffect(() => {
     if (open) {
@@ -37,7 +46,7 @@ export function Nav() {
   }, [open]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -45,55 +54,65 @@ export function Nav() {
 
   return (
     <header
-      className={[
-        "sticky top-0 z-50 border-b transition-all duration-300",
+      className={`sticky top-0 z-40 border-b transition ${
         scrolled
-          ? "border-border-soft bg-bg/85 backdrop-blur-xl shadow-[0_2px_24px_-18px_rgba(42,36,30,0.25)]"
-          : "border-transparent bg-bg/60 backdrop-blur-md",
-      ].join(" ")}
+          ? "border-border-soft bg-bg/95 backdrop-blur"
+          : "border-transparent bg-bg"
+      }`}
     >
-      <div className="mx-auto max-w-[1440px] px-6 lg:px-8">
-        <div
-          className={[
-            "flex items-center justify-between transition-[height] duration-300",
-            scrolled ? "h-12" : "h-16",
-          ].join(" ")}
-        >
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-4">
           <a
             href="/"
-            aria-label="AcceFerm Pro — retour accueil"
-            className="group flex items-center gap-3"
+            aria-label="AcceFerm Pro — accueil"
+            className="flex shrink-0 items-center"
           >
             <Logo />
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle md:inline">
-              · Pro & Industrie
-            </span>
           </a>
 
-          <MegaMenu />
+          {/* Liens primaires desktop */}
+          <nav aria-label="Navigation principale" className="hidden lg:block">
+            <ul className="flex items-center gap-8 text-sm font-medium">
+              {PRIMARY.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-fg-muted transition hover:text-fg"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <div className="flex items-center gap-1">
             <PriceToggle className="hidden sm:flex" />
             <a
               href="/recherche"
-              aria-label="Recherche"
-              className="p-2 text-fg-muted transition hover:text-fg"
+              aria-label="Rechercher"
+              className="grid size-12 place-items-center text-fg-muted transition hover:text-fg"
             >
-              <Search className="h-[18px] w-[18px]" />
+              <Search className="size-5" aria-hidden="true" />
             </a>
             <a
               href="/panier"
-              aria-label="Panier"
-              className="relative p-2 text-fg-muted transition hover:text-fg"
+              aria-label={`Panier (${itemCount} ${itemCount > 1 ? "articles" : "article"})`}
+              className="relative grid size-12 place-items-center text-fg-muted transition hover:text-fg"
             >
-              <ShoppingBag className="h-[18px] w-[18px]" />
-              <span className="absolute right-1 top-1 grid h-4 w-4 place-items-center rounded-full bg-fg font-semibold text-[10px] text-accent-fg">
-                3
-              </span>
+              <ShoppingBag className="size-5" aria-hidden="true" />
+              {itemCount > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute right-1.5 top-1.5 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-xs font-semibold text-accent-fg"
+                >
+                  {itemCount}
+                </span>
+              )}
             </a>
             <a
               href="/pro"
-              className="ml-2 hidden items-center rounded-full bg-accent px-4 py-1.5 text-[13px] font-medium text-accent-fg transition hover:bg-accent-hover sm:inline-flex"
+              className="ml-2 hidden min-h-12 items-center rounded-md bg-accent px-4 text-sm font-medium text-accent-fg transition hover:bg-accent-hover sm:inline-flex"
             >
               Espace Pro
             </a>
@@ -101,131 +120,90 @@ export function Nav() {
               type="button"
               aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
               aria-expanded={open}
+              aria-controls="mobile-drawer"
               onClick={() => setOpen((o) => !o)}
-              className="p-2 text-fg-muted transition hover:text-fg lg:hidden"
+              className="grid size-12 place-items-center text-fg-muted transition hover:text-fg lg:hidden"
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {open ? (
+                <X className="size-5" aria-hidden="true" />
+              ) : (
+                <Menu className="size-5" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile drawer */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            key="overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-14 z-40 bg-fg/30 backdrop-blur-sm lg:hidden"
+      {/* Drawer mobile — natif <dialog> simulé via overlay */}
+      {open && (
+        <>
+          <button
+            type="button"
+            aria-label="Fermer le menu"
             onClick={() => setOpen(false)}
+            className="fixed inset-0 top-16 z-40 bg-fg/30 backdrop-blur-sm lg:hidden"
           />
-        )}
-        {open && (
-          <motion.div
-            key="drawer"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed right-0 top-14 bottom-0 z-50 w-full max-w-sm overflow-y-auto border-l border-border-soft bg-bg lg:hidden"
+          <div
+            id="mobile-drawer"
+            className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-border-soft bg-bg lg:hidden"
+            role="dialog"
+            aria-modal="true"
             aria-label="Menu mobile"
           >
             <div className="px-6 py-6">
-              <div className="flex items-center justify-between">
-                <PriceToggle />
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
-                  Basculer HT / TTC
-                </span>
-              </div>
-
-              <div className="mt-8">
-                <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
+              <PriceToggle />
+              <nav aria-label="Catalogue par famille" className="mt-6">
+                <p className="mb-3 text-xs font-medium uppercase tracking-wide text-fg-muted">
                   Catalogue · {catalogTree.length} familles
-                </div>
+                </p>
                 <ul className="space-y-1">
-                  {catalogTree.map((family) => (
+                  {catalogTree.slice(0, 8).map((family) => (
                     <li key={family.slug}>
-                      <details className="group">
-                        <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl px-3 py-3 text-[15px] font-medium text-fg transition hover:bg-bg-elev">
-                          <div className="flex flex-col">
-                            <span>{family.name}</span>
-                            <span className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-fg-subtle">
-                              {family.categories.length} catégories
-                            </span>
-                          </div>
-                          <ChevronRight className="h-4 w-4 text-fg-subtle transition group-open:rotate-90" />
-                        </summary>
-                        <ul className="mb-1 mt-1 space-y-0.5 border-l border-border-soft pl-3">
-                          {family.categories.map((cat) => (
-                            <li key={cat.slug}>
-                              <a
-                                href={`/catalogue/${cat.slug}`}
-                                className="flex items-center justify-between rounded-lg px-3 py-2 text-[13px] text-fg-muted transition hover:bg-bg-elev hover:text-fg"
-                                onClick={() => setOpen(false)}
-                              >
-                                <span>{cat.name}</span>
-                                <span className="font-mono text-[10px] text-fg-subtle">
-                                  {cat.subs.length}
-                                </span>
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </details>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mt-8">
-                <div className="mb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
-                  Services pro
-                </div>
-                <ul className="space-y-1">
-                  {SECONDARY.map((item) => (
-                    <li key={item.label}>
                       <a
-                        href={item.href}
-                        className="flex items-center justify-between rounded-xl px-3 py-3 text-[14px] text-fg-muted transition hover:bg-bg-elev hover:text-fg"
+                        href={`/catalogue/${family.categories[0]?.slug ?? "photocellules"}`}
                         onClick={() => setOpen(false)}
+                        className="flex min-h-12 items-center justify-between rounded-md px-3 text-base font-medium text-fg hover:bg-bg-elev"
                       >
-                        {item.label}
-                        <span className="font-mono text-fg-subtle">→</span>
+                        {family.name}
+                        <span className="text-xs text-fg-muted">
+                          {family.categories.length}
+                        </span>
                       </a>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </nav>
 
-              <div className="mt-8 rounded-2xl border border-border-soft bg-bg-elev p-4">
-                <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
-                  SAV technique
-                </div>
-                <a
-                  href="tel:+33184000017"
-                  className="mt-2 block font-mono text-[16px] font-semibold text-fg"
-                >
-                  01 84 XX XX 17
-                </a>
-                <div className="mt-1 font-mono text-[11px] text-fg-muted">
-                  Lundi-vendredi 8h-19h
-                </div>
-              </div>
+              <nav aria-label="Services pro" className="mt-8">
+                <p className="mb-3 text-xs font-medium uppercase tracking-wide text-fg-muted">
+                  Services
+                </p>
+                <ul className="space-y-1">
+                  {SECONDARY.map((item) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        onClick={() => setOpen(false)}
+                        className="flex min-h-12 items-center rounded-md px-3 text-base text-fg-muted hover:bg-bg-elev hover:text-fg"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
               <a
                 href="/compte-pro/nouveau"
                 onClick={() => setOpen(false)}
-                className="mt-8 flex w-full items-center justify-center rounded-full bg-accent py-3 text-[14px] font-medium text-accent-fg"
+                className="mt-8 flex min-h-12 w-full items-center justify-center rounded-md bg-accent text-base font-medium text-accent-fg"
               >
                 Créer un compte pro
               </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </>
+      )}
     </header>
   );
 }

@@ -2,9 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { CartProvider } from "@/components/cart/cart-context";
 import { CookieConsent } from "@/components/site/cookie-consent";
 import { PriceModeProvider } from "@/components/price-mode-context";
-import { StickyBottomBar } from "@/components/site/sticky-bottom-bar";
-import { CustomCursor } from "@/components/ui/custom-cursor";
-import { display, mono, sans, serif } from "./fonts";
+import { display, sans } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s · AcceFerm Pro",
   },
   description:
-    "Plateforme d'approvisionnement pour installateurs de fermetures automatiques. Catalogue pro, prix HT, livraison 24h Île-de-France, SAV technique, vidéo-assistance Assistéo. Opérée par IEF & Co, 15 ans de terrain.",
+    "Plateforme d'approvisionnement pour installateurs de fermetures automatiques. Catalogue pro, prix HT, livraison 24h Île-de-France, SAV technique. Par IEF & Co, 15 ans de terrain.",
   keywords: [
     "motorisation portail",
     "photocellule portail",
@@ -38,13 +36,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AcceFerm Pro",
     description:
-      "La plateforme d'approvisionnement pour installateurs de fermetures automatiques.",
+      "Plateforme d'approvisionnement pour installateurs de fermetures automatiques.",
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7f3e9",
+  themeColor: "#ffffff",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -66,7 +64,7 @@ const organizationSchema = {
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+33-1-84-00-00-17",
+      telephone: "+33-1-34-05-87-03",
       contactType: "technical support",
       areaServed: "FR",
       availableLanguage: ["French"],
@@ -88,9 +86,9 @@ const localBusinessSchema = {
   image: "https://acceferm.fr/og-image.png",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "26 rue du Travers des Champs Guillaume",
-    addressLocality: "Cormeilles-en-Parisis",
-    postalCode: "95240",
+    streetAddress: "8 Rue René Dubos",
+    addressLocality: "Groslay",
+    postalCode: "95410",
     addressCountry: "FR",
   },
   priceRange: "€€",
@@ -114,18 +112,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="fr"
-      className={`${sans.variable} ${display.variable} ${serif.variable} ${mono.variable}`}
-    >
+    <html lang="fr" className={`${sans.variable} ${display.variable}`}>
       <head>
-        {/* Clash Display — ITF signature font via Fontshare (alignement famille IEF & Co) */}
-        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
-        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
-        />
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD */}
         <script
           type="application/ld+json"
@@ -138,11 +126,12 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <CustomCursor />
+        <a href="#main" className="skip-link">
+          Aller au contenu principal
+        </a>
         <PriceModeProvider>
           <CartProvider>
             {children}
-            <StickyBottomBar />
             <CookieConsent />
           </CartProvider>
         </PriceModeProvider>

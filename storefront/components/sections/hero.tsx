@@ -1,238 +1,92 @@
-"use client";
-
-import { ArrowUpRight, CheckCircle2, Search, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { GateTwin } from "@/components/hero/gate-twin";
-import { Magnetic } from "@/components/ui/magnetic";
-import { Marquee } from "@/components/ui/marquee";
-import { TextReveal } from "@/components/ui/text-reveal";
-import { searchSuggestions } from "@/lib/data";
-
-const TECH_KEYWORDS = [
-  "VIGIK 4G",
-  "EN 12453",
-  "IP65",
-  "rolling-code 433 MHz",
-  "barre palpeuse",
-  "armoire 24V",
-  "photocellule",
-  "visio-interphone",
-  "sectionnelle industrielle",
-  "ventouse 300 kg",
-  "carte électronique",
-  "norme EN 13241-1",
-  "clavier codé",
-  "batterie secours",
-  "motorisation enterrée",
-];
+import { ArrowRight, CheckCircle2, Phone, Star, Truck } from "lucide-react";
 
 /**
- * Hero V5 — editorial magazine layout.
- * Mix serif/sans dans le titre, kinetic marquee technique, index stamp,
- * colonne droite = Digital Gate Twin (interactive).
+ * Hero épuré — refonte 2026-04.
+ *
+ * Cible : un installateur sur chantier doit comprendre la valeur, voir le CTA
+ * principal et le bandeau confiance en moins de 2 secondes sur mobile 4G.
+ *
+ * Structure : titre 1 ligne · sub 1 phrase · 2 CTA · bandeau confiance 4 items.
  */
 export function Hero() {
-  const [q, setQ] = useState("");
-  const [focused, setFocused] = useState(false);
-
-  const shown = q
-    ? searchSuggestions.filter((s) => s.q.toLowerCase().includes(q.toLowerCase())).slice(0, 5)
-    : searchSuggestions;
-
   return (
-    <section className="paper-texture grain relative overflow-hidden border-b border-border-soft bg-gradient-to-br from-bg via-bg to-warm-soft/40">
-      {/* Index stamp — top right, editorial magazine style */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-6 top-6 z-10 hidden select-none md:block lg:right-10 lg:top-10"
-      >
-        <div className="flex flex-col items-end gap-1">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-fg-subtle">
-            ISSUE · 01 — Pro & Industrie
-          </span>
-          <span className="chapter-num text-[84px] lg:text-[140px]">N°01</span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-fg-muted">
-            Printemps 2026
-          </span>
-        </div>
-      </div>
+    <section
+      aria-labelledby="hero-title"
+      className="relative border-b border-border-soft bg-bg"
+    >
+      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium uppercase tracking-wide text-accent">
+            Catalogue pro · 1 500 références
+          </p>
+          <h1
+            id="hero-title"
+            className="mt-4 font-display text-4xl font-semibold leading-[1.05] text-fg sm:text-5xl lg:text-6xl"
+          >
+            Le matériel de fermeture automatique,
+            <br />
+            <span className="text-accent">livré en 24 h en Île-de-France.</span>
+          </h1>
+          <p className="prose-narrow mt-6 text-lg leading-relaxed text-fg-muted">
+            Photocellules, motorisations, contrôle d'accès, VIGIK. Catalogue
+            sélectionné par les équipes IEF &amp; Co — 15 ans d'installation
+            terrain. Prix HT, paiement 30 jours pour les comptes pros validés.
+          </p>
 
-      {/* Carousel / blueprint marks at top, right-aligned IEF style */}
-      <div className="relative mx-auto max-w-[1440px] px-6 pt-6 lg:px-8 lg:pt-8">
-        <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-fg-muted">
-          <span className="inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent halo" />
-            06 / 07 · Live
-          </span>
-          <span className="hidden tabular md:inline">
-            ACCEFERM · REV.04 · ECH 1:100
-          </span>
-        </div>
-      </div>
-
-      <div className="relative mx-auto max-w-[1440px] px-6 pt-8 pb-16 lg:px-8 lg:pt-10 lg:pb-24">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Left column — editorial */}
-          <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft py-1 pl-1 pr-4 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-              <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] text-accent-fg">
-                Nouveau
-              </span>
-              Digital Gate Twin · inédit
-            </div>
-
-            <h1 className="mt-7 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.028em] text-fg sm:text-[76px] lg:text-[104px]">
-              <TextReveal stagger={0.09}>
-                <span>Cliquez sur votre</span>
-                <span>
-                  portail.{" "}
-                  <span className="italic font-medium text-peach">
-                    On livre
-                  </span>
-                </span>
-                <span>
-                  <span className="italic font-medium text-peach">
-                    les pièces.
-                  </span>
-                </span>
-              </TextReveal>
-            </h1>
-
-            <p className="mt-8 max-w-lg text-[16px] leading-relaxed text-fg-muted">
-              Un schéma interactif qui recense les 8 composants d'une motorisation. Survolez,
-              cliquez, on liste les pièces compatibles — en stock, à votre adresse demain. Zéro
-              lecture de notice, zéro errance catalogue.
-            </p>
-
-            {/* Search bar */}
-            <form action="/recherche" method="get" className="relative mt-8">
-              <div
-                className={[
-                  "flex items-center gap-3 rounded-2xl border bg-bg-elev px-4 py-3 transition",
-                  focused
-                    ? "border-accent shadow-[0_8px_32px_-12px_rgba(168,62,30,0.25)]"
-                    : "border-border",
-                ].join(" ")}
-              >
-                <Search className="h-5 w-5 shrink-0 text-fg-muted" />
-                <input
-                  type="search"
-                  name="q"
-                  value={q}
-                  onChange={(e) => setQ(e.target.value)}
-                  onFocus={() => setFocused(true)}
-                  onBlur={() => setTimeout(() => setFocused(false), 120)}
-                  placeholder="… ou cherchez par marque, référence, symptôme"
-                  className="min-w-0 flex-1 bg-transparent text-[15px] text-fg placeholder:text-fg-subtle focus:outline-none"
-                  aria-label="Recherche catalogue"
-                />
-                <kbd className="hidden shrink-0 rounded-md border border-border bg-bg px-1.5 py-0.5 font-mono text-[11px] text-fg-muted sm:inline-block">
-                  ⌘ K
-                </kbd>
-              </div>
-
-              {focused && (
-                <div className="absolute left-0 right-0 top-full z-20 mt-2 overflow-hidden rounded-2xl border border-border bg-bg shadow-[0_20px_48px_-16px_rgba(0,0,0,0.2)]">
-                  <div className="border-b border-border-soft px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-subtle">
-                    {q ? "Suggestions" : "Recherches récentes"}
-                  </div>
-                  {shown.map((s) => (
-                    <a
-                      key={s.q}
-                      href={`/recherche?q=${encodeURIComponent(s.q)}`}
-                      className="flex w-full items-center justify-between px-5 py-2.5 text-left transition hover:bg-bg-elev"
-                    >
-                      <span className="flex items-center gap-3 text-[14px] text-fg">
-                        <Search className="h-3.5 w-3.5 text-fg-subtle" />
-                        {s.q}
-                      </span>
-                      <span className="font-mono text-[11px] text-fg-subtle">{s.count}</span>
-                    </a>
-                  ))}
-                  <div className="border-t border-border-soft bg-bg-elev px-5 py-2.5 font-mono text-[11px] text-fg-muted">
-                    <Sparkles className="mr-1.5 inline h-3 w-3 text-accent" />
-                    Astuce : collez vos codes dans « Commande éclair » plus bas.
-                  </div>
-                </div>
-              )}
-            </form>
-
-            {/* Trust line */}
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[12.5px] text-fg-muted">
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-signal-ok" /> Paiement 30j pro
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-signal-ok" /> Livraison 24h IDF
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-signal-ok" /> SAV humain
-              </span>
-            </div>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Magnetic strength={0.32}>
-                <a
-                  href="/compte-pro/nouveau"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-accent px-7 py-3.5 text-[13px] font-medium text-accent-fg transition hover:bg-accent-hover btn-soft"
-                >
-                  Créer un compte pro
-                </a>
-              </Magnetic>
-              <Magnetic strength={0.22}>
-                <a
-                  href="/configurer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg/50 px-7 py-3.5 text-[13px] text-fg transition hover:border-accent hover:text-accent"
-                >
-                  Configurer une motorisation
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </Magnetic>
-            </div>
-          </div>
-
-          {/* Right column — Digital Gate Twin */}
-          <div className="lg:col-span-6">
-            <div className="blueprint-frame relative rounded-lg border border-border-soft/60 bg-bg/40 p-3 lg:p-4">
-              {/* Blueprint overlay: revision, scale, norm */}
-              <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-4 lg:p-6">
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-fg-subtle">
-                    BUREAU D'ÉTUDE · ACCEFERM — ATELIER — POSE
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-accent">
-                    EN 12453 · EXC2
-                  </span>
-                </div>
-                <div className="flex items-end justify-between">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-fg-subtle">
-                    IEF & CO · DIV. ACCEFERM
-                  </span>
-                  <span className="font-mono text-[9px] tabular uppercase tracking-[0.25em] text-fg-subtle">
-                    REV.04 · ECH 1:100
-                  </span>
-                </div>
-              </div>
-              <GateTwin />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Kinetic marquee — technical vocabulary, peach italic IEF signature */}
-      <div className="relative mt-2 border-y border-border-soft bg-bg-elev/60 py-6 lg:py-8">
-        <Marquee speed="slow" fade>
-          {TECH_KEYWORDS.map((kw) => (
-            <span
-              key={kw}
-              className="kinetic-word text-[40px] font-medium leading-none text-fg-muted lg:text-[64px]"
-              style={{ fontStyle: "italic", fontFamily: "var(--font-display)" }}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/catalogue/photocellules"
+              className="inline-flex min-h-12 items-center gap-2 rounded-md bg-accent px-6 text-base font-medium text-accent-fg transition hover:bg-accent-hover btn-soft"
             >
-              {kw}
-              <span className="mx-6 text-accent">·</span>
-            </span>
-          ))}
-        </Marquee>
+              Voir le catalogue
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href="/compte-pro/nouveau"
+              className="inline-flex min-h-12 items-center gap-2 rounded-md border border-border-soft bg-bg px-6 text-base font-medium text-fg transition hover:border-fg"
+            >
+              Créer un compte pro
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bandeau confiance — 4 items max */}
+      <div className="border-t border-border-soft bg-bg-elev">
+        <div className="mx-auto max-w-7xl px-6 py-5 lg:px-8">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm text-fg-muted lg:grid-cols-4">
+            <li className="flex items-center gap-2">
+              <Truck className="h-4 w-4 shrink-0 text-fg" aria-hidden="true" />
+              <span>
+                Livraison <strong className="font-medium text-fg">24 h IDF</strong>
+              </span>
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2
+                className="h-4 w-4 shrink-0 text-fg"
+                aria-hidden="true"
+              />
+              <span>
+                Paiement <strong className="font-medium text-fg">30 j pro</strong>
+              </span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 shrink-0 text-fg" aria-hidden="true" />
+              <span>
+                SAV humain — <strong className="font-medium text-fg">01 34 05 87 03</strong>
+              </span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Star
+                className="h-4 w-4 shrink-0 fill-signal-warn text-signal-warn"
+                aria-hidden="true"
+              />
+              <span>
+                <strong className="font-medium text-fg">4,9 / 5</strong> · 487 avis Google
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
   );
