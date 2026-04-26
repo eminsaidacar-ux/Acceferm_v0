@@ -10,17 +10,16 @@ const BASE = "https://acceferm.fr";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
+  // Pages publiques uniquement. /pro, /panier, /commande, /compte-pro
+  // sont disallow dans robots.ts donc absents du sitemap (cohérence).
   const staticRoutes = [
     "",
     "/configurer",
     "/ressources",
-    "/pro",
     "/pose-idf",
     "/contact",
     "/a-propos",
     "/vs/accesso-ferm",
-    "/recherche",
-    "/compte-pro/nouveau",
     "/manifeste",
     "/normes",
     "/gabarits",
