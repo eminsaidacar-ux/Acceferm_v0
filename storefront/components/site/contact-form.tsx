@@ -2,12 +2,13 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowRight, CheckCircle2, Loader2, Paperclip, X } from "lucide-react";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const SUBJECTS = [
   "Devis motorisation",
   "Devis accessoires / commande groupée",
+  "Contrat de maintenance",
   "Question SAV · panne",
   "Création de compte pro / grilles tarifaires",
   "Partenariat fabricant / distribution",
@@ -44,6 +45,21 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [attachments, setAttachments] = useState<string[]>([]);
+
+  // Pré-sélectionne le sujet si l'URL contient ?sujet=… (deep-link
+  // depuis /assisteo-maintenance et autres CTA externes).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const sujet = new URLSearchParams(window.location.search).get("sujet");
+    if (!sujet) return;
+    if (sujet.startsWith("maintenance")) {
+      setData((d) => ({ ...d, subject: "Contrat de maintenance" }));
+    } else if (sujet === "motorisation" || sujet === "devis-motorisation") {
+      setData((d) => ({ ...d, subject: "Devis motorisation" }));
+    } else if (sujet === "sav") {
+      setData((d) => ({ ...d, subject: "Question SAV · panne" }));
+    }
+  }, []);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setData((d) => ({ ...d, [key]: value }));
