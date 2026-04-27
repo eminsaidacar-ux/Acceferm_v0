@@ -46,7 +46,7 @@ export function AssisteoFaq() {
     >
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-fg-muted">
-          Section D · questions fréquentes
+          Questions fréquentes
         </p>
         <h2
           id="faq-title"

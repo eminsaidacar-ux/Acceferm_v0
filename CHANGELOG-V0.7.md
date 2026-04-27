@@ -1,5 +1,22 @@
 # Changelog v0.7 — pages dédiées + ré-intégrations sobres
 
+## v0.7.1 — Patch grille tarifaire maintenance (27 avril 2026)
+
+Correction ciblée `/assisteo-maintenance` après remontée de la vraie grille IEF & CO (validée par 2 contrats clients réels : HFC Technics, UNIVAR Solutions).
+
+- **Renommage Premium → Sérénité** (libellé carte, query param `?sujet=maintenance-serenite`, ContactForm couvre déjà via `startsWith("maintenance")`).
+- **Section B — Cadre réglementaire** ajoutée entre vidéo-assistance et formules : Arrêté du 21/12/1993 art. 9, Code du travail R4224-12, Norme EN 13241, Norme EN 13269.
+- **Vraie grille tarifaire** intégrée dans 3 cartes formules : Essentiel dès 147 €, Confort dès 268 € (badge ★ Recommandé), Sérénité dès 537 €. Sous-titres, bullets exacts, footer exclusions.
+- **Section D — Calculateur tarifaire interactif** : 9 équipements × 3 formules avec recalcul live, gestion `null` (formule indispo), dégressivité multi-équipements (−5 % à partir de 2 unités, −10 % à partir de 4). Données + helpers extraits dans `lib/maintenance-pricing.ts`.
+- **Section E — Déroulement du contrat** : 4 étapes (audit / QR Code Confort+Sérénité / 2ᵉ visite / suivi).
+- **Question 1 d'arbitrage v0.7 résolue** (tarifs définitifs maintenance fournis). Restent 2 questions ouvertes : logos officiels marques + calendrier Assistéo.
+- **Composants ajoutés** : `regulatory-section.tsx` (97 L), `pricing-calculator.tsx` (143 L), `calc-result-card.tsx` (80 L), `process-section.tsx` (75 L). `lib/maintenance-pricing.ts` (85 L).
+- **Build prod** : `✓ 379 pages · 0 erreur TS · /assisteo-maintenance 2.38 kB / 166 kB First Load · 18.5 s`.
+
+---
+
+## v0.7 — pages dédiées + ré-intégrations sobres
+
 Branche `iteration-v07-2026-04` · 27 avril 2026 · 6 commits.
 
 ## Ajouts
@@ -29,11 +46,12 @@ Branche `iteration-v07-2026-04` · 27 avril 2026 · 6 commits.
 
 Non mesuré (session CLI sans navigateur). Estimations : Home 88-92 / 95-98 / 92-96 ; `/configurateur` 92-95 / 95-98 / 92-96 ; `/assisteo-maintenance` 95-98 / 95-98 / 95-98. Mesure réelle (Emin) : `cd storefront && npm run build && npm run start` + Lighthouse Chrome DevTools mobile + desktop.
 
-## 3 questions à Emin
+## 2 questions ouvertes à Emin (3ᵉ résolue par v0.7.1)
 
-1. **Tarifs définitifs maintenance** (`XXX € HT/an · à confirmer` dans `contracts-section.tsx`) — à fournir avant prod.
-2. **Logos officiels 5 marques** — à déposer dans `storefront/public/logos/`, remplacer `BrandPlaceholder` par `next/image` dans `brand-strip.tsx`.
-3. **Calendrier réservation Assistéo** — CTA pointe vers `#numero-a-confirmer`, brancher Cal.com / Calendly / outil interne (commenté TODO).
+1. **Logos officiels 5 marques** — à déposer dans `storefront/public/logos/`, remplacer `BrandPlaceholder` par `next/image` dans `brand-strip.tsx`.
+2. **Calendrier réservation Assistéo** — CTA pointe vers `#numero-a-confirmer`, brancher Cal.com / Calendly / outil interne (commenté TODO).
+
+~~Tarifs définitifs maintenance~~ — **résolu en v0.7.1** (vraie grille IEF & CO intégrée).
 
 ## Build prod final
 

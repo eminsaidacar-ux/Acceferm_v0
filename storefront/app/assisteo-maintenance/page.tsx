@@ -3,13 +3,16 @@ import { CalendarClock, ChevronRight, Headphones, MonitorPlay } from "lucide-rea
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { AssisteoFaq } from "@/components/assisteo/assisteo-faq";
 import { ContractsSection } from "@/components/assisteo/contracts-section";
+import { PricingCalculator } from "@/components/assisteo/pricing-calculator";
+import { ProcessSection } from "@/components/assisteo/process-section";
+import { RegulatorySection } from "@/components/assisteo/regulatory-section";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
 
 export const metadata: Metadata = {
-  title: "Assistéo & Maintenance — vidéo-assistance + 3 contrats",
+  title: "Assistéo & Maintenance — obligation légale + 3 contrats",
   description:
-    "Vidéo-assistance Assistéo offerte dès 300 € HT de motorisation. Contrats de maintenance Essentiel / Confort / Premium pour syndics et property managers.",
+    "Maintenance obligatoire des fermetures motorisées (Arrêté 21/12/1993). Contrats Essentiel dès 147 € HT/an, Confort, Sérénité. Vidéo-assistance Assistéo offerte.",
   alternates: { canonical: "/assisteo-maintenance" },
 };
 
@@ -32,13 +35,16 @@ const VISIO_STEPS = [
 ];
 
 /**
- * /assisteo-maintenance — vidéo-assistance + contrats de maintenance (v0.7).
+ * /assisteo-maintenance — vidéo-assistance + cadre légal + contrats (v0.7.1).
  *
- * 4 sections :
+ * 5 sections numérotées + cross-link + FAQ :
  *  A. Vidéo-assistance Assistéo (3 étapes + CTA réservation)
- *  B. Contrats de maintenance (composant ContractsSection — 3 formules)
- *  C. Cross-link configurateur visuel
- *  D. FAQ Assistéo (composant AssisteoFaq — 5 questions + FAQPage JSON-LD)
+ *  B. Cadre réglementaire (Arrêté 21/12/1993 + EN 13241/13269)
+ *  C. Contrats de maintenance (3 formules Essentiel / Confort / Sérénité)
+ *  D. Calculateur tarifaire (9 équipements × 3 formules + dégressivité)
+ *  E. Déroulement du contrat (4 étapes : audit / QR Code / 2ᵉ visite / suivi)
+ *  + Cross-link configurateur visuel
+ *  + FAQ Assistéo (FAQPage JSON-LD)
  */
 export default function AssisteoMaintenancePage() {
   return (
@@ -118,16 +124,25 @@ export default function AssisteoMaintenancePage() {
           </div>
         </section>
 
-        {/* Section B — Contrats de maintenance */}
+        {/* Section B — Cadre réglementaire */}
+        <RegulatorySection />
+
+        {/* Section C — Contrats de maintenance (3 formules) */}
         <ContractsSection />
 
-        {/* Section C — Cross-link configurateur */}
+        {/* Section D — Calculateur tarifaire */}
+        <PricingCalculator />
+
+        {/* Section E — Déroulement du contrat */}
+        <ProcessSection />
+
+        {/* Cross-link configurateur */}
         <section className="border-t border-border-soft bg-bg-elev py-12 lg:py-16">
           <div className="mx-auto max-w-5xl px-6 lg:px-8">
             <div className="rounded-2xl border border-border-soft bg-bg p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
               <div className="max-w-xl">
                 <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-fg-muted">
-                  Section C · besoin d'aide ?
+                  Besoin d'aide ?
                 </p>
                 <p className="mt-2 text-[16px] leading-relaxed text-fg">
                   Pas sûr du composant en panne ou à remplacer ? Notre configurateur
