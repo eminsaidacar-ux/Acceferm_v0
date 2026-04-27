@@ -7,19 +7,25 @@ import { Logo } from "@/components/ui/logo";
 import { PriceToggle } from "@/components/ui/price-toggle";
 import { catalogTree } from "@/lib/catalog-tree";
 
-const SECONDARY = [
-  { label: "Configurer une motorisation", href: "/configurer" },
+// Nav primaire v0.7 — 5 onglets exacts (brief Emin) :
+// Catalogue · Configurateur · Assistéo & Maintenance · Espace Pro · Contact.
+const PRIMARY = [
+  { label: "Catalogue", href: "/catalogue/photocellules" },
+  { label: "Configurateur", href: "/configurateur" },
+  { label: "Assistéo & Maintenance", href: "/assisteo-maintenance" },
   { label: "Espace Pro", href: "/pro" },
-  { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
-  { label: "À propos · IEF & Co", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ];
 
-const PRIMARY = [
-  { label: "Catalogue", href: "/catalogue/photocellules" },
-  { label: "Configurateur", href: "/configurer" },
-  { label: "Ressources", href: "/ressources" },
-  { label: "Espace Pro", href: "/pro" },
+// Liens secondaires (drawer mobile uniquement) — pas redondants avec PRIMARY.
+// "Espace Pro" et "Contact" retirés (déjà en PRIMARY).
+// "Devis motorisation" pointe vers /configurer (wizard 5 questions),
+// outil distinct du /configurateur visuel multi-fermetures.
+const SECONDARY = [
+  { label: "Devis motorisation (5 questions)", href: "/configurer" },
+  { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
+  { label: "Ressources & guides", href: "/ressources" },
+  { label: "À propos · IEF & Co", href: "/a-propos" },
 ];
 
 /**
@@ -72,7 +78,7 @@ export function Nav() {
 
           {/* Liens primaires desktop */}
           <nav aria-label="Navigation principale" className="hidden lg:block">
-            <ul className="flex items-center gap-8 text-sm font-medium">
+            <ul className="flex items-center gap-6 text-sm font-medium xl:gap-8">
               {PRIMARY.map((item) => (
                 <li key={item.href}>
                   <a
