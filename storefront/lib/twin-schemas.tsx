@@ -84,13 +84,13 @@ const coulissantSchema: TwinSchema = {
   ),
   hotspots: [
     { id: "motor", number: 1, label: "Motorisation coulissante", shortLabel: "Motorisation", position: { x: 760, y: 458 }, anchor: { x: 820, y: 220 }, description: "Moteur 230 V ou 24 V pour portail coulissant jusqu'à 800 kg.", productSlugs: [], count: "84 réf sur devis", priceFrom: "dès 289 € HT" },
-    { id: "photocells", number: 2, label: "Photocellules de sécurité", shortLabel: "Photocellules", position: { x: 75, y: 350 }, anchor: { x: 130, y: 150 }, description: "Paire filaire ou BUS 2easy. Portée 10 à 30 m.", productSlugs: ["v2-sensiva-photocellules-paire", "came-dir10-paire-photocellules"], count: "124 réf en stock", priceFrom: "dès 32 € HT" },
-    { id: "flashing", number: 3, label: "Feu clignotant orange", shortLabel: "Feu clignotant", position: { x: 440, y: 225 }, anchor: { x: 560, y: 95 }, description: "LED 230 V ou 24 V, avec antenne intégrée.", productSlugs: ["came-kiaron-feu-clignotant-led", "bft-radius-feu-230v"], count: "47 réf", priceFrom: "dès 28 € HT" },
-    { id: "receiver", number: 4, label: "Récepteur radio 433 MHz", shortLabel: "Récepteur", position: { x: 845, y: 335 }, anchor: { x: 870, y: 130 }, description: "Récepteur bi-canal universel rolling-code.", productSlugs: ["faac-xr2-recepteur-433-mhz"], count: "186 réf", priceFrom: "dès 19 € HT" },
-    { id: "keypad", number: 5, label: "Clavier à codes IP65", shortLabel: "Clavier codes", position: { x: 75, y: 440 }, anchor: { x: 30, y: 510 }, description: "Sans fil ou filaire 2 relais. IP65.", productSlugs: ["roger-clavier-ip65-2-relais"], count: "58 réf", priceFrom: "dès 42 € HT" },
+    { id: "photocells", number: 2, label: "Photocellules de sécurité", shortLabel: "Photocellules", position: { x: 75, y: 350 }, anchor: { x: 130, y: 150 }, description: "Paire filaire ou BUS 2easy. Portée 10 à 30 m.", productSlugs: ["v2-sensiva-photocellules-paire"], count: "124 réf en stock", priceFrom: "dès 32 € HT" },
+    { id: "flashing", number: 3, label: "Feu clignotant orange", shortLabel: "Feu clignotant", position: { x: 440, y: 225 }, anchor: { x: 560, y: 95 }, description: "LED 230 V ou 24 V, avec antenne intégrée.", productSlugs: ["v2-flash-feu-clignotant-led"], count: "47 réf", priceFrom: "dès 28 € HT" },
+    { id: "receiver", number: 4, label: "Récepteur radio 433 MHz", shortLabel: "Récepteur", position: { x: 845, y: 335 }, anchor: { x: 870, y: 130 }, description: "Récepteur bi-canal universel rolling-code.", productSlugs: ["roger-rx22a-recepteur-433-mhz"], count: "186 réf", priceFrom: "dès 19 € HT" },
+    { id: "keypad", number: 5, label: "Clavier à codes IP65", shortLabel: "Clavier codes", position: { x: 75, y: 440 }, anchor: { x: 30, y: 510 }, description: "Sans fil ou filaire 2 relais. IP65.", productSlugs: ["roger-h85-clavier-ip65-2-relais"], count: "58 réf", priceFrom: "dès 42 € HT" },
     { id: "safety-edge", number: 6, label: "Barre palpeuse EN 12453", shortLabel: "Barre palpeuse", position: { x: 440, y: 490 }, anchor: { x: 440, y: 550 }, description: "Sécurité anti-écrasement obligatoire en collectif.", productSlugs: [], count: "43 réf", priceFrom: "dès 89 € HT" },
-    { id: "battery", number: 7, label: "Batterie de secours", shortLabel: "Batterie", position: { x: 760, y: 510 }, anchor: { x: 870, y: 460 }, description: "Maintien d'ouverture en cas de coupure secteur.", productSlugs: ["bft-alimentation-24v-5a"], count: "38 réf", priceFrom: "dès 18 € HT" },
-    { id: "lock", number: 8, label: "Serrure électrique", shortLabel: "Serrure", position: { x: 160, y: 440 }, anchor: { x: 200, y: 540 }, description: "Verrouillage mécanique motorisé.", productSlugs: ["cisa-serrure-electrique-12v"], count: "43 réf", priceFrom: "dès 48 € HT" },
+    { id: "battery", number: 7, label: "Batterie de secours", shortLabel: "Batterie", position: { x: 760, y: 510 }, anchor: { x: 870, y: 460 }, description: "Maintien d'ouverture en cas de coupure secteur.", productSlugs: ["v2-alimentation-24v-5a"], count: "38 réf", priceFrom: "dès 18 € HT" },
+    { id: "lock", number: 8, label: "Serrure électrique", shortLabel: "Serrure", position: { x: 160, y: 440 }, anchor: { x: 200, y: 540 }, description: "Verrouillage mécanique motorisé.", productSlugs: ["integral-serrure-electrique-12v"], count: "43 réf", priceFrom: "dès 48 € HT" },
   ],
 };
 
@@ -159,11 +159,11 @@ const battantSchema: TwinSchema = {
     { id: "verins", number: 1, label: "Vérins ou bras articulés", shortLabel: "Vérins", position: { x: 145, y: 402 }, anchor: { x: 30, y: 200 }, description: "Vérin hydraulique ou bras articulé 24 V / 230 V.", productSlugs: [], count: "62 réf sur devis", priceFrom: "dès 289 € HT" },
     { id: "control-board", number: 2, label: "Armoire de commande", shortLabel: "Armoire", position: { x: 122, y: 250 }, anchor: { x: 30, y: 130 }, description: "Carte électronique avec récepteur radio intégré.", productSlugs: [], count: "84 réf", priceFrom: "dès 169 € HT" },
     { id: "photocells-2", number: 3, label: "Photocellules de sécurité", shortLabel: "Photocellules", position: { x: 135, y: 335 }, anchor: { x: 30, y: 340 }, description: "Paire filaire pour détection véhicule/piéton.", productSlugs: ["v2-sensiva-photocellules-paire"], count: "124 réf", priceFrom: "dès 32 € HT" },
-    { id: "lock-center", number: 4, label: "Serrure électrique centrale", shortLabel: "Serrure", position: { x: 450, y: 405 }, anchor: { x: 450, y: 555 }, description: "Verrouillage mécanique motorisé entre les vantaux.", productSlugs: ["cisa-serrure-electrique-12v"], count: "43 réf", priceFrom: "dès 48 € HT" },
-    { id: "flashing-2", number: 5, label: "Feu clignotant", shortLabel: "Feu", position: { x: 775, y: 207 }, anchor: { x: 870, y: 100 }, description: "LED 230 V avec antenne intégrée.", productSlugs: ["came-kiaron-feu-clignotant-led"], count: "47 réf", priceFrom: "dès 28 € HT" },
-    { id: "telecommande", number: 6, label: "Télécommandes rolling-code", shortLabel: "Télécommandes", position: { x: 775, y: 335 }, anchor: { x: 870, y: 350 }, description: "Rolling-code 433 MHz, 2-4 canaux.", productSlugs: ["bft-mitto-2-telecommande"], count: "186 réf", priceFrom: "dès 19 € HT" },
-    { id: "battery-2", number: 7, label: "Batterie de secours", shortLabel: "Batterie", position: { x: 757, y: 402 }, anchor: { x: 870, y: 540 }, description: "12 V 7 Ah pour maintien d'ouverture en cas de coupure.", productSlugs: ["bft-alimentation-24v-5a"], count: "38 réf", priceFrom: "dès 18 € HT" },
-    { id: "keypad-2", number: 8, label: "Clavier à codes / interphone", shortLabel: "Clavier", position: { x: 122, y: 460 }, anchor: { x: 30, y: 480 }, description: "Clavier IP65 ou interphone GSM 4G.", productSlugs: ["roger-clavier-ip65-2-relais"], count: "58 réf", priceFrom: "dès 42 € HT" },
+    { id: "lock-center", number: 4, label: "Serrure électrique centrale", shortLabel: "Serrure", position: { x: 450, y: 405 }, anchor: { x: 450, y: 555 }, description: "Verrouillage mécanique motorisé entre les vantaux.", productSlugs: ["integral-serrure-electrique-12v"], count: "43 réf", priceFrom: "dès 48 € HT" },
+    { id: "flashing-2", number: 5, label: "Feu clignotant", shortLabel: "Feu", position: { x: 775, y: 207 }, anchor: { x: 870, y: 100 }, description: "LED 230 V avec antenne intégrée.", productSlugs: ["v2-flash-feu-clignotant-led"], count: "47 réf", priceFrom: "dès 28 € HT" },
+    { id: "telecommande", number: 6, label: "Télécommandes rolling-code", shortLabel: "Télécommandes", position: { x: 775, y: 335 }, anchor: { x: 870, y: 350 }, description: "Rolling-code 433 MHz, 2-4 canaux.", productSlugs: ["v2-handy-telecommande-rolling-code"], count: "186 réf", priceFrom: "dès 19 € HT" },
+    { id: "battery-2", number: 7, label: "Batterie de secours", shortLabel: "Batterie", position: { x: 757, y: 402 }, anchor: { x: 870, y: 540 }, description: "12 V 7 Ah pour maintien d'ouverture en cas de coupure.", productSlugs: ["v2-alimentation-24v-5a"], count: "38 réf", priceFrom: "dès 18 € HT" },
+    { id: "keypad-2", number: 8, label: "Clavier à codes / interphone", shortLabel: "Clavier", position: { x: 122, y: 460 }, anchor: { x: 30, y: 480 }, description: "Clavier IP65 ou interphone GSM 4G.", productSlugs: ["roger-h85-clavier-ip65-2-relais"], count: "58 réf", priceFrom: "dès 42 € HT" },
   ],
 };
 
@@ -222,7 +222,7 @@ const sectionnelleSchema: TwinSchema = {
     { id: "rails", number: 4, label: "Rails verticaux + horizontaux", shortLabel: "Rails", position: { x: 130, y: 280 }, anchor: { x: 30, y: 280 }, description: "Système de guidage acier galvanisé.", productSlugs: [], count: "Inclus", priceFrom: "—" },
     { id: "photocells-3", number: 5, label: "Photocellules de seuil", shortLabel: "Photocellules", position: { x: 160, y: 495 }, anchor: { x: 30, y: 540 }, description: "Détection obstacle obligatoire EN 12453.", productSlugs: ["v2-sensiva-photocellules-paire"], count: "124 réf", priceFrom: "dès 32 € HT" },
     { id: "barre-palpeuse", number: 6, label: "Barre palpeuse bord d'attaque", shortLabel: "Barre palpeuse", position: { x: 750, y: 470 }, anchor: { x: 870, y: 470 }, description: "Sécurité anti-écrasement obligatoire EN 12453.", productSlugs: [], count: "16 réf", priceFrom: "dès 89 € HT" },
-    { id: "commande", number: 7, label: "Boîte à boutons mort-homme", shortLabel: "Commande", position: { x: 71, y: 370 }, anchor: { x: 30, y: 380 }, description: "Commande filaire, RFID ou télécommande radio.", productSlugs: ["roger-clavier-ip65-2-relais"], count: "32 réf", priceFrom: "dès 65 € HT" },
+    { id: "commande", number: 7, label: "Boîte à boutons mort-homme", shortLabel: "Commande", position: { x: 71, y: 370 }, anchor: { x: 30, y: 380 }, description: "Commande filaire, RFID ou télécommande radio.", productSlugs: ["roger-h85-clavier-ip65-2-relais"], count: "32 réf", priceFrom: "dès 65 € HT" },
     { id: "feux-trafic", number: 8, label: "Feux trafic rouge / vert", shortLabel: "Feux trafic", position: { x: 760, y: 100 }, anchor: { x: 870, y: 130 }, description: "Signalisation entrée/sortie pour quai logistique.", productSlugs: [], count: "12 réf", priceFrom: "dès 159 € HT" },
   ],
 };
@@ -273,7 +273,7 @@ const rideauSchema: TwinSchema = {
     { id: "axe", number: 2, label: "Axe tubulaire", shortLabel: "Axe", position: { x: 450, y: 80 }, anchor: { x: 450, y: 30 }, description: "Tube acier galvanisé Ø60 à Ø133 mm selon poids tablier.", productSlugs: [], count: "Sur mesure", priceFrom: "—" },
     { id: "moteur-tub", number: 3, label: "Moteur tubulaire ou central", shortLabel: "Motorisation", position: { x: 755, y: 80 }, anchor: { x: 870, y: 30 }, description: "Tubulaire intégré (compact) ou central avec chaîne (gros tabliers).", productSlugs: [], count: "18 réf", priceFrom: "dès 590 € HT" },
     { id: "coulisses", number: 4, label: "Coulisses latérales", shortLabel: "Coulisses", position: { x: 111, y: 280 }, anchor: { x: 30, y: 280 }, description: "Acier galvanisé, profondeur 50-80 mm.", productSlugs: [], count: "Inclus", priceFrom: "—" },
-    { id: "boite-boutons", number: 5, label: "Boîte à boutons + clé", shortLabel: "Commande", position: { x: 66, y: 370 }, anchor: { x: 30, y: 380 }, description: "Filaire IP65, option télécommande radio.", productSlugs: ["roger-clavier-ip65-2-relais"], count: "32 réf", priceFrom: "dès 89 € HT" },
+    { id: "boite-boutons", number: 5, label: "Boîte à boutons + clé", shortLabel: "Commande", position: { x: 66, y: 370 }, anchor: { x: 30, y: 380 }, description: "Filaire IP65, option télécommande radio.", productSlugs: ["roger-h85-clavier-ip65-2-relais"], count: "32 réf", priceFrom: "dès 89 € HT" },
     { id: "manivelle", number: 6, label: "Manœuvre de secours", shortLabel: "Secours", position: { x: 805, y: 200 }, anchor: { x: 870, y: 230 }, description: "Manivelle ou chaîne en cas de coupure secteur.", productSlugs: [], count: "Inclus", priceFrom: "—" },
     { id: "serrure-baillonette", number: 7, label: "Serrure baïonnette anti-soulèvement", shortLabel: "Serrure", position: { x: 450, y: 500 }, anchor: { x: 450, y: 555 }, description: "Verrouillage mécanique anti-effraction.", productSlugs: [], count: "8 réf", priceFrom: "dès 89 € HT" },
     { id: "parachute", number: 8, label: "Parachute industriel", shortLabel: "Parachute", position: { x: 110, y: 80 }, anchor: { x: 30, y: 30 }, description: "Sécurité anti-chute en cas de rupture câble (industriel).", productSlugs: [], count: "12 réf", priceFrom: "dès 290 € HT" },
@@ -394,7 +394,65 @@ const borneSchema: TwinSchema = {
 };
 
 // ============================================================================
-// EXPORT
+// SCHEMA 7 — PORTE AUTOMATIQUE COULISSANTE (tertiaire / commerce)
+// ============================================================================
+
+const porteAutoSchema: TwinSchema = {
+  id: "porte-automatique",
+  family: "Tertiaire",
+  name: "Porte automatique coulissante",
+  shortName: "Porte auto",
+  glyph: "⇆",
+  defaultHotspotId: "radar",
+  renderBackground: () => (
+    <>
+      {/* Sol */}
+      <line x1="0" y1="510" x2="900" y2="510" stroke="var(--color-fg)" strokeWidth="1.5" />
+      {/* Linteau / caisson moteur en haut */}
+      <rect x="120" y="100" width="660" height="38" fill="var(--color-bg-elev)" stroke="var(--color-fg)" strokeWidth="2" />
+      <line x1="120" y1="138" x2="780" y2="138" stroke="var(--color-fg)" strokeWidth="1" opacity="0.5" />
+      {/* Rail moteur (visible dans le caisson) */}
+      <rect x="140" y="115" width="620" height="10" fill="var(--color-warm-soft)" stroke="var(--color-warm)" strokeWidth="1" />
+      {/* Vantail gauche (mi-ouvert) */}
+      <rect x="140" y="148" width="280" height="362" fill="var(--color-bg)" stroke="var(--color-fg)" strokeWidth="1.5" />
+      <rect x="150" y="160" width="260" height="340" fill="none" stroke="var(--color-fg)" strokeWidth="0.6" opacity="0.4" />
+      {/* Vantail droit (mi-ouvert) */}
+      <rect x="480" y="148" width="280" height="362" fill="var(--color-bg)" stroke="var(--color-fg)" strokeWidth="1.5" />
+      <rect x="490" y="160" width="260" height="340" fill="none" stroke="var(--color-fg)" strokeWidth="0.6" opacity="0.4" />
+      {/* Poignée centrale + verrou EM */}
+      <rect x="418" y="280" width="6" height="50" fill="var(--color-fg)" />
+      <rect x="476" y="280" width="6" height="50" fill="var(--color-fg)" />
+      <rect x="430" y="195" width="40" height="14" fill="var(--color-warm)" rx="2" />
+      {/* Radar de présence dessus */}
+      <rect x="380" y="80" width="50" height="14" fill="var(--color-fg)" />
+      <line x1="405" y1="94" x2="405" y2="120" stroke="var(--color-fg)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
+      <rect x="470" y="80" width="50" height="14" fill="var(--color-fg)" />
+      <line x1="495" y1="94" x2="495" y2="120" stroke="var(--color-fg)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
+      {/* Cellules anti-pinch sur montants */}
+      <circle cx="135" cy="280" r="5" fill="var(--color-fg)" />
+      <circle cx="765" cy="280" r="5" fill="var(--color-fg)" />
+      {/* Programmateur clé sur mur */}
+      <rect x="60" y="280" width="22" height="40" fill="var(--color-fg)" />
+      {/* Lecteur badge sur montant droit */}
+      <rect x="785" y="380" width="18" height="28" fill="var(--color-fg)" />
+      {/* Tapis de détection sol (vue plan) */}
+      <rect x="180" y="495" width="540" height="14" fill="var(--color-warm-soft)" stroke="var(--color-warm)" strokeWidth="1" strokeDasharray="3 2" />
+    </>
+  ),
+  hotspots: [
+    { id: "radar", number: 1, label: "Radar de présence", shortLabel: "Radar", position: { x: 405, y: 87 }, anchor: { x: 200, y: 30 }, description: "Détection mouvement piéton, plage 1-7 m, micro-ondes ou IR.", productSlugs: [], count: "12 réf", priceFrom: "dès 189 € HT" },
+    { id: "moteur-porte", number: 2, label: "Motorisation linéaire", shortLabel: "Moteur", position: { x: 450, y: 119 }, anchor: { x: 870, y: 60 }, description: "Bloc moteur 24 V DC silencieux, courroie crantée, jusqu'à 200 kg/vantail.", productSlugs: [], count: "8 réf", priceFrom: "dès 1490 € HT" },
+    { id: "verrou-em", number: 3, label: "Verrou électromagnétique", shortLabel: "Verrou EM", position: { x: 450, y: 202 }, anchor: { x: 870, y: 200 }, description: "Verrouillage à manque de courant, force 280-600 kg.", productSlugs: ["integral-serrure-electrique-12v"], count: "43 réf", priceFrom: "dès 89 € HT" },
+    { id: "cellules-porte", number: 4, label: "Photocellules anti-pincement", shortLabel: "Cellules", position: { x: 135, y: 280 }, anchor: { x: 30, y: 280 }, description: "Paire infrarouge sur montants pour sécurité doigts.", productSlugs: ["v2-sensiva-photocellules-paire"], count: "124 réf", priceFrom: "dès 32 € HT" },
+    { id: "programmateur", number: 5, label: "Programmateur à clé", shortLabel: "Programmateur", position: { x: 71, y: 300 }, anchor: { x: 30, y: 380 }, description: "5 modes : auto, manuel, sortie seule, ouvert, fermé.", productSlugs: [], count: "6 réf", priceFrom: "dès 159 € HT" },
+    { id: "lecteur-porte", number: 6, label: "Lecteur badges / clavier", shortLabel: "Lecteur", position: { x: 794, y: 394 }, anchor: { x: 870, y: 460 }, description: "RFID 13.56 MHz ou clavier IP65, accès hors ouverture publique.", productSlugs: ["roger-h85-clavier-ip65-2-relais"], count: "58 réf", priceFrom: "dès 89 € HT" },
+    { id: "batterie-porte", number: 7, label: "Batterie de secours", shortLabel: "Batterie", position: { x: 760, y: 119 }, anchor: { x: 870, y: 30 }, description: "Maintien d'ouverture en cas de coupure secteur, autonomie 30 min.", productSlugs: ["v2-alimentation-24v-5a"], count: "38 réf", priceFrom: "dès 18 € HT" },
+    { id: "tapis-sol", number: 8, label: "Tapis de détection au sol", shortLabel: "Tapis", position: { x: 450, y: 502 }, anchor: { x: 450, y: 555 }, description: "Tapis pression sol pour zone de sécurité supplémentaire (option).", productSlugs: [], count: "Optionnel", priceFrom: "dès 290 € HT" },
+  ],
+};
+
+// ============================================================================
+// EXPORT — 7 schémas (brief v0.7)
 // ============================================================================
 
 export const twinSchemas: TwinSchema[] = [
@@ -402,6 +460,7 @@ export const twinSchemas: TwinSchema[] = [
   battantSchema,
   sectionnelleSchema,
   rideauSchema,
+  porteAutoSchema,
   barriereSchema,
   borneSchema,
 ];
