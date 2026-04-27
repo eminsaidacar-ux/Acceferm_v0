@@ -145,15 +145,15 @@ export default function AssisteoMaintenancePage() {
                   Besoin d'aide ?
                 </p>
                 <p className="mt-2 text-[16px] leading-relaxed text-fg">
-                  Pas sûr du composant en panne ou à remplacer ? Notre configurateur
-                  visuel vous guide en 3 clics.
+                  Pas sûr du composant en panne ou à remplacer ? Notre assistant
+                  diagnostic vous guide en 3 clics.
                 </p>
               </div>
               <a
-                href="/configurateur"
+                href="/assistant-diagnostic"
                 className="mt-4 inline-flex min-h-12 items-center rounded-md border border-border bg-bg px-5 text-[14px] font-medium text-fg transition hover:border-fg sm:mt-0 sm:shrink-0"
               >
-                Ouvrir le configurateur
+                Ouvrir l'assistant diagnostic
               </a>
             </div>
           </div>
