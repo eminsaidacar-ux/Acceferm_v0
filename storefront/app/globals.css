@@ -196,6 +196,9 @@ body {
   animation: marquee 30s linear infinite;
   width: max-content;
 }
+.marquee-track--slow {
+  animation-duration: 45s;
+}
 .marquee-track:hover {
   animation-play-state: paused;
 }

@@ -1,3 +1,4 @@
+import { BrandStrip } from "@/components/sections/brand-strip";
 import { CategoryGrid } from "@/components/sections/category-grid";
 import { Footer } from "@/components/sections/footer";
 import { Hero } from "@/components/sections/hero";
@@ -14,11 +15,12 @@ import { TrustBlock } from "@/components/sections/trust-block";
  * 2. Catalogue 12 univers
  * 3. Best-sellers 8 produits filtrables
  * 4. Marquise centrale rouge (10 points clés défilants — réintro v0.7)
- * 5. Bloc confiance 3 colonnes
- * 6. Footer
+ * 5. BrandStrip 5 marques fournisseurs (réintro v0.7)
+ * 6. Bloc confiance 3 colonnes
+ * 7. Footer
  *
- * NB : la marquise centrale est une exception au "5 sections max" v0.6
- * — réintégration explicite demandée par Emin dans le brief v0.7.
+ * NB : marquise + BrandStrip sont 2 ré-intégrations explicitement
+ * demandées par Emin dans le brief v0.7 (contenu utile, pas ornement).
  */
 export default function HomePage() {
   return (
@@ -29,6 +31,7 @@ export default function HomePage() {
         <CategoryGrid />
         <LiveCatalog />
         <ScrollingBanner />
+        <BrandStrip />
         <TrustBlock />
       </main>
       <Footer />
