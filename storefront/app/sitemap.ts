@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // sont disallow dans robots.ts donc absents du sitemap (cohérence).
   const staticRoutes = [
     "",
-    "/configurateur",
+    "/assistant-diagnostic",
     "/configurer",
     "/assisteo-maintenance",
     "/ressources",

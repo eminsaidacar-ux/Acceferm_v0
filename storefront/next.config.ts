@@ -28,6 +28,13 @@ const config: NextConfig = {
         destination: "/comparatif-centrales-achat",
         permanent: true,
       },
+      // v0.8 : renommage outil de diagnostic visuel pour clarifier
+      // son positionnement (assistant pour novices, pas configurateur de devis).
+      {
+        source: "/configurateur",
+        destination: "/assistant-diagnostic",
+        permanent: true,
+      },
     ];
   },
 };

@@ -3,25 +3,27 @@ import { ChevronRight } from "lucide-react";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
-import { TwinExplorer } from "@/components/configurateur/twin-explorer";
+import { TwinExplorer } from "@/components/assistant-diagnostic/twin-explorer";
 
 export const metadata: Metadata = {
-  title: "Configurateur visuel — identifiez vos composants en 1 clic",
+  title: "Assistant diagnostic — Identifiez la pièce de votre installation",
   description:
-    "Cliquez sur un schéma de fermeture pour identifier les composants en panne ou à remplacer. 7 types de fermetures, références en stock à chaque clic.",
-  alternates: { canonical: "/configurateur" },
+    "Vous ne savez pas comment s'appelle la pièce que vous devez remplacer ? Cliquez sur votre type d'équipement, identifiez le composant en panne, et nous vous montrons les références compatibles en stock.",
+  alternates: { canonical: "/assistant-diagnostic" },
 };
 
 /**
- * /configurateur — Digital Twin multi-fermetures (v0.7).
+ * /assistant-diagnostic — outil visuel d'identification de pièces (v0.8).
  *
- * Outil VISUEL d'identification de composants. Distinct de /configurer
- * (wizard 5 questions pour devis motorisation), conservé.
+ * Anciennement /configurateur (renommé en v0.8 pour clarifier le
+ * positionnement : ce n'est pas un configurateur de devis mais un
+ * assistant pour visiteurs novices). Distinct de /configurer (wizard
+ * 5 questions devis motorisation, conservé).
  *
  * 7 schémas SVG inline statiques + interactions JS au clic.
  * Performance cible : Lighthouse Perf ≥ 88, A11y ≥ 95.
  */
-export default function ConfigurateurPage() {
+export default function AssistantDiagnosticPage() {
   return (
     <>
       <AnnouncementBar />
@@ -36,7 +38,7 @@ export default function ConfigurateurPage() {
               Accueil
             </a>
             <ChevronRight className="h-3 w-3 text-fg-faint" aria-hidden="true" />
-            <span className="font-medium text-fg">Configurateur visuel</span>
+            <span className="font-medium text-fg">Assistant diagnostic</span>
           </div>
         </nav>
 
@@ -44,15 +46,15 @@ export default function ConfigurateurPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="max-w-3xl">
               <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-fg-muted">
-                Configurateur · cliquez · identifiez
+                Assistant · cliquez · identifiez
               </p>
               <h1 className="mt-5 font-display text-[40px] font-semibold leading-[1.02] tracking-[-0.025em] text-fg lg:text-[64px]">
-                Identifiez les composants de votre fermeture motorisée
+                Assistant diagnostic — Identifiez la pièce de votre installation
               </h1>
               <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-fg-muted">
-                Vous avez un problème ou un besoin sur votre installation ? Cliquez sur
-                le composant concerné — nous identifions ce qui correspond dans notre
-                stock. Pas besoin d'être expert technique.
+                Vous ne savez pas comment s'appelle la pièce que vous devez remplacer ?
+                Cliquez sur votre type d'équipement, identifiez le composant en panne,
+                et nous vous montrons les références compatibles en stock.
               </p>
               <p className="mt-3 text-[13px] text-fg-subtle">
                 7 types de fermeture · références en stock à chaque clic · prix HT pro

@@ -5,7 +5,7 @@ import { twinSchemas } from "@/lib/twin-schemas";
 import { TwinDetail } from "./twin-detail";
 
 /**
- * Digital Twin Explorer — page /configurateur (v0.7).
+ * Digital Twin Explorer — page /assistant-diagnostic (renommé v0.8).
  *
  * 7 schémas SVG interactifs (coulissant, battant, sectionnelle, rideau,
  * porte auto, barrière, borne).
