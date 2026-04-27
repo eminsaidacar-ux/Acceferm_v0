@@ -36,7 +36,7 @@ export default function ConfigurerPage() {
               <h1 className="mt-5 font-display text-[48px] font-semibold leading-[0.98] tracking-[-0.025em] text-fg lg:text-[72px]">
                 Votre motorisation,
                 <br />
-                <span className="italic font-medium text-peach">dimensionnée par un ingénieur.</span>
+                <span className="italic font-medium text-accent">dimensionnée par un ingénieur.</span>
               </h1>
               <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-fg-muted">
                 Répondez à cinq questions techniques. On vous pré-sélectionne trois kits cohérents

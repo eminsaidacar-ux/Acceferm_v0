@@ -140,7 +140,7 @@ export default async function LocalZonePage({
                 <h2 className="mt-4 font-display text-[36px] font-semibold leading-[1.02] tracking-[-0.02em] text-fg lg:text-[48px]">
                   Les villes où nos poseurs
                   <br />
-                  <span className="italic font-medium text-peach">passent chaque semaine.</span>
+                  <span className="italic font-medium text-accent">passent chaque semaine.</span>
                 </h2>
                 <p className="mt-5 max-w-md text-[15px] leading-relaxed text-fg-muted">
                   Liste non exhaustive. Si votre commune n'apparaît pas, on intervient quand même

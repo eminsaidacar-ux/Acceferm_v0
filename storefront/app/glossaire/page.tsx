@@ -97,7 +97,7 @@ export default function GlossairePage() {
             <h1 className="mt-6 font-display text-[52px] font-semibold leading-[0.92] tracking-[-0.025em] text-fg lg:text-[88px]">
               Le vocabulaire
               <br />
-              <span className="italic font-medium text-peach">du métier.</span>
+              <span className="italic font-medium text-accent">du métier.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-[16px] leading-relaxed text-fg-muted">
               Un glossaire écrit pour un installateur qui reprend un chantier hérité, un syndic

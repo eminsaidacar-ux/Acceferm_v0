@@ -43,13 +43,13 @@ export default async function SearchPage({
                   <>
                     Résultats pour
                     <br />
-                    <span className="italic font-medium text-peach">« {q} »</span>
+                    <span className="italic font-medium text-accent">« {q} »</span>
                   </>
                 ) : (
                   <>
                     Qu'est-ce que
                     <br />
-                    <span className="italic font-medium text-peach">vous cherchez ?</span>
+                    <span className="italic font-medium text-accent">vous cherchez ?</span>
                   </>
                 )}
               </h1>

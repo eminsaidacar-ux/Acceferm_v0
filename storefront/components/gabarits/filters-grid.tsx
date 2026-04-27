@@ -80,8 +80,8 @@ const TIER_META: Record<
   },
   studio: {
     label: "Sur mesure · bureau d'études",
-    colorClass: "text-peach",
-    pillClass: "bg-peach-soft text-peach-ink border-peach/30",
+    colorClass: "text-accent",
+    pillClass: "bg-accent-soft text-accent-ink border-accent/30",
     icon: Lock,
     cta: "Demander un devis",
     note: "Rédaction par notre bureau d'études IEF, 150-450 € HT selon complexité.",
@@ -292,7 +292,7 @@ export function GabaritsFiltersGrid({
                           {t.format} · {t.size}
                         </div>
                         {t.priceHT && (
-                          <div className="mt-0.5 font-mono text-[11px] tabular text-peach">
+                          <div className="mt-0.5 font-mono text-[11px] tabular text-accent">
                             dès {t.priceHT} € HT
                           </div>
                         )}

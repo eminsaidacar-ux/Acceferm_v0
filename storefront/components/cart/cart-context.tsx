@@ -26,11 +26,16 @@ const BY_SLUG = Object.fromEntries(
   [...topProducts, ...promotions].map((p) => [p.slug, p]),
 );
 
-/** Lignes par défaut si rien en localStorage (démo) */
+/**
+ * Lignes par défaut si rien en localStorage (démo).
+ * Slugs valides v0.6 (5 marques distribuées : V2 / Roger Technology /
+ * Motor Line / Doorgate / Intégral Système). Ne PAS ré-introduire les
+ * 12 marques retirees (Nice, Came, FAAC, BFT, etc.).
+ */
 const DEFAULT_LINES: CartLine[] = [
   { slug: "v2-sensiva-photocellules-paire", qty: 4 },
-  { slug: "faac-xr2-recepteur-433-mhz", qty: 1 },
-  { slug: "came-kiaron-feu-clignotant-led", qty: 3 },
+  { slug: "roger-rx22a-recepteur-433-mhz", qty: 1 },
+  { slug: "v2-flash-feu-clignotant-led", qty: 3 },
 ];
 
 export function CartProvider({ children }: { children: React.ReactNode }) {

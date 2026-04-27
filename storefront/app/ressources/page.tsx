@@ -34,7 +34,7 @@ export default function RessourcesHub() {
                 <h1 className="mt-5 font-display text-[48px] font-semibold leading-[0.96] tracking-[-0.025em] text-fg lg:text-[80px]">
                   Les guides techniques
                   <br />
-                  <span className="italic font-medium text-peach">qu'un installateur écrirait.</span>
+                  <span className="italic font-medium text-accent">qu'un installateur écrirait.</span>
                 </h1>
                 <p className="mt-6 max-w-xl text-[16px] leading-relaxed text-fg-muted">
                   Pas de blabla marketing, pas de SEO copié. Chaque article est rédigé par les

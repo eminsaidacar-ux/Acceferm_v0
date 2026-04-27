@@ -39,7 +39,7 @@ export default function CreatePro() {
               <h1 className="mt-4 font-display text-[44px] font-semibold leading-[0.98] tracking-[-0.02em] text-fg lg:text-[64px]">
                 Trois minutes.
                 <br />
-                <span className="italic font-medium text-peach">Un compte à vie.</span>
+                <span className="italic font-medium text-accent">Un compte à vie.</span>
               </h1>
             </div>
             <ProSignup />
