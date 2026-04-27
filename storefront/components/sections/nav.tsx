@@ -7,22 +7,23 @@ import { Logo } from "@/components/ui/logo";
 import { PriceToggle } from "@/components/ui/price-toggle";
 import { catalogTree } from "@/lib/catalog-tree";
 
-// Nav primaire v0.7 — 5 onglets exacts (brief Emin) :
-// Catalogue · Configurateur · Assistéo & Maintenance · Espace Pro · Contact.
+// Nav primaire v0.8 — 5 onglets exacts (brief Emin) :
+// Catalogue · Sur-mesure & Fabrication · Assistéo & Maintenance · Espace Pro · Contact.
+// Configurateur retiré du PRIMARY : repositionné en /assistant-diagnostic
+// (outil secondaire contextuel, accessible via bouton flottant sur /catalogue).
+// /catalogue pointe désormais vers la page hub v0.8 (10 familles produits).
 const PRIMARY = [
-  { label: "Catalogue", href: "/catalogue/photocellules" },
-  { label: "Configurateur", href: "/configurateur" },
+  { label: "Catalogue", href: "/catalogue" },
+  { label: "Sur-mesure & Fabrication", href: "/sur-mesure" },
   { label: "Assistéo & Maintenance", href: "/assisteo-maintenance" },
   { label: "Espace Pro", href: "/pro" },
   { label: "Contact", href: "/contact" },
 ];
 
 // Liens secondaires (drawer mobile uniquement) — pas redondants avec PRIMARY.
-// "Espace Pro" et "Contact" retirés (déjà en PRIMARY).
-// "Devis motorisation" pointe vers /configurer (wizard 5 questions),
-// outil distinct du /configurateur visuel multi-fermetures.
 const SECONDARY = [
-  { label: "Devis motorisation (5 questions)", href: "/configurer" },
+  { label: "Assistant diagnostic (identifier une pièce)", href: "/assistant-diagnostic" },
+  { label: "Devis motorisation (wizard 5 questions)", href: "/configurer" },
   { label: "Créer un compte pro", href: "/compte-pro/nouveau" },
   { label: "Ressources & guides", href: "/ressources" },
   { label: "À propos · IEF & Co", href: "/a-propos" },
