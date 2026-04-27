@@ -182,6 +182,24 @@ body {
   animation: halo 2s ease-out infinite;
 }
 
+/* ─────────── Marquee — défilement horizontal infini ─────────── */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* ─────────── Reduced motion ─────────── */
 
 @media (prefers-reduced-motion: reduce) {
