@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { AnnouncementBar } from "@/components/sections/announcement-bar";
 import { Footer } from "@/components/sections/footer";
 import { Nav } from "@/components/sections/nav";
+import { DiagnosticCta } from "@/components/catalogue/diagnostic-cta";
+import { FamilySelector } from "@/components/catalogue/family-selector";
 import { FiltersSidebar } from "@/components/catalogue/filters-sidebar";
 import { CatalogueProductGrid } from "@/components/catalogue/product-grid";
 import { CatalogueToolbar } from "@/components/catalogue/toolbar";
@@ -56,13 +58,16 @@ export default async function CategoryPage({
               Accueil
             </a>
             <ChevronRight className="h-3 w-3 text-fg-faint" />
-            <a href="/#categories" className="text-fg-muted transition hover:text-fg">
+            <a href="/catalogue" className="text-fg-muted transition hover:text-fg">
               Catalogue
             </a>
             <ChevronRight className="h-3 w-3 text-fg-faint" />
             <span className="font-medium text-fg">{category.name}</span>
           </div>
         </nav>
+
+        {/* Sélecteur de familles (v0.8) */}
+        <FamilySelector activeSlug={slug} />
 
         {/* Category hero with image */}
         <section className="relative overflow-hidden border-b border-border-soft">
@@ -97,7 +102,7 @@ export default async function CategoryPage({
                 Voir les {products.length} produits
               </a>
               <a
-                href="/#configurateur"
+                href="/assistant-diagnostic"
                 className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-[13px] text-fg transition hover:border-fg"
               >
                 Compatibilité 3 clics
@@ -152,6 +157,9 @@ export default async function CategoryPage({
             </div>
           </div>
         </section>
+
+        {/* Bandeau bas de page — cross-link assistant diagnostic (v0.8) */}
+        <DiagnosticCta variant="category" />
       </main>
       <Footer />
     </>

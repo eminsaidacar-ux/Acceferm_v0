@@ -1,18 +1,33 @@
 import { catalogTree } from "./catalog-tree";
+import { CATALOGUE_FAMILIES } from "./catalogue-families";
 import { categories, promotions, topProducts, type Category, type Product } from "./data";
 import type { ImageKey } from "./images";
 
 /**
- * Récupère une catégorie par slug. Priorité aux 12 catégories éditorialisées
- * de `data.ts`. Fallback sur le catalog-tree (140+ sous-familles) pour que
- * toutes les routes `/catalogue/[slug]` soient routées.
+ * Récupère une catégorie par slug. Ordre de priorité :
+ *   1. 10 familles v0.8 (CATALOGUE_FAMILIES) — point d'atterrissage refondu
+ *   2. 12 catégories éditorialisées historiques (data.ts)
+ *   3. Catalog tree (140+ sous-familles) pour rétro-compat /catalogue/[slug].
  */
 export function getCategory(slug: string): Category | null {
-  // 1. Catégories éditorialisées
+  // 1. Nouvelles familles v0.8
+  const fromFamily = CATALOGUE_FAMILIES.find((f) => f.id === slug);
+  if (fromFamily) {
+    return {
+      slug: fromFamily.id,
+      name: fromFamily.name,
+      glyph: "▦",
+      count: `${fromFamily.count} réf`,
+      priceFrom: "dès 12 €",
+      image: pickFallbackImage(fromFamily.id),
+    };
+  }
+
+  // 2. Catégories éditorialisées historiques
   const fromData = categories.find((c) => c.slug === slug);
   if (fromData) return fromData;
 
-  // 2. Catalog tree — recherche famille, catégorie ou sous-catégorie
+  // 3. Catalog tree — recherche famille, catégorie ou sous-catégorie
   for (const family of catalogTree) {
     if (family.slug === slug) {
       const total = family.categories.reduce((sum, c) => sum + c.subs.length * 3, 0);
@@ -55,9 +70,15 @@ export function getCategory(slug: string): Category | null {
   return null;
 }
 
-/** Tous les slugs pour generateStaticParams (12 cats + familles + sous-cats catalog-tree). */
+/**
+ * Tous les slugs pour generateStaticParams :
+ * - 10 nouvelles familles v0.8 (CATALOGUE_FAMILIES)
+ * - 12 catégories éditorialisées historiques
+ * - Familles + sous-cats du catalog-tree (140+).
+ */
 export function getAllCategorySlugs(): string[] {
   const seen = new Set<string>();
+  for (const f of CATALOGUE_FAMILIES) seen.add(f.id);
   for (const c of categories) seen.add(c.slug);
   for (const family of catalogTree) {
     seen.add(family.slug);
